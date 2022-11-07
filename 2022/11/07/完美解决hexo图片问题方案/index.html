@@ -9,7 +9,7 @@
     
     <title>
         
-            Archive |
+            完美解决hexo图片问题 |
         
         Jerem1ah&#39;s Blog
     </title>
@@ -82,7 +82,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 ARCHIVES
@@ -110,7 +110,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">ARCHIVES</a>
                 </li>
             
@@ -130,45 +130,124 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
-        
-<div class="archive-list-container">
-    
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2022</span>
-                <span class="archive-year-post-count">[3]</span>
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">完美解决hexo图片问题</span>
             </div>
-            <ul class="article-list">
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">lhb</span>
+                            
+                                <span class="author-label">Lv1</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-11-07 17:31:23</span>
+        <span class="mobile">2022-11-07 17:31</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2022-11-07 17:32:20</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
                 
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/11/07/%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3hexo%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98%E6%96%B9%E6%A1%88/"
-                        >完美解决hexo图片问题</a>
-                        <span class="article-date">11-07</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/11/07/%E5%A4%A9%E6%B4%A5%E6%94%BB%E9%98%B2%E5%86%B3%E8%B5%9Bwp/"
-                        >天津攻防决赛wp</a>
-                        <span class="article-date">11-07</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2022/11/07/hello-world/"
-                        >Hello World</a>
-                        <span class="article-date">11-07</span>
+                    <li>
+                        <a href="/tags/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
                     </li>
                 
             </ul>
-        </section>
+        </span>
+    
+
+    
+    
+    
     
 </div>
 
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <p>既可以本地预览又可以成功在博客上引入 | 而且方便直接复制图片！</p>
+<h1 id="完美解决hexo图片问题"><a href="#完美解决hexo图片问题" class="headerlink" title="完美解决hexo图片问题"></a>完美解决hexo图片问题</h1><p>【既可以本地预览又可以成功在博客上引入 | 而且方便直接复制图片！】</p>
+<h2 id="1-typora设置"><a href="#1-typora设置" class="headerlink" title="1.typora设置"></a>1.typora设置</h2><p><strong>在偏好设置中进行如下设置：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.插图图片复制到指定路径如下：</span><br><span class="line">../../source/images/$&#123;filename&#125;</span><br><span class="line"></span><br><span class="line">2.勾选优先使用相对路径</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3hexo%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98%E6%96%B9%E6%A1%88/image-20221107170840625.png" alt="image-20221107170840625"></p>
+<h2 id="2-hexo配置"><a href="#2-hexo配置" class="headerlink" title="2.hexo配置"></a>2.hexo配置</h2><p><strong>1.安装图片插件</strong></p>
+<p><code>npm install hexo-renderer-marked</code></p>
+<p><strong>2.配置文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3hexo%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98%E6%96%B9%E6%A1%88/image-20221107173002151.png" alt="image-20221107173002151"></p>
+<p><img src="/../images/%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3hexo%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98%E6%96%B9%E6%A1%88/image-20221107172741098.png" alt="image-20221107172741098"></p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/11/07/%E5%A4%A9%E6%B4%A5%E6%94%BB%E9%98%B2%E5%86%B3%E8%B5%9Bwp/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">天津攻防决赛wp</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -202,6 +281,19 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -275,6 +367,12 @@
 
 
 <div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+        
     
 </div>
 
