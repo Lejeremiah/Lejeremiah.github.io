@@ -9,7 +9,7 @@
     
     <title>
         
-            安洵杯-MISC |
+            frp内网穿透【实现本地服务映射到云服务器】 |
         
         Jerem1ah&#39;s Blog
     </title>
@@ -147,7 +147,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">安洵杯-MISC</span>
+                <span class="title-hover-animation">frp内网穿透【实现本地服务映射到云服务器】</span>
             </div>
 
             
@@ -169,13 +169,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2022-11-28 14:56:18</span>
-        <span class="mobile">2022-11-28 14:56</span>
+        <span class="pc">2022-12-24 00:31:43</span>
+        <span class="mobile">2022-12-24 00:31</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2022-11-28 15:25:51</span>
+        <span class="pc">2022-12-24 00:48:57</span>
     </span>
     
     
@@ -185,7 +185,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/misc/">misc</a>&nbsp;
+                        <a href="/tags/web/">web</a>&nbsp;
                     </li>
                 
             </ul>
@@ -204,31 +204,21 @@
             
 
             <div class="article-content keep-markdown-body">
-                <h1 id="安洵杯-MISC"><a href="#安洵杯-MISC" class="headerlink" title="安洵杯-MISC"></a>安洵杯-MISC</h1><h3 id="1-打开文件Signal一串二进制数据"><a href="#1-打开文件Signal一串二进制数据" class="headerlink" title="1.打开文件Signal一串二进制数据"></a>1.打开文件Signal一串二进制数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;Signal&#x27;</span>,<span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    context = f.read()</span><br><span class="line">	<span class="built_in">print</span>(long_to_bytes(<span class="built_in">int</span>(context,<span class="number">2</span>)))</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+                <h1 id="frp内网穿透【实现本地服务映射到云服务器】"><a href="#frp内网穿透【实现本地服务映射到云服务器】" class="headerlink" title="frp内网穿透【实现本地服务映射到云服务器】"></a>frp内网穿透【实现本地服务映射到云服务器】</h1><p>【参考官方文档】<a class="link"   target="_blank" rel="noopener" href="https://frps.cn/11.html" >https://frps.cn/11.html<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="1-安装frp"><a href="#1-安装frp" class="headerlink" title="1.安装frp"></a>1.安装frp</h2><p>选择合适版本下载：<a class="link"   target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases" >https://github.com/fatedier/frp/releases<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="/../images/02frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E3%80%90%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E6%98%A0%E5%B0%84%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%91/image-20221224003451169.png" alt="image-20221224003451169"></p>
+<p>将下载好的压缩包解压frps放到具有公网ip的服务器上；frpc放到内网主机上；</p>
+<p><img src="/../images/02frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E3%80%90%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E6%98%A0%E5%B0%84%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%91/image-20221224003700946.png" alt="image-20221224003700946"></p>
+<p><img src="/../images/02frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E3%80%90%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E6%98%A0%E5%B0%84%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%91/image-20221224003830820.png" alt="image-20221224003830820"></p>
+<h2 id="2-配置服务"><a href="#2-配置服务" class="headerlink" title="2.配置服务"></a>2.配置服务</h2><p>按照官方文档去进行配置frps.ini和frpc.ini</p>
+<p>http服务具体实例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#frps.ini</span><br><span class="line">[common]</span><br><span class="line">bind_port = 8004</span><br><span class="line">vhost_http = 8005</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../images/%E5%AE%89%E6%B4%B5%E6%9D%AF-misc/image-20221128150937905.png" alt="image-20221128150937905"></p>
-<p>发现PK压缩包标志</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;Signal&#x27;</span>,<span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    context = f.read()</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;Signal.zip&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(long_to_bytes(<span class="built_in">int</span>(context,<span class="number">2</span>)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#frpc.ini</span><br><span class="line">[common]</span><br><span class="line">server_addr = xx.xx.xx.xx</span><br><span class="line">server_port = 8004</span><br><span class="line"></span><br><span class="line">[web]</span><br><span class="line">type = http</span><br><span class="line">local_port = 8080</span><br><span class="line">custom_domains = xx.xx.xx.xx</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-压缩包里是625张黑和白的图片，以及一个加密的压缩包"><a href="#2-压缩包里是625张黑和白的图片，以及一个加密的压缩包" class="headerlink" title="2.压缩包里是625张黑和白的图片，以及一个加密的压缩包"></a>2.压缩包里是625张黑和白的图片，以及一个加密的压缩包</h3><p><img src="/../images/%E5%AE%89%E6%B4%B5%E6%9D%AF-misc/image-20221128151242992.png" alt="image-20221128151242992"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">IMAGE_PATH = <span class="string">&#x27;Signal0/&#x27;</span></span><br><span class="line">IMAGE_HEIGHT = <span class="number">100</span></span><br><span class="line">IMAGE_WIDTH = <span class="number">100</span></span><br><span class="line">IMAGE_ROW = <span class="number">25</span></span><br><span class="line">IMAGE_COLUMN = <span class="number">25</span></span><br><span class="line">IMAGE_SAVE_PATH = <span class="string">&#x27;image.jpg&#x27;</span></span><br><span class="line"></span><br><span class="line">newimage = Image.new(<span class="string">&#x27;RGB&#x27;</span>,(IMAGE_COLUMN*IMAGE_WIDTH,IMAGE_ROW*IMAGE_HEIGHT))</span><br><span class="line"><span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">25</span>):</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">25</span>):</span><br><span class="line">        timg = Image.<span class="built_in">open</span>(IMAGE_PATH+<span class="built_in">str</span>(y*IMAGE_COLUMN+x)+<span class="string">&#x27;.png&#x27;</span>,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">        newimage.paste(timg,(x*IMAGE_WIDTH,y*IMAGE_HEIGHT))</span><br><span class="line">newimage.save(IMAGE_SAVE_PATH)</span><br><span class="line">newimage.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/../images/%E5%AE%89%E6%B4%B5%E6%9D%AF-misc/image-20221128151331023.png" alt="image-20221128151331023"></p>
-<p>得到解压密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">187J3X1&amp;DX3906@!</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-压缩包里是一串16进制数据"><a href="#3-压缩包里是一串16进制数据" class="headerlink" title="3.压缩包里是一串16进制数据"></a>3.压缩包里是一串16进制数据</h3><p><img src="/../images/%E5%AE%89%E6%B4%B5%E6%9D%AF-misc/image-20221128151513995.png" alt="image-20221128151513995"></p>
-<p>放到CyberChef里解码<a class="link"   target="_blank" rel="noopener" href="https://cyberchef.org/" >https://cyberchef.org/<i class="fas fa-external-link-alt"></i></a></p>
-<p><img src="/../images/%E5%AE%89%E6%B4%B5%E6%9D%AF-misc/image-20221128151636709.png" alt="image-20221128151636709"></p>
-<p>保存为png图片 得到</p>
-<p><img src="/../images/%E5%AE%89%E6%B4%B5%E6%9D%AF-misc/image-20221128151713467.png" alt="image-20221128151713467"></p>
-<h3 id="4-图片用stegosolve打开，通道全选发现flag"><a href="#4-图片用stegosolve打开，通道全选发现flag" class="headerlink" title="4.图片用stegosolve打开，通道全选发现flag"></a>4.图片用stegosolve打开，通道全选发现flag</h3><p><img src="/../images/%E5%AE%89%E6%B4%B5%E6%9D%AF-misc/image-20221128151817712.png" alt="image-20221128151817712"></p>
-<h3 id="5-结语："><a href="#5-结语：" class="headerlink" title="5.结语："></a>5.结语：</h3><p>1.二进制数据转换为字节数据，发现是压缩包</p>
-<p>2.压缩包里625张图片组装生成二维码，得到里面压缩包密码</p>
-<p>3.解开压缩包里面有16进制文本数据得到base64数据，再解码得到png数据，保存png</p>
-<p>4.png图片用stegosolve打开通道全选能够发现flag</p>
-<p><code>题目文件放到里云盘需要自提</code></p>
-<p>Signal <a class="link"   target="_blank" rel="noopener" href="https://www.aliyundrive.com/s/eKRAdp3chp6" >https://www.aliyundrive.com/s/eKRAdp3chp6<i class="fas fa-external-link-alt"></i></a> 提取码: x23v 点击链接保存，或者复制本段内容，打开「阿里云盘」APP ，无需下载极速在线查看，视频原画倍速播放。</p>
+<p>此时通过公网ip:8005即可访问内网的8080服务</p>
+<p><img src="/../images/02frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E3%80%90%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E6%98%A0%E5%B0%84%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%91/image-20221224004624532.png" alt="image-20221224004624532"></p>
+<h2 id="3-结语"><a href="#3-结语" class="headerlink" title="3.结语"></a>3.结语</h2><p>在配置[ssh]服务时失败了，排查原因时发现局域网内ssh也失败，可能是系统的原因。于是尝试了http服务成功了</p>
 
             </div>
 
@@ -238,7 +228,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/misc/">#misc</a>&nbsp;
+                            <a href="/tags/web/">#web</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -247,29 +237,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2022/11/30/01%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">离散数学在计算机科学中的应用</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2022/11/26/CTF%E9%A2%98%E7%9B%AE%E5%B9%B3%E5%8F%B0/"
+                               href="/2022/11/30/01%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">CTF题目平台</span>
+                                <span class="post-nav-title-item">离散数学在计算机科学中的应用</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -288,7 +263,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E6%B4%B5%E6%9D%AF-MISC"><span class="nav-text">安洵杯-MISC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6Signal%E4%B8%80%E4%B8%B2%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE"><span class="nav-text">1.打开文件Signal一串二进制数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8E%8B%E7%BC%A9%E5%8C%85%E9%87%8C%E6%98%AF625%E5%BC%A0%E9%BB%91%E5%92%8C%E7%99%BD%E7%9A%84%E5%9B%BE%E7%89%87%EF%BC%8C%E4%BB%A5%E5%8F%8A%E4%B8%80%E4%B8%AA%E5%8A%A0%E5%AF%86%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="nav-text">2.压缩包里是625张黑和白的图片，以及一个加密的压缩包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%8E%8B%E7%BC%A9%E5%8C%85%E9%87%8C%E6%98%AF%E4%B8%80%E4%B8%B216%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE"><span class="nav-text">3.压缩包里是一串16进制数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%9B%BE%E7%89%87%E7%94%A8stegosolve%E6%89%93%E5%BC%80%EF%BC%8C%E9%80%9A%E9%81%93%E5%85%A8%E9%80%89%E5%8F%91%E7%8E%B0flag"><span class="nav-text">4.图片用stegosolve打开，通道全选发现flag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%BB%93%E8%AF%AD%EF%BC%9A"><span class="nav-text">5.结语：</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E3%80%90%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E6%98%A0%E5%B0%84%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%91"><span class="nav-text">frp内网穿透【实现本地服务映射到云服务器】</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85frp"><span class="nav-text">1.安装frp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1"><span class="nav-text">2.配置服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%BB%93%E8%AF%AD"><span class="nav-text">3.结语</span></a></li></ol></li></ol>
     </div>
 </div>
 
