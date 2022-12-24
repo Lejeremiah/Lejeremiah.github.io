@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lhb">
+    
+    <title>
+        
+            CTFd with Whale搭建过程记录【避坑指南】 |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">CTFd with Whale搭建过程记录【避坑指南】</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">lhb</span>
+                            
+                                <span class="author-label">Lv2</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2022-12-24 15:20:58</span>
+        <span class="mobile">2022-12-24 15:20</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2022-12-24 16:11:12</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/web/">web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="CTFd-with-Whale搭建过程记录【避坑指南】"><a href="#CTFd-with-Whale搭建过程记录【避坑指南】" class="headerlink" title="CTFd with Whale搭建过程记录【避坑指南】"></a>CTFd with Whale搭建过程记录【避坑指南】</h1><p>参考赵师傅：<a class="link"   target="_blank" rel="noopener" href="https://www.zhaoj.in/read-6333.html#_Direct_Frp" >https://www.zhaoj.in/read-6333.html#_Direct_Frp<i class="fas fa-external-link-alt"></i></a></p>
+<p>避坑指南：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51797394/article/details/127826913" >https://blog.csdn.net/weixin_51797394/article/details/127826913<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>自己在配置CTFd的过程中遇到了n多问题，经历了很多次失败，历时2个多月，有空了还是想继续尝试一下，最后还是成功配置出来了。首先是参考的赵师傅博客搭建，由于讲述的太过于简单很多东西都一概而过，就去查看docker swarm和docker-compose以及frp的使用去了，就没然后了。其次，是想到可以直接拿来别人搭建好的带CTFd的docker镜像直接来使用，pull之后很兴奋确实可以访问登录界面了，但是失望的是只有静态内容，配置不了动态web靶机，最多就是misc和re的专场，这怎么能行，于是又去找是否有直接带CTFd with whale的docker镜像，search了一下，还真有两个。pull来之后只有一个可以访问登录界面，whale的配置面板也不同，估计不太能配置的出来。于是有一条路走到了尽头。最后，也就只有把docker swarm和docker-compose以及frp等相关内容搞清楚之后再来看赵师傅的博客去搭建CTFd with whale。</p>
+<h2 id="2-准备过程"><a href="#2-准备过程" class="headerlink" title="2.准备过程"></a>2.准备过程</h2><p>学习如下工具的使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker</span><br><span class="line">docker-compose</span><br><span class="line">docker swarm</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-具体步骤【单机direct】"><a href="#3-具体步骤【单机direct】" class="headerlink" title="3.具体步骤【单机direct】"></a>3.具体步骤【单机direct】</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br><span class="line"></span><br><span class="line">cd /home</span><br><span class="line">git clone -b single https://github.com/glzjin/CTFd.git</span><br><span class="line">cd CTFd/frp</span><br><span class="line">vim frpc.ini #修改token 赵总博客上强调的随机的意思我猜可能就是让你随意改一改</span><br><span class="line">vim frps.ini #client和server的toekn应该一致</span><br><span class="line">git submodule update --init</span><br><span class="line"></span><br><span class="line">docker swarm init</span><br><span class="line">docker node ls</span><br><span class="line">docker node update --label-add name=linux-1 [id]</span><br><span class="line"></span><br><span class="line">docker-compose up -d</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以上基本上就是赵总博客的全部安装步骤，但是坑是真的多。下面一一介绍：</p>
+<h3 id="可能出现的问题："><a href="#可能出现的问题：" class="headerlink" title="可能出现的问题："></a>可能出现的问题：</h3><h4 id="1-网速慢直接去github上下载压缩包自己解压，然后拖到机器里。【这样子要注意下载单机模式的，最好去glzjin下载】"><a href="#1-网速慢直接去github上下载压缩包自己解压，然后拖到机器里。【这样子要注意下载单机模式的，最好去glzjin下载】" class="headerlink" title="1.网速慢直接去github上下载压缩包自己解压，然后拖到机器里。【这样子要注意下载单机模式的，最好去glzjin下载】"></a>1.网速慢直接去github上下载压缩包自己解压，然后拖到机器里。【这样子要注意下载单机模式的，最好去glzjin下载】</h4><p><img src="/../images/03CTFd-with-Whale%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95%E3%80%90%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%E3%80%91/image-20221224154314354.png" alt="image-20221224154314354"></p>
+<h4 id="2-关于编辑frps-ini和frpc-ini的问题【他强调的随机的意思就是不要和他一样自己随机一个吧我觉得，但是frps和frpc的token一定要对应】"><a href="#2-关于编辑frps-ini和frpc-ini的问题【他强调的随机的意思就是不要和他一样自己随机一个吧我觉得，但是frps和frpc的token一定要对应】" class="headerlink" title="2.关于编辑frps.ini和frpc.ini的问题【他强调的随机的意思就是不要和他一样自己随机一个吧我觉得，但是frps和frpc的token一定要对应】"></a>2.关于编辑frps.ini和frpc.ini的问题【他强调的随机的意思就是不要和他一样自己随机一个吧我觉得，但是frps和frpc的token一定要对应】</h4><h4 id="3-接着docker-compose-up-d就会遇到报python的问题【这个注意把Dockerfile中的-python-和-python-dev改为python3和python3-dev】"><a href="#3-接着docker-compose-up-d就会遇到报python的问题【这个注意把Dockerfile中的-python-和-python-dev改为python3和python3-dev】" class="headerlink" title="3.接着docker-compose up -d就会遇到报python的问题【这个注意把Dockerfile中的 python 和 python-dev改为python3和python3-dev】"></a>3.接着docker-compose up -d就会遇到报python的问题【这个注意把Dockerfile中的 python 和 python-dev改为python3和python3-dev】</h4><p><img src="/../images/03CTFd-with-Whale%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95%E3%80%90%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%E3%80%91/image-20221224155013753.png" alt="image-20221224155013753"></p>
+<h4 id="4-接着重新docker-compose-遇到ctfd-frpc-containers报错"><a href="#4-接着重新docker-compose-遇到ctfd-frpc-containers报错" class="headerlink" title="4.接着重新docker-compose 遇到ctfd_frpc_containers报错"></a>4.接着重新docker-compose 遇到ctfd_frpc_containers报错</h4><p><img src="/../images/03CTFd-with-Whale%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95%E3%80%90%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%E3%80%91/image-20221224155145155.png" alt="image-20221224155145155"></p>
+<p>解决办法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker network rm ctfd_frp_containers</span><br><span class="line">docker network create --driver overlay --attachable ctfd_frp_containers</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-然后重新docker-compose-遇到ctf-ctfd活不起来状态-一直是restart状态"><a href="#5-然后重新docker-compose-遇到ctf-ctfd活不起来状态-一直是restart状态" class="headerlink" title="5.然后重新docker-compose 遇到ctf_ctfd活不起来状态 一直是restart状态"></a>5.然后重新docker-compose 遇到ctf_ctfd活不起来状态 一直是restart状态</h4><p>docker logs [ctfd_ctfd 对应id]</p>
+<p>发现jinjia2报错，回头修改requirements.txt文件添加一些内容，并且修改一个版本才过去【真的会寄】</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jinja2==2.11.3 #添加</span><br><span class="line">gevent==21.12.0 #修改版本</span><br><span class="line">markupsafe==1.1.1 #添加</span><br></pre></td></tr></table></figure>
+
+<p>重新运行docker-compose之前记得先stop和rm当前存活的容器，并且rmi对应的四个镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#对5个容器和4个镜像执行下面操作</span><br><span class="line">docker ps -a</span><br><span class="line">docker stop [id]</span><br><span class="line">dcoker rm [id]</span><br><span class="line"></span><br><span class="line">docker images</span><br><span class="line">docker rmi [id]</span><br></pre></td></tr></table></figure>
+
+<p>然后重新docker-compose如果还不行就docker logs [id]看这个容器为啥up不了，查找原因。</p>
+<p>成功运行的状态如下：</p>
+<p><img src="/../images/03CTFd-with-Whale%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95%E3%80%90%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%E3%80%91/image-20221224160132703.png" alt="image-20221224160132703"></p>
+<h2 id="4-插件whale配置界面"><a href="#4-插件whale配置界面" class="headerlink" title="4.插件whale配置界面"></a>4.插件whale配置界面</h2><p>按照glzjin的文章直接配置就好，非常详细了</p>
+<p><img src="/../images/03CTFd-with-Whale%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95%E3%80%90%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%E3%80%91/image-20221224161053312.png" alt="image-20221224161053312"></p>
+<h2 id="5-结语"><a href="#5-结语" class="headerlink" title="5.结语"></a>5.结语</h2><p>接着可以开心的耍啦！有问题欢迎联系<a class="link"   href="mailto:&#x32;&#x37;&#57;&#x36;&#57;&#50;&#53;&#x36;&#x39;&#x35;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#109;" >&#x32;&#x37;&#57;&#x36;&#57;&#50;&#53;&#x36;&#x39;&#x35;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a></p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/web/">#web</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2022/12/24/02frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E3%80%90%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E6%98%A0%E5%B0%84%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%91/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">frp内网穿透【实现本地服务映射到云服务器】</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CTFd-with-Whale%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95%E3%80%90%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%E3%80%91"><span class="nav-text">CTFd with Whale搭建过程记录【避坑指南】</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%89%8D%E8%A8%80"><span class="nav-text">1.前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%87%86%E5%A4%87%E8%BF%87%E7%A8%8B"><span class="nav-text">2.准备过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4%E3%80%90%E5%8D%95%E6%9C%BAdirect%E3%80%91"><span class="nav-text">3.具体步骤【单机direct】</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="nav-text">可能出现的问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%BD%91%E9%80%9F%E6%85%A2%E7%9B%B4%E6%8E%A5%E5%8E%BBgithub%E4%B8%8A%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85%E8%87%AA%E5%B7%B1%E8%A7%A3%E5%8E%8B%EF%BC%8C%E7%84%B6%E5%90%8E%E6%8B%96%E5%88%B0%E6%9C%BA%E5%99%A8%E9%87%8C%E3%80%82%E3%80%90%E8%BF%99%E6%A0%B7%E5%AD%90%E8%A6%81%E6%B3%A8%E6%84%8F%E4%B8%8B%E8%BD%BD%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F%E7%9A%84%EF%BC%8C%E6%9C%80%E5%A5%BD%E5%8E%BBglzjin%E4%B8%8B%E8%BD%BD%E3%80%91"><span class="nav-text">1.网速慢直接去github上下载压缩包自己解压，然后拖到机器里。【这样子要注意下载单机模式的，最好去glzjin下载】</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%85%B3%E4%BA%8E%E7%BC%96%E8%BE%91frps-ini%E5%92%8Cfrpc-ini%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%90%E4%BB%96%E5%BC%BA%E8%B0%83%E7%9A%84%E9%9A%8F%E6%9C%BA%E7%9A%84%E6%84%8F%E6%80%9D%E5%B0%B1%E6%98%AF%E4%B8%8D%E8%A6%81%E5%92%8C%E4%BB%96%E4%B8%80%E6%A0%B7%E8%87%AA%E5%B7%B1%E9%9A%8F%E6%9C%BA%E4%B8%80%E4%B8%AA%E5%90%A7%E6%88%91%E8%A7%89%E5%BE%97%EF%BC%8C%E4%BD%86%E6%98%AFfrps%E5%92%8Cfrpc%E7%9A%84token%E4%B8%80%E5%AE%9A%E8%A6%81%E5%AF%B9%E5%BA%94%E3%80%91"><span class="nav-text">2.关于编辑frps.ini和frpc.ini的问题【他强调的随机的意思就是不要和他一样自己随机一个吧我觉得，但是frps和frpc的token一定要对应】</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%8E%A5%E7%9D%80docker-compose-up-d%E5%B0%B1%E4%BC%9A%E9%81%87%E5%88%B0%E6%8A%A5python%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%90%E8%BF%99%E4%B8%AA%E6%B3%A8%E6%84%8F%E6%8A%8ADockerfile%E4%B8%AD%E7%9A%84-python-%E5%92%8C-python-dev%E6%94%B9%E4%B8%BApython3%E5%92%8Cpython3-dev%E3%80%91"><span class="nav-text">3.接着docker-compose up -d就会遇到报python的问题【这个注意把Dockerfile中的 python 和 python-dev改为python3和python3-dev】</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%8E%A5%E7%9D%80%E9%87%8D%E6%96%B0docker-compose-%E9%81%87%E5%88%B0ctfd-frpc-containers%E6%8A%A5%E9%94%99"><span class="nav-text">4.接着重新docker-compose 遇到ctfd_frpc_containers报错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E7%84%B6%E5%90%8E%E9%87%8D%E6%96%B0docker-compose-%E9%81%87%E5%88%B0ctf-ctfd%E6%B4%BB%E4%B8%8D%E8%B5%B7%E6%9D%A5%E7%8A%B6%E6%80%81-%E4%B8%80%E7%9B%B4%E6%98%AFrestart%E7%8A%B6%E6%80%81"><span class="nav-text">5.然后重新docker-compose 遇到ctf_ctfd活不起来状态 一直是restart状态</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8F%92%E4%BB%B6whale%E9%85%8D%E7%BD%AE%E7%95%8C%E9%9D%A2"><span class="nav-text">4.插件whale配置界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E7%BB%93%E8%AF%AD"><span class="nav-text">5.结语</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2022
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">lhb</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
