@@ -9,7 +9,7 @@
     
     <title>
         
-            Hello World |
+            RWCTF体验赛-web-【Be-a-Wiki-Hacker】复现过程 |
         
         Jerem1ah&#39;s Blog
     </title>
@@ -147,7 +147,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">Hello World</span>
+                <span class="title-hover-animation">RWCTF体验赛-web-【Be-a-Wiki-Hacker】复现过程</span>
             </div>
 
             
@@ -169,16 +169,27 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2022-11-07 14:16:36</span>
-        <span class="mobile">2022-11-07 14:16</span>
+        <span class="pc">2023-01-08 22:56:23</span>
+        <span class="mobile">2023-01-08 22:56</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2022-11-07 23:29:24</span>
+        <span class="pc">2023-01-10 17:09:09</span>
     </span>
     
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/web/">web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -193,24 +204,28 @@
             
 
             <div class="article-content keep-markdown-body">
-                <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
+                <h1 id="【Be-a-Wiki-Hacker】复现过程"><a href="#【Be-a-Wiki-Hacker】复现过程" class="headerlink" title="【Be-a-Wiki-Hacker】复现过程"></a>【Be-a-Wiki-Hacker】复现过程</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>复现不难，搞懂原理内容就比较困难（先复现有时间再搞原理），比赛时只要找到对应exp就直接解决了，一个师傅给出的exp：<a class="link"   target="_blank" rel="noopener" href="https://github.com/0x14dli/cve2022-26134exp" >https://github.com/0x14dli/cve2022-26134exp<i class="fas fa-external-link-alt"></i></a></p>
+<p>漏洞描述（README.md）</p>
+<p>近日，Atlassian官方发布了Confluence Server和Data Center OGNL 注入漏洞（CVE-2022-26134）的安全公告。该漏洞的CVSS评分为10分，目前漏洞细节与PoC已被公开披露，且被检测到存在在野利用。 Atlassian Confluence是Atlassian公司出品的专业wiki程序。攻击者可利用漏洞在未经身份验证的情况下，远程构造OGNL表达式进行注入，在Confluence Server或Data Center上执行任意代码。结合Crowsec Edtech的exp增加了一个反弹shell的功能和命令行指定参数的方式</p>
+<h2 id="复现过程："><a href="#复现过程：" class="headerlink" title="复现过程："></a>复现过程：</h2><p><img src="/../images/07RWCTF-web-%E3%80%90Be-a-Wiki-Hacker%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/image-20230108232154301.png" alt="image-20230108232154301"></p>
+<p>由于命令执行没法执行复杂一点的命令，所以直接反弹shell</p>
+<p><img src="/../images/07RWCTF-web-%E3%80%90Be-a-Wiki-Hacker%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/image-20230108231033108.png" alt="image-20230108231033108"></p>
+<p><img src="/../images/07RWCTF-web-%E3%80%90Be-a-Wiki-Hacker%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/image-20230108231144168.png" alt="image-20230108231144168"></p>
+<p><img src="/../images/07RWCTF-web-%E3%80%90Be-a-Wiki-Hacker%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/image-20230108231204241.png" alt="image-20230108231204241"></p>
+<p>就是属于有了exp一步出flag的那种情况，但是exp搞懂就需要下功夫了</p>
 
             </div>
 
             
 
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/web/">#web</a>&nbsp;
+                        </li>
+                    
+                </ul>
             
 
             
@@ -219,18 +234,33 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2022/11/07/%E5%A4%A9%E6%B4%A5%E6%94%BB%E9%98%B2%E5%86%B3%E8%B5%9Bwp/"
+                               href="/2023/01/08/08RWCTF-web-%E3%80%90Yummy-Api%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">天津攻防决赛wp</span>
+                                <span class="post-nav-title-item">RWCTF体验赛-web-【Yummy Api】复现过程</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                             </a>
                         </div>
                     
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/01/08/06RWCTF-web-%E3%80%90Evil-MySQL-Server%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">RWCTF体验赛-web-【Evil MySQL Server】复现过程</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
                     
                 </div>
             
@@ -242,7 +272,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%90Be-a-Wiki-Hacker%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-text">【Be-a-Wiki-Hacker】复现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="nav-text">复现过程：</span></a></li></ol></li></ol>
     </div>
 </div>
 

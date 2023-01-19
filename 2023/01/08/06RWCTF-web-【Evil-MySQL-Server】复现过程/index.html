@@ -9,7 +9,7 @@
     
     <title>
         
-            Hello World |
+            RWCTF体验赛-web-【Evil MySQL Server】复现过程 |
         
         Jerem1ah&#39;s Blog
     </title>
@@ -147,7 +147,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">Hello World</span>
+                <span class="title-hover-animation">RWCTF体验赛-web-【Evil MySQL Server】复现过程</span>
             </div>
 
             
@@ -169,16 +169,27 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2022-11-07 14:16:36</span>
-        <span class="mobile">2022-11-07 14:16</span>
+        <span class="pc">2023-01-08 21:47:23</span>
+        <span class="mobile">2023-01-08 21:47</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2022-11-07 23:29:24</span>
+        <span class="pc">2023-01-10 17:09:04</span>
     </span>
     
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/web/">web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -193,24 +204,30 @@
             
 
             <div class="article-content keep-markdown-body">
-                <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
+                <h1 id="【Evil-MySQL-Server】复现过程"><a href="#【Evil-MySQL-Server】复现过程" class="headerlink" title="【Evil MySQL Server】复现过程"></a>【Evil MySQL Server】复现过程</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>打过real world ctf之后虽然没看题没坐牢收获还是很大的，让我意识到师傅们强大，web赛题出的基本上都是CVE，找到对应的exp就可以直接拿下，难度还好，但是值得学习的地方非常多！</p>
+<h2 id="复现过程："><a href="#复现过程：" class="headerlink" title="复现过程："></a>复现过程：</h2><p>fake_sever链接：<a class="link"   target="_blank" rel="noopener" href="https://github.com/fnmsd/MySQL_Fake_Server" >https://github.com/fnmsd/MySQL_Fake_Server<i class="fas fa-external-link-alt"></i></a></p>
+<p>git clone这个项目到自己服务器，然后直接运行就好</p>
+<p><img src="/../images/06RWCTF-web-%E3%80%90Evil-MySQL-Server%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/image-20230108215101351.png" alt="image-20230108215101351"></p>
+<p><img src="/../images/06RWCTF-web-%E3%80%90Evil-MySQL-Server%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/image-20230108215125352.png" alt="image-20230108215125352"></p>
+<p>以上就是赛题和对用的输入</p>
+<p>连接以后直接就在自己服务器看到flag预览内容，尽管靶机也就是客户端这边出错</p>
+<p><img src="/../images/06RWCTF-web-%E3%80%90Evil-MySQL-Server%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/image-20230108214855070.png" alt="image-20230108214855070"></p>
+<p><img src="/../images/06RWCTF-web-%E3%80%90Evil-MySQL-Server%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/image-20230108214921470.png" alt="image-20230108214921470"></p>
+<h2 id="结语："><a href="#结语：" class="headerlink" title="结语："></a>结语：</h2><p>这次比赛之后有个B站直播讲解赛题的环节（是听说有抽奖环节吸引过去的）就去看了没想到web的题解对我收获非常大。最后根据直播内容我就介绍一下这个漏洞吧：</p>
+<p>mysql_fake_sever这个对应的是客户端的安全问题，客户端需要连接一个mysql服务，于是我们就自己构造一个fake_sever让他连接，通过我们的fake_sever可以读取到客户端的所有文件。这个漏洞说明了外来的服务不可信！具体的内容mysql官方文档还给出了安全警告我就不贴出了，另外直播还带着用wireshark进行抓包分析，还讲解了java客户端的具体响应过程，对我来说收获非常大！值得记录一下。</p>
 
             </div>
 
             
 
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/web/">#web</a>&nbsp;
+                        </li>
+                    
+                </ul>
             
 
             
@@ -219,18 +236,33 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2022/11/07/%E5%A4%A9%E6%B4%A5%E6%94%BB%E9%98%B2%E5%86%B3%E8%B5%9Bwp/"
+                               href="/2023/01/08/07RWCTF-web-%E3%80%90Be-a-Wiki-Hacker%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">天津攻防决赛wp</span>
+                                <span class="post-nav-title-item">RWCTF体验赛-web-【Be-a-Wiki-Hacker】复现过程</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                             </a>
                         </div>
                     
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/01/01/05sstilabs%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">sstilabs镜像制作过程记录</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
                     
                 </div>
             
@@ -242,7 +274,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%90Evil-MySQL-Server%E3%80%91%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-text">【Evil MySQL Server】复现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="nav-text">复现过程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD%EF%BC%9A"><span class="nav-text">结语：</span></a></li></ol></li></ol>
     </div>
 </div>
 
