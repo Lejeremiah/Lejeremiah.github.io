@@ -9,7 +9,7 @@
     
     <title>
         
-            计算机网络 |
+            ettercap arp欺骗攻击 |
         
         Jerem1ah&#39;s Blog
     </title>
@@ -147,7 +147,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">计算机网络</span>
+                <span class="title-hover-animation">ettercap arp欺骗攻击</span>
             </div>
 
             
@@ -169,13 +169,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-02-02 22:09:26</span>
-        <span class="mobile">2023-02-02 22:09</span>
+        <span class="pc">2023-02-04 20:19:50</span>
+        <span class="mobile">2023-02-04 20:19</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-02-02 23:21:11</span>
+        <span class="pc">2023-02-11 13:39:09</span>
     </span>
     
     
@@ -185,7 +185,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>&nbsp;
+                        <a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>&nbsp;
                     </li>
                 
             </ul>
@@ -204,32 +204,24 @@
             
 
             <div class="article-content keep-markdown-body">
-                <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p><a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/u/079e6703a151" >https://www.jianshu.com/u/079e6703a151<i class="fas fa-external-link-alt"></i></a></p>
-<ol>
-<li>广域网、局域网、以太网、无线局域网、互联网、因特网区分</li>
-</ol>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/1a6d653163ed" >https://www.jianshu.com/p/1a6d653163ed<i class="fas fa-external-link-alt"></i></a></p>
-<ol start="2">
-<li>信息收集-旁站、c段、子域名的概念</li>
-</ol>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/renhaoblog/p/13026361.html#:~:text=C%E6%AE%B5%E6%8C%87%E7%9A%84%E6%98%AF%E5%90%8C%E4%B8%80%E5%86%85,%E6%8E%A2%E6%8B%BF%E4%B8%8B%E8%AF%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%82" >https://www.cnblogs.com/renhaoblog/p/13026361.html#:~:text=C%E6%AE%B5%E6%8C%87%E7%9A%84%E6%98%AF%E5%90%8C%E4%B8%80%E5%86%85,%E6%8E%A2%E6%8B%BF%E4%B8%8B%E8%AF%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%82<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/264600.html" >https://www.freebuf.com/articles/web/264600.html<i class="fas fa-external-link-alt"></i></a></p>
-<ol start="3">
-<li>&#x2F;24、&#x2F;16</li>
-</ol>
-<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40880213/article/details/120670910" >https://blog.csdn.net/weixin_40880213/article/details/120670910<i class="fas fa-external-link-alt"></i></a></p>
-<ol start="4">
-<li><p>vpn、vps、云服务器、虚拟机、沙箱、docker</p>
-</li>
-<li><p>桥接、NAT、host-only，网卡、虚拟网卡</p>
-</li>
-<li><p>子网掩码、网关、DNS</p>
-</li>
-<li><p>公网、外网、内网</p>
-</li>
-<li><p>exp、poc、payload</p>
-</li>
-</ol>
+                <h1 id="ettercap-arp欺骗攻击"><a href="#ettercap-arp欺骗攻击" class="headerlink" title="ettercap arp欺骗攻击"></a>ettercap arp欺骗攻击</h1><h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p>受文章启发：<a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/03204ad7c254%E3%80%90Msf+Ettercap%E5%85%A5%E4%BE%B5%E9%82%BB%E5%B1%85%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E3%80%91" >https://www.jianshu.com/p/03204ad7c254【Msf+Ettercap入侵邻居安卓手机】<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="2-调试网络"><a href="#2-调试网络" class="headerlink" title="2.调试网络"></a>2.调试网络</h3><p>网络调试了很长时间 最后用的手机热点成功实验</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">网关 172.20.10.1</span><br><span class="line">kali 172.20.10.10</span><br><span class="line">win  172.20.10.4</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/16ettercap-arp%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/image-20230204201957651.png" alt="image-20230204201957651"></p>
+<h3 id="3-ettercap工具使用"><a href="#3-ettercap工具使用" class="headerlink" title="3.ettercap工具使用"></a>3.ettercap工具使用</h3><p>参考：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43919932/article/details/104555509" >https://blog.csdn.net/weixin_43919932/article/details/104555509<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="4-发起攻击-kali开启网络转发"><a href="#4-发起攻击-kali开启网络转发" class="headerlink" title="4.发起攻击+kali开启网络转发"></a>4.发起攻击+kali开启网络转发</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">172.20.10.1作为target1</span><br><span class="line">172.20.10.4作为target2</span><br><span class="line">发起arp欺骗攻击</span><br></pre></td></tr></table></figure>
+
+<p>这时win再去访问网页就没网了。需要kali开启端口转发。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 查看端口转发，1则表示开启,0则表示关闭</span><br><span class="line">cat /proc/sys/net/ipv4/ip_forward </span><br><span class="line"># 开启端口转发，关闭的话把1改为0。该命令的意思是把 1 写入 /proc/sys/net/ipv4/ip_forward 文件中</span><br><span class="line">echo 1 &gt;/proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-窃取http网页数据"><a href="#5-窃取http网页数据" class="headerlink" title="5.窃取http网页数据"></a>5.窃取http网页数据</h3><p>win访问一个http服务的网页，就能在kali中抓到流量包的明文数据</p>
+<p><img src="/../images/16ettercap-arp%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/image-20230204202500857.png" alt="image-20230204202500857"></p>
+<p>https的则是加密数据</p>
+<p><img src="/../images/16ettercap-arp%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/image-20230204202815555.png" alt="image-20230204202815555"></p>
+<h3 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h3><p>应用场景：在连同一个wifi的情况下，通过arp欺骗就可以获取靶机的http明问流量包</p>
+<p>看了一眼学校的信息门户登录网页竟然不是https，真可怕！</p>
+<p>NDS劫持、网页内容替换、监控靶机流量：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/Mr_Wanderer/article/details/107985245" >https://blog.csdn.net/Mr_Wanderer/article/details/107985245<i class="fas fa-external-link-alt"></i></a></p>
 
             </div>
 
@@ -239,7 +231,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/%E5%9F%BA%E7%A1%80/">#基础</a>&nbsp;
+                            <a href="/tags/%E6%B8%97%E9%80%8F/">#渗透</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -251,13 +243,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2023/02/04/16ettercap-arp%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB/"
+                               href="/2023/02/05/17%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91web%E5%A4%8D%E7%8E%B0/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">ettercap arp欺骗攻击</span>
+                                <span class="post-nav-title-item">西湖论剑web复现</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                             </a>
@@ -267,10 +259,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/02/02/14%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E8%AE%B0%E5%BD%95/"
+                               href="/2023/02/02/15%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">漏洞复现记录</span>
+                                <span class="post-nav-title-item">计算机网络</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -289,7 +281,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="nav-text">计算机网络</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ettercap-arp%E6%AC%BA%E9%AA%97%E6%94%BB%E5%87%BB"><span class="nav-text">ettercap arp欺骗攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%89%8D%E8%A8%80"><span class="nav-text">1.前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%B0%83%E8%AF%95%E7%BD%91%E7%BB%9C"><span class="nav-text">2.调试网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ettercap%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8"><span class="nav-text">3.ettercap工具使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%8F%91%E8%B5%B7%E6%94%BB%E5%87%BB-kali%E5%BC%80%E5%90%AF%E7%BD%91%E7%BB%9C%E8%BD%AC%E5%8F%91"><span class="nav-text">4.发起攻击+kali开启网络转发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%AA%83%E5%8F%96http%E7%BD%91%E9%A1%B5%E6%95%B0%E6%8D%AE"><span class="nav-text">5.窃取http网页数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%80%BB%E7%BB%93"><span class="nav-text">6.总结</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
