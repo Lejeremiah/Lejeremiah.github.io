@@ -175,7 +175,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-05 11:22:02</span>
+        <span class="pc">2023-05-24 14:03:11</span>
     </span>
     
     
@@ -207,6 +207,7 @@
                 <h1 id="在linux上使用clash的完美解决方案"><a href="#在linux上使用clash的完美解决方案" class="headerlink" title="在linux上使用clash的完美解决方案"></a>在linux上使用clash的完美解决方案</h1><h2 id="0x01前言"><a href="#0x01前言" class="headerlink" title="0x01前言"></a>0x01前言</h2><p>参考链接：</p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://blog.zzsqwq.cn/posts/how-to-use-clash-on-linux/" >https://blog.zzsqwq.cn/posts/how-to-use-clash-on-linux/<i class="fas fa-external-link-alt"></i></a></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://parrotsec-cn.org/t/linux-clash-dashboard/5169" >https://parrotsec-cn.org/t/linux-clash-dashboard/5169<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://cn.v2ex.com/t/645149" >https://cn.v2ex.com/t/645149<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;docker</p>
 <h2 id="0x02具体步骤"><a href="#0x02具体步骤" class="headerlink" title="0x02具体步骤"></a>0x02具体步骤</h2><p>基于docker实现的步骤</p>
 <h3 id="1-目录结构-amp-amp-文件"><a href="#1-目录结构-amp-amp-文件" class="headerlink" title="1.目录结构 &amp;&amp; 文件"></a>1.目录结构 &amp;&amp; 文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ui/</span><br><span class="line">config.yaml</span><br><span class="line">Country.mmdb</span><br><span class="line">docker-compose.yml</span><br></pre></td></tr></table></figure>
 
@@ -223,13 +224,13 @@
 
 <h3 id="2-配置端口"><a href="#2-配置端口" class="headerlink" title="2.配置端口"></a>2.配置端口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">需要配置config.yaml的端口和docker-compose.yml的端口保持一致</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">port: 7890</span><br><span class="line">socks-port: 7891</span><br><span class="line">external-controller: :9090</span><br><span class="line">external-ui: /ui</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">port: 7890</span><br><span class="line">socks-port: 7891</span><br><span class="line">external-controller: :9090</span><br><span class="line">external-ui: /ui</span><br><span class="line">allow lan :true</span><br></pre></td></tr></table></figure>
 
 <p>然后，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-代理配置"><a href="#3-代理配置" class="headerlink" title="3.代理配置"></a>3.代理配置</h3><p>法一：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export https_proxy=http://127.0.0.1:7781 http_proxy=http://127.0.0.1:7781 all_proxy=socks5://127.0.0.1:7781</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export https_proxy=http://127.0.0.1:7781 http_proxy=http://127.0.0.1:7781 all_proxy=socks5://127.0.0.1:7782</span><br></pre></td></tr></table></figure>
 
 <p>法二：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># Proxy auto start</span><br><span class="line">#export https_proxy=http://127.0.0.1:7890</span><br><span class="line">#export http_proxy=http://127.0.0.1:7890</span><br><span class="line">#export all_proxy=socks5://127.0.0.1:7890</span><br><span class="line"># Open proxy</span><br><span class="line">on() &#123;</span><br><span class="line">#    export https_proxy=http://127.0.0.1:1087</span><br><span class="line">#    export http_proxy=http://127.0.0.1:1087</span><br><span class="line">#    export all_proxy=socks5://127.0.0.1:1086</span><br><span class="line">    export https_proxy=http://127.0.0.1:7781</span><br><span class="line">    export http_proxy=http://127.0.0.1:7781</span><br><span class="line">    export all_proxy=socks5://127.0.0.1:7781</span><br><span class="line">    echo &quot;HTTP/HTTPS Proxy on&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># Close proxy</span><br><span class="line">off() &#123;</span><br><span class="line">    unset http_proxy</span><br><span class="line">    unset https_proxy</span><br><span class="line">    unset all_proxy</span><br><span class="line">    echo &quot;HTTP/HTTPS Proxy off&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -237,6 +238,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">on</span><br></pre></td></tr></table></figure>
+
+<p>法三：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/proxychains.conf</span><br><span class="line">http 127.0.0.1 7781</span><br><span class="line">socks5 127.0.0.1 7782</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 curl https://www.google.com/</span><br></pre></td></tr></table></figure>
 
 
             </div>
