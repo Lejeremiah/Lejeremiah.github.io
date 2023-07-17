@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lhb">
+    
+    <title>
+        
+            SCTF-misc复现 |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">SCTF-misc复现</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">lhb</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-06-23 14:47:18</span>
+        <span class="mobile">2023-06-23 14:47</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-06-23 15:59:05</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/ctf/">ctf</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="SCTF-misc复现"><a href="#SCTF-misc复现" class="headerlink" title="SCTF-misc复现"></a>SCTF-misc复现</h1><p><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?srcid=0620opbxPmXyPOUJNJ4FDXPb&amp;scene=23&amp;sharer_sharetime=1687223008749&amp;mid=2247487066&amp;sharer_shareid=6eea79ff6da57fc6752ab0bc570bf392&amp;sn=7b259ad1fad85083cd94402c67bd119f&amp;idx=1&amp;__biz=Mzg4MjcxMTAwMQ==&amp;chksm=cf53ceecf82447fa960c98bb430078331563b9adaf6fc3fe9072f84bbf9ade75fce1a5f899aa&amp;mpshare=1#rd" >https://mp.weixin.qq.com/s?srcid=0620opbxPmXyPOUJNJ4FDXPb&amp;scene=23&amp;sharer_sharetime=1687223008749&amp;mid=2247487066&amp;sharer_shareid=6eea79ff6da57fc6752ab0bc570bf392&amp;sn=7b259ad1fad85083cd94402c67bd119f&amp;idx=1&amp;__biz=Mzg4MjcxMTAwMQ%3D%3D&amp;chksm=cf53ceecf82447fa960c98bb430078331563b9adaf6fc3fe9072f84bbf9ade75fce1a5f899aa&amp;mpshare=1#rd<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://fq6p9pyo5tt.feishu.cn/docx/QnvTdQeOdoF6gFxFxUSc3DSfnJf" >https://fq6p9pyo5tt.feishu.cn/docx/QnvTdQeOdoF6gFxFxUSc3DSfnJf<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?sn=a927dc538e48cf986bdc5d1aba800c0d&amp;__biz=MzU4MTg1NzAzMA==&amp;scene=23&amp;mid=2247487802&amp;idx=1&amp;t=pages/image_detail#wechat_redirect" >https://mp.weixin.qq.com/s?sn=a927dc538e48cf986bdc5d1aba800c0d&amp;__biz=MzU4MTg1NzAzMA%3D%3D&amp;scene=23&amp;mid=2247487802&amp;idx=1&amp;t=pages%2Fimage_detail#wechat_redirect<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623155020335.png" alt="image-20230623155020335"></p>
+<h1 id="0x01-Genshin-Impact"><a href="#0x01-Genshin-Impact" class="headerlink" title="0x01-Genshin Impact"></a>0x01-Genshin Impact</h1><p>思路：流量包打开，看了一下是流量统计，抓了两分钟包，数据应该不多，查看了一下tcp.stream eq 1正是流量包抓取和结束的时间。看了一下是在用MQTT协议传送消息，查看每个public message 并显示分组字节，先后传了图片的base64，图片名，一个长度为64的字符串。图片没什么用，文件明VB+10位字母数字，是一个B站视频，查看这个视频后面的评论，“就你小子米游社uid是Rd&#x2F;xRtmqSdit是吧”，然后用换表得到uid，去米游社查自己的信息，把id改为解密出的id在签名处就直接能看到flag了。</p>
+<p>tcp.stream eq1</p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623145458729.png" alt="image-20230623145458729"></p>
+<p>public message包的显示分组字节</p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623145614230.png" alt="image-20230623145614230"></p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623145645484.png" alt="image-20230623145645484"></p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623145708321.png" alt="image-20230623145708321"></p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623145731798.png" alt="image-20230623145731798"></p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623145744657.png" alt="image-20230623145744657"></p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623145807529.png" alt="image-20230623145807529"></p>
+<p>先查看了一下图片信息，下载之后是全黑，没什么信息。</p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623145846504.png" alt="image-20230623145846504"></p>
+<p>图片如下，好像是透明的，又有一些东西，没详细看<img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/download.png" alt="download"></p>
+<p>根据图片名BV1DW4y1R7qW.png，BV1DW4y1R7qW能定位一个B站视频，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">BV 号是 Bilibili 视频的唯一标识。每个 Bilibili 上传的视频都会分配一个 BV 号,格式为 BV+8 位字符串,如 BV1Tp4y1K7D6。</span><br><span class="line">BV 号主要用于:</span><br><span class="line">1. 视频的唯一标识。每个视频只有一个 BV 号,BV 号不会重复。</span><br><span class="line">2. 视频的索引和管理。Bilibili 后台会通过 BV 号来管理每个视频的信息以及视频封面、标签、弹幕等信息。</span><br><span class="line">3. 视频分享。用户可以通过分享 BV 号来分享对应视频。输入 BV 号即可直接观看视频。</span><br><span class="line">4. 视频搜索。用户可以通过 BV 号搜索到对应的视频。</span><br><span class="line">BV 号是 Bilibili 用来替代早期视频编号(如 avxxxxxxx)的新的标识系统。其主要目的是:</span><br><span class="line">1. 简短精炼:BV 号较之原视频号更短,更简洁。</span><br><span class="line">2. 不连续:BV 号增加是不连续的,不存在 bv1、bv2、bv3 这样的顺序,这使得 BV 号在一定程度上去中心化,不容易出现号码资源枯竭的情况。</span><br><span class="line">3. 无语义:BV 号本身不带任何语义,不会暴露视频的任何信息,保证视频信息的隐私性。</span><br><span class="line">4. 方便索引:Bilibili 后台会采用 BV 号来进行视频的各种索引与管理,系统内部继续使用 av 号,而对外公开的号码只使用 BV 号。</span><br><span class="line">所以,BV 号是 Bilibili 视频的唯一标识,它替代了原先的 av 号,具有简短、不连续和无语义等特点。Bilibili 使用 BV 号来索引和管理所有视频,用户也需要通过 BV 号来搜索和分享视频。每个上传到 Bilibili 的视频都对应一个唯一的 BV 号。</span><br><span class="line">BV 号提供了比 av 号更优的视频标识方案,使 Bilibili 的视频管理和用户体验更高效便捷。它已经成为用户和 Bilibili 互动的重要标识之一。 （已编辑） </span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623150036114.png" alt="image-20230623150036114"></p>
+<p>然后base64换表解到uid</p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623150138041.png" alt="image-20230623150138041"></p>
+<p>去米游社</p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623150232376.png" alt="image-20230623150232376"></p>
+<p>最后，</p>
+<p>看wp的换表操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;Rd/xRtmqSdit&#x27;</span></span><br><span class="line"></span><br><span class="line">b64_str = <span class="string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=&#x27;</span></span><br><span class="line">another_str = <span class="string">&#x27;3GHIJKLMNOPQRSTUb=cdefghijklmnopWXYZ/12+406789VaqrstuvwxyzABCDEF5&#x27;</span></span><br><span class="line"></span><br><span class="line">t = s.translate(<span class="built_in">str</span>.maketrans(another_str, b64_str))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(t)</span><br><span class="line"><span class="built_in">print</span>(base64.b64decode(t))</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="0x02-Fly-over-the-Fuchun-River"><a href="#0x02-Fly-over-the-Fuchun-River" class="headerlink" title="0x02-Fly over the Fuchun River"></a>0x02-Fly over the Fuchun River</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">开玩笑吗</span><br><span class="line">Rapper坐在经济舱</span><br><span class="line">面子伤不伤</span><br><span class="line">我说这是通往成功的方向</span><br><span class="line">图片拍摄于4月的某一天的12：15分(UTC+8)</span><br><span class="line">flag格式</span><br><span class="line">SCTF&#123;起飞机场缩写_落地机场缩写_飞机航班号_日期&#125;（全部大写）</span><br><span class="line">日期格式：</span><br><span class="line">6月17日写作617</span><br><span class="line">Are you kidding</span><br><span class="line">Rapper sits in economy class</span><br><span class="line">Doesn’t it hurt your face?</span><br><span class="line">I say it’s the way to success</span><br><span class="line">The picture was taken at 12:15 on a certain day in April(UTC+8)</span><br><span class="line">flag format:</span><br><span class="line">SCTF &#123;departure airport abbreviation_arrival airport abbreviation_aircraft flight number_date&#125;(all caps)</span><br><span class="line">date format:</span><br><span class="line">June 17 Writing 617</span><br></pre></td></tr></table></figure>
+
+
+
+<p>ps-&gt;编辑-&gt;自由变换-&gt;随意拉伸</p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623151950726.png" alt="image-20230623151950726"></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://flightaware.com/live/flight/B32DC/history/80" >https://flightaware.com/live/flight/B32DC/history/80<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.flightera.net/en/planes/B-32DC/2023-04-09%2020_45" >https://www.flightera.net/en/planes/B-32DC/2023-04-09%2020_45<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623153052919.png" alt="image-20230623153052919"></p>
+<p><strong>SCTF{CTU_HGH_EU2259_413}</strong></p>
+<h1 id="0x03-checkin"><a href="#0x03-checkin" class="headerlink" title="0x03-checkin"></a>0x03-checkin</h1><ol>
+<li></li>
+</ol>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623154007470.png" alt="image-20230623154007470"></p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623154238137.png" alt="image-20230623154238137"></p>
+<ol start="2">
+<li></li>
+</ol>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623154741718.png" alt="image-20230623154741718"></p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623154712875.png" alt="image-20230623154712875"></p>
+<p><img src="/../images/26-SCTF-misc%E5%A4%8D%E7%8E%B0/image-20230623154755160.png" alt="image-20230623154755160"></p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/ctf/">#ctf</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/07/17/27matlab%E5%AE%89%E8%A3%85/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">matlab安装</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/06/11/25-2023CISCN%E5%8D%8E%E5%8C%97%E5%88%86%E5%8C%BA%E8%B5%9B-web/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">2023CISCN华北分区赛-web</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SCTF-misc%E5%A4%8D%E7%8E%B0"><span class="nav-text">SCTF-misc复现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x01-Genshin-Impact"><span class="nav-text">0x01-Genshin Impact</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-Fly-over-the-Fuchun-River"><span class="nav-text">0x02-Fly over the Fuchun River</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x03-checkin"><span class="nav-text">0x03-checkin</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">lhb</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
