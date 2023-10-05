@@ -9,7 +9,7 @@
     
     <title>
         
-            Links |
+            About |
         
         Jerem1ah&#39;s Blog
     </title>
@@ -82,7 +82,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/links"
                             >
                                 LINKS
@@ -98,7 +98,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/about"
                             >
                                 ABOUT
@@ -126,7 +126,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/links">LINKS</a>
                 </li>
             
@@ -136,7 +136,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/about">ABOUT</a>
                 </li>
             
@@ -160,57 +160,74 @@
     <div class="page-template-container">
         
         
-            <div class="friends-link-container">
-    <ul class="friends-link-list">
-        
-            <li class="friends-link-item">
-                <a target="_blank" rel="noopener" href="https://lejeremiah.github.io">
-                    <div class="content">
-                        <div class="avatar radius">
-                            
-                                <img class="radius"
-                                     src="https://raw.githubusercontent.com/Lejeremiah/Lejeremiah.github.io/images/50ac4ec68298791a5339fb793e82115.jpg"
-                                     onerror="this.style.display='none'"
-                                >
-                            
-                        </div>
-                        <div class="info">
-                            <div class="name ellipsis">Jerem1ah</div>
-                            <div class="description ellipsis">擅长端茶，倒水，打杂</div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-        
-            <li class="friends-link-item">
-                <a target="_blank" rel="noopener" href="http://xtxtn.github.io/">
-                    <div class="content">
-                        <div class="avatar radius">
-                            
-                                <img class="radius"
-                                     src="https://xtxtn.github.io/img/my.png"
-                                     onerror="this.style.display='none'"
-                                >
-                            
-                        </div>
-                        <div class="info">
-                            <div class="name ellipsis">xtxtn&#39;s Blog</div>
-                            <div class="description ellipsis">练习时长半年的pwner</div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-        
-    </ul>
-    <div class="clear"></div>
-</div>
-
-        
         <div class="page-template-content keep-markdown-body">
             
-                
+                <p>#About me</p>
+<ul>
+<li>🌱 I’m currently learning web security, penetration testing and of course misc.</li>
+<li>📫 How to reach me: <a class="link"   href="mailto:2796925695@qq.com" >2796925695@qq.com<i class="fas fa-external-link-alt"></i></a> <a class="link"   href="mailto:lms.jeremiah@gmail.com" >lms.jeremiah@gmail.com<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+
             
         </div>
+        
+            <div class="page-template-comments">
+                
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;Comments
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script  src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script >
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: 'a415960e8a19902e98bf',
+                clientSecret: '97151a67ce9c95ad3c333c402f4cee0f5f05020f',
+                repo: 'gitalk',
+                owner: 'Lejeremiah',
+                admin: 'Lejeremiah',
+                id: __gitalk__pathname,
+                language: 'en'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('false' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
         
     </div>
 </div>
