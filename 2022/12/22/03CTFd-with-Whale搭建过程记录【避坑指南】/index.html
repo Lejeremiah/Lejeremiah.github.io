@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
-    <meta name="author" content="lhb">
+    <meta name="author" content="jerem1ah">
     
     <title>
         
@@ -16,7 +16,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="shortcut icon" href="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
     
 <link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
 
@@ -32,7 +32,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/logo.svg","favicon":"/images/logo.svg","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":"Lejeremiah","github_admins":null,"repository":"gitalk","client_id":"a415960e8a19902e98bf","client_secret":"97151a67ce9c95ad3c333c402f4cee0f5f05020f"},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","favicon":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","avatar":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":"Lejeremiah","github_admins":null,"repository":"gitalk","client_id":"a415960e8a19902e98bf","client_secret":"97151a67ce9c95ad3c333c402f4cee0f5f05020f"},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
   </script>
@@ -41,6 +41,8 @@
 
 <body>
 <div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
     
 
     
@@ -61,7 +63,7 @@
         <div class="left">
             
                 <a class="logo-image" href="/">
-                    <img src="/images/logo.svg">
+                    <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
                 </a>
             
             <a class="logo-title" href="/">
@@ -166,11 +168,11 @@
             
                 <div class="article-header">
                     <div class="avatar">
-                        <img src="/images/avatar.svg">
+                        <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
                     </div>
                     <div class="info">
                         <div class="author">
-                            <span class="name">lhb</span>
+                            <span class="name">jerem1ah</span>
                             
                                 <span class="author-label">Lv4</span>
                             
@@ -188,7 +190,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-04-03 21:35:36</span>
+        <span class="pc">2023-11-18 01:25:29</span>
     </span>
     
     
@@ -221,6 +223,7 @@
 <p>避坑指南：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51797394/article/details/127826913" >https://blog.csdn.net/weixin_51797394/article/details/127826913<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>自己在配置CTFd的过程中遇到了n多问题，经历了很多次失败，历时2个多月，有空了还是想继续尝试一下，最后还是成功配置出来了。首先是参考的赵师傅博客搭建，由于讲述的太过于简单很多东西都一概而过，就去查看docker swarm和docker-compose以及frp的使用去了，就没然后了。其次，是想到可以直接拿来别人搭建好的带CTFd的docker镜像直接来使用，pull之后很兴奋确实可以访问登录界面了，但是失望的是只有静态内容，配置不了动态web靶机，最多就是misc和re的专场，这怎么能行，于是又去找是否有直接带CTFd with whale的docker镜像，search了一下，还真有两个。pull来之后只有一个可以访问登录界面，whale的配置面板也不同，估计不太能配置的出来。于是又一条路走到了尽头。最后，也就只有把docker swarm和docker-compose以及frp等相关内容搞清楚之后再来看赵师傅的博客去搭建CTFd with whale。</p>
 <p><img src="https://img-blog.csdnimg.cn/img_convert/e2484dfd81c19e55c1b939cf0782d3d1.png" alt="img"></p>
+<p><img src="/../images/03CTFd-with-Whale%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95%E3%80%90%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%E3%80%91/image-20231023233321113.png" alt="image-20231023233321113"></p>
 <h2 id="2-准备过程"><a href="#2-准备过程" class="headerlink" title="2.准备过程"></a>2.准备过程</h2><p>学习如下工具的使用：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker</span><br><span class="line">docker-compose</span><br><span class="line">docker swarm</span><br><span class="line">frp</span><br></pre></td></tr></table></figure>
 
@@ -247,7 +250,7 @@
 <p><img src="/../images/03CTFd-with-Whale%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95%E3%80%90%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%E3%80%91/image-20221224160132703.png" alt="image-20221224160132703"></p>
 <h2 id="4-插件whale配置界面"><a href="#4-插件whale配置界面" class="headerlink" title="4.插件whale配置界面"></a>4.插件whale配置界面</h2><p>按照glzjin的文章直接配置就好，非常详细了</p>
 <p><img src="/../images/03CTFd-with-Whale%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95%E3%80%90%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%E3%80%91/image-20221224161053312.png" alt="image-20221224161053312"></p>
-<h2 id="5-结语"><a href="#5-结语" class="headerlink" title="5.结语"></a>5.结语</h2><p>接着可以开心的耍啦！有问题欢迎联系<a class="link"   href="mailto:&#x32;&#x37;&#57;&#x36;&#x39;&#50;&#x35;&#54;&#57;&#53;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;" >&#x32;&#x37;&#57;&#x36;&#x39;&#50;&#x35;&#54;&#57;&#53;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="5-结语"><a href="#5-结语" class="headerlink" title="5.结语"></a>5.结语</h2><p>接着可以开心的耍啦！有问题欢迎联系<a class="link"   href="mailto:&#50;&#55;&#57;&#x36;&#57;&#50;&#53;&#54;&#x39;&#53;&#64;&#x71;&#113;&#46;&#x63;&#111;&#x6d;" >&#50;&#55;&#57;&#x36;&#57;&#50;&#53;&#54;&#x39;&#53;&#64;&#x71;&#113;&#46;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a></p>
 <p>接下来如何使用docker出一道CTF题目，参考：<a class="link"   target="_blank" rel="noopener" href="https://www.v0n.top/2020/05/01/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8Docker%E5%87%BA%E4%B8%80%E9%81%93CTF%E9%A2%98%E7%9B%AE/" >https://www.v0n.top/2020/05/01/%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8Docker%E5%87%BA%E4%B8%80%E9%81%93CTF%E9%A2%98%E7%9B%AE/<i class="fas fa-external-link-alt"></i></a></p>
 <p>参考好文：<a class="link"   target="_blank" rel="noopener" href="https://up-wind.github.io/2021/05/28/CTFd/" >https://up-wind.github.io/2021/05/28/CTFd/<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="6-后续暴漏的问题"><a href="#6-后续暴漏的问题" class="headerlink" title="6.后续暴漏的问题"></a>6.后续暴漏的问题</h2><h3 id="1-frpc-报错-172-1-0-4连接不了【问题出现在项目down之后-再up的时候可能会报这个错】"><a href="#1-frpc-报错-172-1-0-4连接不了【问题出现在项目down之后-再up的时候可能会报这个错】" class="headerlink" title="1.frpc 报错 172.1.0.4连接不了【问题出现在项目down之后 再up的时候可能会报这个错】"></a>1.frpc 报错 172.1.0.4连接不了【问题出现在项目down之后 再up的时候可能会报这个错】</h3><p><img src="/../images/03CTFd-with-Whale%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95%E3%80%90%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%E3%80%91/image-20230101191709780.png" alt="image-20230101191709780"></p>
@@ -420,7 +423,7 @@
             2023
             
                 &nbsp;<i class="fas fa-heart icon-animate"></i>
-                &nbsp;<a href="/">lhb</a>
+                &nbsp;<a href="/">jerem1ah</a>
             
         </div>
         
@@ -478,10 +481,6 @@
         
 
         
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="fas fa-arrow-up"></i>
-            </li>
-        
 
         <li class="tools-item tool-scroll-to-bottom flex-center">
             <i class="fas fa-arrow-down"></i>
@@ -492,6 +491,11 @@
         <li class="tools-item tool-toggle-show flex-center">
             <i class="fas fa-cog fa-spin"></i>
         </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
         
     </ul>
 </div>

