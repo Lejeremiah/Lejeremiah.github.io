@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="jerem1ah">
+    
+    <title>
+        
+            手搓zip解码器 |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","favicon":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","avatar":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":"Lejeremiah","github_admins":null,"repository":"gitalk","client_id":"a415960e8a19902e98bf","client_secret":"97151a67ce9c95ad3c333c402f4cee0f5f05020f"},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">手搓zip解码器</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">jerem1ah</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2024-05-14 10:50:11</span>
+        <span class="mobile">2024-05-14 10:50</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-05-18 21:57:17</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/MISC/">MISC</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="zlib-decompress"><a href="#zlib-decompress" class="headerlink" title="zlib.decompress()"></a>zlib.decompress()</h1><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a class="link"   target="_blank" rel="noopener" href="https://pyokagan.name/blog/2019-10-18-zlibinflate/" >https://pyokagan.name/blog/2019-10-18-zlibinflate/<i class="fas fa-external-link-alt"></i></a>  &#x2F;&#x2F;文档</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/310628609.html" >https://zhidao.baidu.com/question/310628609.html<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;&lt;&lt;&#x3D;  &gt;&gt;&#x3D;</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/352145413" >https://zhuanlan.zhihu.com/p/352145413<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;大端序 小端序</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/junyuhuang/p/4138376.html" >https://www.cnblogs.com/junyuhuang/p/4138376.html<i class="fas fa-external-link-alt"></i></a>  &#x2F;&#x2F;lz77</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-wusp/fb98aa28-5cd7-407f-8869-a6cef1ff1ccb" >https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-wusp/fb98aa28-5cd7-407f-8869-a6cef1ff1ccb<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;lz77</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/lzq20115395/article/details/78906863" >https://blog.csdn.net/lzq20115395/article/details/78906863<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;huffman</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103908133" >https://zhuanlan.zhihu.com/p/103908133<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;huffman</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/BuptMerak/mrctf-2022-writeups/blob/main/offical/MISC.md" >https://github.com/BuptMerak/mrctf-2022-writeups/blob/main/offical/MISC.md<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;mrctf jpeg and the tree</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://nano.ac/posts/e8de5668/#jpeg-and-the-tree" >https://nano.ac/posts/e8de5668/#jpeg-and-the-tree<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;nano’s solve</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://room2042.gitlab.io/writeup/2021-07-24-google_ctf-david_and_the_tree/" >https://room2042.gitlab.io/writeup/2021-07-24-google_ctf-david_and_the_tree/<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;google huffman tree</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72044095" >https://zhuanlan.zhihu.com/p/72044095<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;jpeg</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://room2042.gitlab.io/writeup/2021-07-24-google_ctf-david_and_the_tree/" >https://room2042.gitlab.io/writeup/2021-07-24-google_ctf-david_and_the_tree/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://formats.kaitai.io/zip/python.html" >https://formats.kaitai.io/zip/python.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/nayuki/Simple-DEFLATE-decompressor/blob/master/python/deflatedecompress.py" >https://github.com/nayuki/Simple-DEFLATE-decompressor/blob/master/python/deflatedecompress.py<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/luker983/google-ctf-2021/tree/main/misc" >https://github.com/luker983/google-ctf-2021/tree/main/misc<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="step-by-step"><a href="#step-by-step" class="headerlink" title="step by step"></a>step by step</h3><p>The zlib container</p>
+<blockquote>
+<p>The zlib format:</p>
+<ul>
+<li>1 bytes: CMF — Compression Method and compression info fields</li>
+<li>1 bytes: FLG — Compression flags fields</li>
+<li>Variable number of bytes: The deflate data</li>
+<li>4 bytes: ADLER32 — Adler-32 checksum over the original uncompressed data</li>
+<li>End of file&#x2F;bytestring</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>The CMF fields are as follow:</p>
+<ul>
+<li>Bits  0 to 3: CM — Compression Method. Only CM&#x3D;8 is defined by the zlib spec.</li>
+<li>Bits 4 to 7: CINFO — Compression info. This is the base-2 logarithm of LZ77 window size, minus eight. In other words, the window size is 2^(CINFO+8). The maximum windows size that is allowed by the spec is 32768, which is 2^15. In other words, CINFO must be &lt;&#x3D; 7.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>The FLG fields are as follow:</p>
+<p>- </p>
+</blockquote>
+<p>1 0000 0000</p>
+<p>1 0000 0001 &#x3D; 256</p>
+<p>285-255&#x3D;30</p>
+<p>1 1110 &#x3D; 30</p>
+<p>255 + 30 &#x3D; 285</p>
+<p>1 0001 1110 &#x3D; 285</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">BitReader</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,mem</span>):</span><br><span class="line">        self.mem = mem</span><br><span class="line">        self.pos = <span class="number">0</span></span><br><span class="line">        self.b = <span class="number">0</span></span><br><span class="line">        self.numbits = <span class="number">0</span></span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">read_byte</span>(<span class="params">self</span>):</span><br><span class="line">        self.numbits = <span class="number">0</span></span><br><span class="line">        b = self.mem[self.pos]</span><br><span class="line">        self.pos += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read_bit</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> self.numbits &lt;= <span class="number">0</span>:</span><br><span class="line">            self.b = self.read_byte()</span><br><span class="line">            self.numbits = <span class="number">8</span></span><br><span class="line">        self.numbits -= <span class="number">1</span></span><br><span class="line">        bit = self.b &amp; <span class="number">1</span></span><br><span class="line">        self.b &gt;&gt;= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> bit</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read_bits</span>(<span class="params">self,n</span>):</span><br><span class="line">        o = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            o |= self.read_bit() &lt;&lt; i</span><br><span class="line">        <span class="keyword">return</span> o</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read_bytes</span>(<span class="params">n</span>):</span><br><span class="line">        o = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            o |= self.read_byte() &lt;&lt; (i*<span class="number">8</span>)</span><br><span class="line">        <span class="keyword">return</span> o</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.symbol = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        self.left = <span class="literal">None</span></span><br><span class="line">        self.right = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Huffman</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.root = Node()</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">insert</span>(<span class="params">self, codeword, n, symbol</span>):</span><br><span class="line">        node = self.root</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            b = codeword &amp; (<span class="number">1</span> &lt;&lt; i)</span><br><span class="line">            <span class="keyword">if</span> b:</span><br><span class="line">                <span class="keyword">if</span> node.right <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    node.right = Node()</span><br><span class="line">                next_node = node.right</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> node.left <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    node.left = Node()</span><br><span class="line">                next_node = node.left</span><br><span class="line">            node = next_node</span><br><span class="line">        node.symbol = symbol</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">code_to_bytes</span>(<span class="params">code, n</span>):</span><br><span class="line">	out = [<span class="number">0</span>]</span><br><span class="line">	numbits = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> numbits &gt;= <span class="number">8</span>:</span><br><span class="line">            out.append(<span class="number">0</span>)</span><br><span class="line">            numbits = <span class="number">0</span></span><br><span class="line">        out[-<span class="number">1</span>] |= (code &amp; (<span class="number">1</span> &lt;&lt; i)) &lt;&lt; numbits</span><br><span class="line">        numbits += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">bytes</span>(out)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">decode_symbol</span>(<span class="params">r,t</span>):</span><br><span class="line">    node = t.root</span><br><span class="line">    <span class="keyword">while</span> node.left <span class="keyword">or</span> node.right:</span><br><span class="line">        b = r.read_bit()</span><br><span class="line">        node = node.right <span class="keyword">if</span> b <span class="keyword">else</span> node.left</span><br><span class="line">    <span class="keyword">return</span> node.symbol</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bl_list_to_tree</span>(<span class="params">bl, alphabet</span>):</span><br><span class="line">    	MAX_BITS = <span class="built_in">max</span>(bl)</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+
+
+<p>alphabet&#x3D;&#x3D;ABCD</p>
+<p>bit length&#x3D;&#x3D;2 1 3 3</p>
+<p>bit length count 长度为0的有0个，长度为1的有1个，长度为2的有1个，长度为3的有2个 &#x3D;&#x3D;&#x3D; 0 1 1 2 </p>
+<p><code>next_code[n]</code> is the smallest codeword with code length <code>n</code>.</p>
+<p>next_code&#x3D;[0,0]</p>
+<p>range 2,3,</p>
+<p>bl每个符号的树深</p>
+<p>bl_count 每个深度的符号个数</p>
+<p>next_code每个深度的最左值。</p>
+<p><img src="/../images/48%E8%A7%A3%E7%A0%81%E5%99%A8zip/image-20240513194522584.png" alt="image-20240513194522584"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bl_list_to_tree</span>(<span class="params">bl, alphabet</span>):</span><br><span class="line">    MAX_BITS = <span class="built_in">max</span>(bl)</span><br><span class="line">    bl_count = [<span class="built_in">sum</span>(<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> bl <span class="keyword">if</span> x==y <span class="keyword">and</span> y != <span class="number">0</span>)<span class="keyword">for</span> y <span class="keyword">in</span> (MAX_BITS + <span class="number">1</span>)]</span><br><span class="line">    next_code = [<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> bits <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, MAX_BITS + <span class="number">1</span>):</span><br><span class="line">        next_code.append((next_code[bits - <span class="number">1</span>] + bl_count[bits - <span class="number">1</span>]) &lt;&lt; <span class="number">1</span>)</span><br><span class="line">    t = HuffmanTree()</span><br><span class="line">    <span class="keyword">for</span> c, bitlen <span class="keyword">in</span> <span class="built_in">zip</span>(alphabet, bl):</span><br><span class="line">        <span class="keyword">if</span> bitlen != <span class="number">0</span>:</span><br><span class="line">            t.insert(next_code[bitlen], bitlen, c)</span><br><span class="line">            next_code[bitlen] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> t </span><br></pre></td></tr></table></figure>
+
+<p>由字母表和长度表推算二进制表示方法，进制构建huffman树</p>
+<h3 id="Full-source-code"><a href="#Full-source-code" class="headerlink" title="Full source code"></a>Full source code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">BitReader</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, mem</span>):</span><br><span class="line">        self.mem = mem</span><br><span class="line">        self.pos = <span class="number">0</span></span><br><span class="line">        self.b = <span class="number">0</span></span><br><span class="line">        self.numbits = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read_byte</span>(<span class="params">self</span>):</span><br><span class="line">        self.numbits = <span class="number">0</span> <span class="comment"># discard unread bits</span></span><br><span class="line">        b = self.mem[self.pos]</span><br><span class="line">        self.pos += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read_bit</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> self.numbits &lt;= <span class="number">0</span>:</span><br><span class="line">            self.b = self.read_byte()</span><br><span class="line">            self.numbits = <span class="number">8</span></span><br><span class="line">        self.numbits -= <span class="number">1</span></span><br><span class="line">        <span class="comment"># shift bit out of byte</span></span><br><span class="line">        bit = self.b &amp; <span class="number">1</span></span><br><span class="line">        self.b &gt;&gt;= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> bit</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read_bits</span>(<span class="params">self, n</span>):</span><br><span class="line">        o = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            o |= self.read_bit() &lt;&lt; i</span><br><span class="line">        <span class="keyword">return</span> o</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read_bytes</span>(<span class="params">self, n</span>):</span><br><span class="line">        <span class="comment"># read bytes as an integer in little-endian</span></span><br><span class="line">        o = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            o |= self.read_byte() &lt;&lt; (<span class="number">8</span> * i)</span><br><span class="line">        <span class="keyword">return</span> o</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decompress</span>(<span class="params"><span class="built_in">input</span></span>):</span><br><span class="line">    r = BitReader(<span class="built_in">input</span>)</span><br><span class="line">    CMF = r.read_byte()</span><br><span class="line">    CM = CMF &amp; <span class="number">15</span> <span class="comment"># Compression method</span></span><br><span class="line">    <span class="keyword">if</span> CM != <span class="number">8</span>: <span class="comment"># only CM=8 is supported</span></span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">&#x27;invalid CM&#x27;</span>)</span><br><span class="line">    CINFO = (CMF &gt;&gt; <span class="number">4</span>) &amp; <span class="number">15</span> <span class="comment"># Compression info</span></span><br><span class="line">    <span class="keyword">if</span> CINFO &gt; <span class="number">7</span>:</span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">&#x27;invalid CINFO&#x27;</span>)</span><br><span class="line">    FLG = r.read_byte()</span><br><span class="line">    <span class="keyword">if</span> (CMF * <span class="number">256</span> + FLG) % <span class="number">31</span> != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">&#x27;CMF+FLG checksum failed&#x27;</span>)</span><br><span class="line">    FDICT = (FLG &gt;&gt; <span class="number">5</span>) &amp; <span class="number">1</span> <span class="comment"># preset dictionary?</span></span><br><span class="line">    <span class="keyword">if</span> FDICT:</span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">&#x27;preset dictionary not supported&#x27;</span>)</span><br><span class="line">    out = inflate(r) <span class="comment"># decompress DEFLATE data</span></span><br><span class="line">    ADLER32 = r.read_bytes(<span class="number">4</span>) <span class="comment"># Adler-32 checksum (for this exercise, we ignore it)</span></span><br><span class="line">    <span class="keyword">return</span> out</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">inflate</span>(<span class="params">r</span>):</span><br><span class="line">    BFINAL = <span class="number">0</span></span><br><span class="line">    out = []</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> BFINAL:</span><br><span class="line">        BFINAL = r.read_bit()</span><br><span class="line">        BTYPE = r.read_bits(<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">if</span> BTYPE == <span class="number">0</span>:</span><br><span class="line">            inflate_block_no_compression(r, out)</span><br><span class="line">        <span class="keyword">elif</span> BTYPE == <span class="number">1</span>:</span><br><span class="line">            inflate_block_fixed(r, out)</span><br><span class="line">        <span class="keyword">elif</span> BTYPE == <span class="number">2</span>:</span><br><span class="line">            inflate_block_dynamic(r, out)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&#x27;invalid BTYPE&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">bytes</span>(out)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">inflate_block_no_compression</span>(<span class="params">r, o</span>):</span><br><span class="line">    LEN = r.read_bytes(<span class="number">2</span>)</span><br><span class="line">    NLEN = r.read_bytes(<span class="number">2</span>)</span><br><span class="line">    o.extend(r.read_byte() <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(LEN))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">code_to_bytes</span>(<span class="params">code, n</span>):</span><br><span class="line">    <span class="comment"># Encodes a code that is `n` bits long into bytes that is conformant with DEFLATE spec</span></span><br><span class="line">    out = [<span class="number">0</span>]</span><br><span class="line">    numbits = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> numbits &gt;= <span class="number">8</span>:</span><br><span class="line">            out.append(<span class="number">0</span>)</span><br><span class="line">            numbits = <span class="number">0</span></span><br><span class="line">        out[-<span class="number">1</span>] |= (<span class="number">1</span> <span class="keyword">if</span> code &amp; (<span class="number">1</span> &lt;&lt; i) <span class="keyword">else</span> <span class="number">0</span>) &lt;&lt; numbits</span><br><span class="line">        numbits += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">bytes</span>(out)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.symbol = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        self.left = <span class="literal">None</span></span><br><span class="line">        self.right = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HuffmanTree</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.root = Node()</span><br><span class="line">        self.root.symbol = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">insert</span>(<span class="params">self, codeword, n, symbol</span>):</span><br><span class="line">        <span class="comment"># Insert an entry into the tree mapping `codeword` of len `n` to `symbol`</span></span><br><span class="line">        node = self.root</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            b = codeword &amp; (<span class="number">1</span> &lt;&lt; i)</span><br><span class="line">            <span class="keyword">if</span> b:</span><br><span class="line">                next_node = node.right</span><br><span class="line">                <span class="keyword">if</span> next_node <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    node.right = Node()</span><br><span class="line">                    next_node = node.right</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                next_node = node.left</span><br><span class="line">                <span class="keyword">if</span> next_node <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    node.left = Node()</span><br><span class="line">                    next_node = node.left</span><br><span class="line">            node = next_node</span><br><span class="line">        node.symbol = symbol</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decode_symbol</span>(<span class="params">r, t</span>):</span><br><span class="line">    <span class="string">&quot;Decodes one symbol from bitstream `r` using HuffmanTree `t`&quot;</span></span><br><span class="line">    node = t.root</span><br><span class="line">    <span class="keyword">while</span> node.left <span class="keyword">or</span> node.right:</span><br><span class="line">        b = r.read_bit()</span><br><span class="line">        node = node.right <span class="keyword">if</span> b <span class="keyword">else</span> node.left</span><br><span class="line">    <span class="keyword">return</span> node.symbol</span><br><span class="line"></span><br><span class="line">LengthExtraBits = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>,</span><br><span class="line">        <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">0</span>]</span><br><span class="line">LengthBase = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">15</span>, <span class="number">17</span>, <span class="number">19</span>, <span class="number">23</span>, <span class="number">27</span>, <span class="number">31</span>, <span class="number">35</span>, <span class="number">43</span>,</span><br><span class="line">        <span class="number">51</span>, <span class="number">59</span>, <span class="number">67</span>, <span class="number">83</span>, <span class="number">99</span>, <span class="number">115</span>, <span class="number">131</span>, <span class="number">163</span>, <span class="number">195</span>, <span class="number">227</span>, <span class="number">258</span>]</span><br><span class="line">DistanceExtraBits = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>,</span><br><span class="line">        <span class="number">8</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">13</span>]</span><br><span class="line">DistanceBase = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">13</span>, <span class="number">17</span>, <span class="number">25</span>, <span class="number">33</span>, <span class="number">49</span>, <span class="number">65</span>, <span class="number">97</span>, <span class="number">129</span>, <span class="number">193</span>, <span class="number">257</span>,</span><br><span class="line">        <span class="number">385</span>, <span class="number">513</span>, <span class="number">769</span>, <span class="number">1025</span>, <span class="number">1537</span>, <span class="number">2049</span>, <span class="number">3073</span>, <span class="number">4097</span>, <span class="number">6145</span>, <span class="number">8193</span>, <span class="number">12289</span>, <span class="number">16385</span>,</span><br><span class="line">        <span class="number">24577</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">inflate_block_data</span>(<span class="params">r, literal_length_tree, distance_tree, out</span>):</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        sym = decode_symbol(r, literal_length_tree)</span><br><span class="line">        <span class="keyword">if</span> sym &lt;= <span class="number">255</span>: <span class="comment"># Literal byte</span></span><br><span class="line">            out.append(sym)</span><br><span class="line">        <span class="keyword">elif</span> sym == <span class="number">256</span>: <span class="comment"># End of block</span></span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">else</span>: <span class="comment"># &lt;length, backward distance&gt; pair</span></span><br><span class="line">            sym -= <span class="number">257</span></span><br><span class="line">            length = r.read_bits(LengthExtraBits[sym]) + LengthBase[sym]</span><br><span class="line">            dist_sym = decode_symbol(r, distance_tree)</span><br><span class="line">            dist = r.read_bits(DistanceExtraBits[dist_sym]) + DistanceBase[dist_sym]</span><br><span class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(length):</span><br><span class="line">                out.append(out[-dist])</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bl_list_to_tree</span>(<span class="params">bl, alphabet</span>):</span><br><span class="line">    MAX_BITS = <span class="built_in">max</span>(bl)</span><br><span class="line">    bl_count = [<span class="built_in">sum</span>(<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> bl <span class="keyword">if</span> x == y <span class="keyword">and</span> y != <span class="number">0</span>) <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(MAX_BITS+<span class="number">1</span>)]</span><br><span class="line">    next_code = [<span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> bits <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, MAX_BITS+<span class="number">1</span>):</span><br><span class="line">        next_code.append((next_code[bits-<span class="number">1</span>] + bl_count[bits-<span class="number">1</span>]) &lt;&lt; <span class="number">1</span>)</span><br><span class="line">    t = HuffmanTree()</span><br><span class="line">    <span class="keyword">for</span> c, bitlen <span class="keyword">in</span> <span class="built_in">zip</span>(alphabet, bl):</span><br><span class="line">        <span class="keyword">if</span> bitlen != <span class="number">0</span>:</span><br><span class="line">            t.insert(next_code[bitlen], bitlen, c)</span><br><span class="line">            next_code[bitlen] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> t</span><br><span class="line"></span><br><span class="line">CodeLengthCodesOrder = [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">0</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">11</span>, <span class="number">4</span>, <span class="number">12</span>, <span class="number">3</span>, <span class="number">13</span>, <span class="number">2</span>, <span class="number">14</span>, <span class="number">1</span>, <span class="number">15</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decode_trees</span>(<span class="params">r</span>):</span><br><span class="line">    <span class="comment"># The number of literal/length codes</span></span><br><span class="line">    HLIT = r.read_bits(<span class="number">5</span>) + <span class="number">257</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># The number of distance codes</span></span><br><span class="line">    HDIST = r.read_bits(<span class="number">5</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># The number of code length codes</span></span><br><span class="line">    HCLEN = r.read_bits(<span class="number">4</span>) + <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Read code lengths for the code length alphabet</span></span><br><span class="line">    code_length_tree_bl = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">19</span>)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(HCLEN):</span><br><span class="line">        code_length_tree_bl[CodeLengthCodesOrder[i]] = r.read_bits(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Construct code length tree</span></span><br><span class="line">    code_length_tree = bl_list_to_tree(code_length_tree_bl, <span class="built_in">range</span>(<span class="number">19</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Read literal/length + distance code length list</span></span><br><span class="line">    bl = []</span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(bl) &lt; HLIT + HDIST:</span><br><span class="line">        sym = decode_symbol(r, code_length_tree)</span><br><span class="line">        <span class="keyword">if</span> <span class="number">0</span> &lt;= sym &lt;= <span class="number">15</span>: <span class="comment"># literal value</span></span><br><span class="line">            bl.append(sym)</span><br><span class="line">        <span class="keyword">elif</span> sym == <span class="number">16</span>:</span><br><span class="line">            <span class="comment"># copy the previous code length 3..6 times.</span></span><br><span class="line">            <span class="comment"># the next 2 bits indicate repeat length ( 0 = 3, ..., 3 = 6 )</span></span><br><span class="line">            prev_code_length = bl[-<span class="number">1</span>]</span><br><span class="line">            repeat_length = r.read_bits(<span class="number">2</span>) + <span class="number">3</span></span><br><span class="line">            bl.extend(prev_code_length <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(repeat_length))</span><br><span class="line">        <span class="keyword">elif</span> sym == <span class="number">17</span>:</span><br><span class="line">            <span class="comment"># repeat code length 0 for 3..10 times. (3 bits of length)</span></span><br><span class="line">            repeat_length = r.read_bits(<span class="number">3</span>) + <span class="number">3</span></span><br><span class="line">            bl.extend(<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(repeat_length))</span><br><span class="line">        <span class="keyword">elif</span> sym == <span class="number">18</span>:</span><br><span class="line">            <span class="comment"># repeat code length 0 for 11..138 times. (7 bits of length)</span></span><br><span class="line">            repeat_length = r.read_bits(<span class="number">7</span>) + <span class="number">11</span></span><br><span class="line">            bl.extend(<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(repeat_length))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&#x27;invalid symbol&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Construct trees</span></span><br><span class="line">    literal_length_tree = bl_list_to_tree(bl[:HLIT], <span class="built_in">range</span>(<span class="number">286</span>))</span><br><span class="line">    distance_tree = bl_list_to_tree(bl[HLIT:], <span class="built_in">range</span>(<span class="number">30</span>))</span><br><span class="line">    <span class="keyword">return</span> literal_length_tree, distance_tree</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">inflate_block_dynamic</span>(<span class="params">r, o</span>):</span><br><span class="line">    literal_length_tree, distance_tree = decode_trees(r)</span><br><span class="line">    inflate_block_data(r, literal_length_tree, distance_tree, o)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">inflate_block_fixed</span>(<span class="params">r, o</span>):</span><br><span class="line">    bl = ([<span class="number">8</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">144</span>)] + [<span class="number">9</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">144</span>, <span class="number">256</span>)] +</span><br><span class="line">        [<span class="number">7</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>, <span class="number">280</span>)] + [<span class="number">8</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">280</span>, <span class="number">288</span>)])</span><br><span class="line">    literal_length_tree = bl_list_to_tree(bl, <span class="built_in">range</span>(<span class="number">286</span>))</span><br><span class="line"></span><br><span class="line">    bl = [<span class="number">5</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">30</span>)]</span><br><span class="line">    distance_tree = bl_list_to_tree(bl, <span class="built_in">range</span>(<span class="number">30</span>))</span><br><span class="line"></span><br><span class="line">    inflate_block_data(r, literal_length_tree, distance_tree, o)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> zlib</span><br><span class="line">x = zlib.compress(<span class="string">b&#x27;Hello World!&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(decompress(x)) <span class="comment"># b&#x27;Hello World!&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="google-ctf-solution-1"><a href="#google-ctf-solution-1" class="headerlink" title="google ctf solution 1"></a>google ctf solution 1</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> deflatedecompress  <span class="comment"># modified from https://github.com/nayuki/Simple-DEFLATE-decompressor/blob/master/python/deflatedecompress.py</span></span><br><span class="line"><span class="keyword">import</span> <span class="built_in">zip</span>  <span class="comment"># from https://formats.kaitai.io/zip/python.html</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">parsed_zip = <span class="built_in">zip</span>.Zip.from_file(<span class="string">&#x27;challenge.zip&#x27;</span>)</span><br><span class="line"></span><br><span class="line">flag = []</span><br><span class="line"><span class="keyword">for</span> section_number, section <span class="keyword">in</span> <span class="built_in">enumerate</span>(parsed_zip.sections):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(section.body, <span class="built_in">zip</span>.Zip.LocalFile):</span><br><span class="line">        deflated_file = section.body.body</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    deflated_buf = deflatedecompress.BitInputStream(io.BytesIO(deflated_file))</span><br><span class="line">    inflated_buf = deflatedecompress.Decompressor.decompress_to_bytes(deflated_buf)</span><br><span class="line"></span><br><span class="line">    table = deflatedecompress.hacky._code_bits_to_symbol</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> table.items():</span><br><span class="line">        <span class="keyword">if</span> v == <span class="built_in">ord</span>(<span class="string">&#x27;E&#x27;</span>):</span><br><span class="line">            k = k &amp; <span class="number">0xFF</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># reverse bit order</span></span><br><span class="line">            rk = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">                rk = rk &lt;&lt; <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> k &amp; <span class="number">1</span> == <span class="number">1</span>:</span><br><span class="line">                    rk = rk | <span class="number">1</span></span><br><span class="line">                k = k &gt;&gt; <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            flag.append(rk)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">bytes</span>(flag).decode())</span><br></pre></td></tr></table></figure>
+
+<h3 id="google-ctf-solution-2"><a href="#google-ctf-solution-2" class="headerlink" title="google ctf solution 2"></a>google ctf solution 2</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># huffman tree decoding adapted from Paul Tan&#x27;s source code at https://pyokagan.name/blog/2019-10-18-zlibinflate/</span></span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> networkx <span class="keyword">as</span> nx</span><br><span class="line"></span><br><span class="line"><span class="comment"># extract raw compressed data from zip file</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">carve</span>(<span class="params">zip_name, metadata_size</span>):</span><br><span class="line">    <span class="comment"># list of tuples, (offset, size)</span></span><br><span class="line">    files = []</span><br><span class="line">    <span class="comment"># parse zip file</span></span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(zip_name, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_file:</span><br><span class="line">        <span class="comment"># iterate over each file in zip</span></span><br><span class="line">        <span class="keyword">for</span> elem <span class="keyword">in</span> zip_file.infolist():</span><br><span class="line">            offset = elem.header_offset + metadata_size</span><br><span class="line">            compress_size = elem.compress_size</span><br><span class="line">            files.append((offset, compress_size))</span><br><span class="line"></span><br><span class="line">    compressed_data = []</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(zip_name, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> raw_zip:</span><br><span class="line">        <span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">            <span class="comment"># seek to offset and read compressed_size bytes</span></span><br><span class="line">            raw_zip.seek(f[<span class="number">0</span>])</span><br><span class="line">            compressed_data.append(raw_zip.read(f[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> compressed_data</span><br><span class="line"></span><br><span class="line"><span class="comment"># parse raw compressed data to get huffman tree (ignore distance tree)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_huffman_tree</span>(<span class="params">raw</span>):</span><br><span class="line">    r = BitReader(raw)</span><br><span class="line">    <span class="comment"># read BFINAL and BTYPE</span></span><br><span class="line">    BFINAL = r.read_bit()</span><br><span class="line">    BTYPE = r.read_bits(<span class="number">2</span>)</span><br><span class="line">    literal_length_tree, distance_tree = decode_trees(r)</span><br><span class="line">    <span class="keyword">return</span> literal_length_tree </span><br><span class="line"></span><br><span class="line"><span class="comment">### from https://pyokagan.name/blog/2019-10-18-zlibinflate/ ###</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BitReader</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, mem</span>):</span><br><span class="line">        self.mem = mem</span><br><span class="line">        self.pos = <span class="number">0</span></span><br><span class="line">        self.b = <span class="number">0</span></span><br><span class="line">        self.numbits = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read_byte</span>(<span class="params">self</span>):</span><br><span class="line">        self.numbits = <span class="number">0</span> <span class="comment"># discard unread bits</span></span><br><span class="line">        b = self.mem[self.pos]</span><br><span class="line">        self.pos += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read_bit</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> self.numbits &lt;= <span class="number">0</span>:</span><br><span class="line">            self.b = self.read_byte()</span><br><span class="line">            self.numbits = <span class="number">8</span></span><br><span class="line">        self.numbits -= <span class="number">1</span></span><br><span class="line">        <span class="comment"># shift bit out of byte</span></span><br><span class="line">        bit = self.b &amp; <span class="number">1</span></span><br><span class="line">        self.b &gt;&gt;= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> bit</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read_bits</span>(<span class="params">self, n</span>):</span><br><span class="line">        o = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            o |= self.read_bit() &lt;&lt; i</span><br><span class="line">        <span class="keyword">return</span> o</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.symbol = <span class="string">&#x27;&#x27;</span> </span><br><span class="line">        self.left = <span class="literal">None</span></span><br><span class="line">        self.right = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HuffmanTree</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.root = Node()</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">make_graph</span>(<span class="params">self</span>):</span><br><span class="line">        g = nx.DiGraph()</span><br><span class="line">        g = self.walk_graph(self.root, <span class="literal">None</span>, g)</span><br><span class="line">        <span class="keyword">return</span> g</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">make_tree</span>(<span class="params">self</span>):</span><br><span class="line">        tree = Tree()</span><br><span class="line">        tree = self.walk(self.root, <span class="literal">None</span>, tree)</span><br><span class="line">        <span class="keyword">return</span> tree</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">walk_graph</span>(<span class="params">self, node, parent, g, edge_label=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> parent:</span><br><span class="line">            g.add_node(<span class="built_in">id</span>(node), label=<span class="string">&#x27;root&#x27;</span>) </span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> node.symbol != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">                label = node.symbol</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                label = <span class="string">&#x27;&#x27;</span></span><br><span class="line">            g.add_node(<span class="built_in">id</span>(node), label=label)</span><br><span class="line">            g.add_edge(<span class="built_in">id</span>(parent), <span class="built_in">id</span>(node), label=edge_label)</span><br><span class="line">        <span class="keyword">if</span> node.left:</span><br><span class="line">            self.walk_graph(node.left, node, g, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> node.right:</span><br><span class="line">            self.walk_graph(node.right, node, g, <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> g</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">walk</span>(<span class="params">self, node, parent, tree</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> parent:</span><br><span class="line">            tree.create_node(node.symbol, node.symbol) </span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            tree.create_node(node.symbol, node.symbol, parent=parent.symbol)</span><br><span class="line">        <span class="keyword">if</span> node.left:</span><br><span class="line">            self.walk(node.left, node, tree)</span><br><span class="line">        <span class="keyword">if</span> node.right:</span><br><span class="line">            self.walk(node.right, node, tree)</span><br><span class="line">        <span class="keyword">return</span> tree</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">insert</span>(<span class="params">self, codeword, n, symbol</span>):</span><br><span class="line">        <span class="comment"># Insert an entry into the tree mapping `codeword` of len `n` to `symbol`</span></span><br><span class="line">        node = self.root</span><br><span class="line"></span><br><span class="line">        <span class="comment"># if inserting symbol 69 (&#x27;E&#x27;), follow bit path</span></span><br><span class="line">        p = <span class="literal">False</span></span><br><span class="line">        bits = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> symbol == <span class="number">69</span>:</span><br><span class="line">            p = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            b = codeword &amp; (<span class="number">1</span> &lt;&lt; i)</span><br><span class="line">            <span class="keyword">if</span> b:</span><br><span class="line">                bits += <span class="string">b&#x27;1&#x27;</span></span><br><span class="line">                next_node = node.right</span><br><span class="line">                <span class="keyword">if</span> next_node <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    node.right = Node()</span><br><span class="line">                    next_node = node.right</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                bits += <span class="string">b&#x27;0&#x27;</span></span><br><span class="line">                next_node = node.left</span><br><span class="line">                <span class="keyword">if</span> next_node <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    node.left = Node()</span><br><span class="line">                    next_node = node.left</span><br><span class="line">            node = next_node</span><br><span class="line">        <span class="comment"># print bit path in reverse to get character of flag</span></span><br><span class="line">        <span class="keyword">if</span> p:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="built_in">int</span>(bits[::-<span class="number">1</span>], <span class="number">2</span>)), end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        </span><br><span class="line">        node.symbol = symbol</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decode_symbol</span>(<span class="params">r, t</span>):</span><br><span class="line">    <span class="string">&quot;Decodes one symbol from bitstream `r` using HuffmanTree `t`&quot;</span></span><br><span class="line">    node = t.root</span><br><span class="line">    <span class="keyword">while</span> node.left <span class="keyword">or</span> node.right: </span><br><span class="line">        b = r.read_bit()</span><br><span class="line">        node = node.right <span class="keyword">if</span> b <span class="keyword">else</span> node.left</span><br><span class="line">    <span class="keyword">return</span> node.symbol</span><br><span class="line"></span><br><span class="line">LengthExtraBits = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>,</span><br><span class="line">        <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">0</span>]</span><br><span class="line">LengthBase = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">15</span>, <span class="number">17</span>, <span class="number">19</span>, <span class="number">23</span>, <span class="number">27</span>, <span class="number">31</span>, <span class="number">35</span>, <span class="number">43</span>,</span><br><span class="line">        <span class="number">51</span>, <span class="number">59</span>, <span class="number">67</span>, <span class="number">83</span>, <span class="number">99</span>, <span class="number">115</span>, <span class="number">131</span>, <span class="number">163</span>, <span class="number">195</span>, <span class="number">227</span>, <span class="number">258</span>]</span><br><span class="line">DistanceExtraBits = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>,</span><br><span class="line">        <span class="number">8</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">13</span>]</span><br><span class="line">DistanceBase = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">13</span>, <span class="number">17</span>, <span class="number">25</span>, <span class="number">33</span>, <span class="number">49</span>, <span class="number">65</span>, <span class="number">97</span>, <span class="number">129</span>, <span class="number">193</span>, <span class="number">257</span>,</span><br><span class="line">        <span class="number">385</span>, <span class="number">513</span>, <span class="number">769</span>, <span class="number">1025</span>, <span class="number">1537</span>, <span class="number">2049</span>, <span class="number">3073</span>, <span class="number">4097</span>, <span class="number">6145</span>, <span class="number">8193</span>, <span class="number">12289</span>, <span class="number">16385</span>,</span><br><span class="line">        <span class="number">24577</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bl_list_to_tree</span>(<span class="params">bl, alphabet</span>):</span><br><span class="line">    MAX_BITS = <span class="built_in">max</span>(bl)</span><br><span class="line">    bl_count = [<span class="built_in">sum</span>(<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> bl <span class="keyword">if</span> x == y <span class="keyword">and</span> y != <span class="number">0</span>) <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(MAX_BITS+<span class="number">1</span>)]</span><br><span class="line">    next_code = [<span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> bits <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, MAX_BITS+<span class="number">1</span>):</span><br><span class="line">        next_code.append((next_code[bits-<span class="number">1</span>] + bl_count[bits-<span class="number">1</span>]) &lt;&lt; <span class="number">1</span>)</span><br><span class="line">    t = HuffmanTree()</span><br><span class="line">    test = []</span><br><span class="line">    <span class="keyword">for</span> c, bitlen <span class="keyword">in</span> <span class="built_in">zip</span>(alphabet, bl):</span><br><span class="line">        <span class="keyword">if</span> bitlen != <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> c &lt; <span class="number">256</span>:</span><br><span class="line">                test.append(c)</span><br><span class="line">            t.insert(next_code[bitlen], bitlen, c)</span><br><span class="line">            next_code[bitlen] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(alphabet) == <span class="number">286</span>:</span><br><span class="line">        a = []</span><br><span class="line">        <span class="keyword">for</span> b <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">256</span>):</span><br><span class="line">            <span class="keyword">if</span> b <span class="keyword">not</span> <span class="keyword">in</span> test:</span><br><span class="line">                a.append(b)</span><br><span class="line">    <span class="keyword">return</span> t</span><br><span class="line"></span><br><span class="line">CodeLengthCodesOrder = [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">0</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">11</span>, <span class="number">4</span>, <span class="number">12</span>, <span class="number">3</span>, <span class="number">13</span>, <span class="number">2</span>, <span class="number">14</span>, <span class="number">1</span>, <span class="number">15</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decode_trees</span>(<span class="params">r</span>):</span><br><span class="line">    <span class="comment"># The number of literal/length codes</span></span><br><span class="line">    HLIT = r.read_bits(<span class="number">5</span>) + <span class="number">257</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># The number of distance codes</span></span><br><span class="line">    HDIST = r.read_bits(<span class="number">5</span>) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># The number of code length codes</span></span><br><span class="line">    HCLEN = r.read_bits(<span class="number">4</span>) + <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Read code lengths for the code length alphabet</span></span><br><span class="line">    code_length_tree_bl = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">19</span>)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(HCLEN):</span><br><span class="line">        code_length_tree_bl[CodeLengthCodesOrder[i]] = r.read_bits(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Construct code length tree</span></span><br><span class="line">    code_length_tree = bl_list_to_tree(code_length_tree_bl, <span class="built_in">range</span>(<span class="number">19</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Read literal/length + distance code length list</span></span><br><span class="line">    bl = []</span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(bl) &lt; HLIT + HDIST:</span><br><span class="line">        sym = decode_symbol(r, code_length_tree)</span><br><span class="line">        <span class="keyword">if</span> <span class="number">0</span> &lt;= sym &lt;= <span class="number">15</span>: <span class="comment"># literal value</span></span><br><span class="line">            bl.append(sym)</span><br><span class="line">        <span class="keyword">elif</span> sym == <span class="number">16</span>:</span><br><span class="line">            <span class="comment"># copy the previous code length 3..6 times.</span></span><br><span class="line">            <span class="comment"># the next 2 bits indicate repeat length ( 0 = 3, ..., 3 = 6 )</span></span><br><span class="line">            prev_code_length = bl[-<span class="number">1</span>]</span><br><span class="line">            repeat_length = r.read_bits(<span class="number">2</span>) + <span class="number">3</span></span><br><span class="line">            bl.extend(prev_code_length <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(repeat_length))</span><br><span class="line">        <span class="keyword">elif</span> sym == <span class="number">17</span>:</span><br><span class="line">            <span class="comment"># repeat code length 0 for 3..10 times. (3 bits of length)</span></span><br><span class="line">            repeat_length = r.read_bits(<span class="number">3</span>) + <span class="number">3</span></span><br><span class="line">            bl.extend(<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(repeat_length))</span><br><span class="line">        <span class="keyword">elif</span> sym == <span class="number">18</span>:</span><br><span class="line">            <span class="comment"># repeat code length 0 for 11..138 times. (7 bits of length)</span></span><br><span class="line">            repeat_length = r.read_bits(<span class="number">7</span>) + <span class="number">11</span></span><br><span class="line">            bl.extend(<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(repeat_length))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&#x27;invalid symbol&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Construct trees</span></span><br><span class="line">    literal_length_tree = bl_list_to_tree(bl[:HLIT], <span class="built_in">range</span>(<span class="number">286</span>))</span><br><span class="line">    distance_tree = bl_list_to_tree(bl[HLIT:], <span class="built_in">range</span>(<span class="number">30</span>))</span><br><span class="line">    <span class="keyword">return</span> literal_length_tree, distance_tree</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># get raw compressed data from challenge.zip</span></span><br><span class="line">    challenge_data = carve(<span class="string">&#x27;challenge.zip&#x27;</span>, <span class="number">0x24</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># extract huffman tree, inserter will print when &#x27;E&#x27; character is inserted </span></span><br><span class="line">    <span class="keyword">for</span> i, f <span class="keyword">in</span> <span class="built_in">enumerate</span>(challenge_data):</span><br><span class="line">        get_huffman_tree(f)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="last"><a href="#last" class="headerlink" title="last"></a>last</h3><p>mastered 80%. learn for a year…</p>
+<p>google ctf 2021, mrctf 2022</p>
+<h3 id="todo"><a href="#todo" class="headerlink" title="todo"></a>todo</h3><ul>
+<li>next_code &#x3D; [0,0] why</li>
+<li>zip.compress() and question script</li>
+<li>jpeg and the tree…and png decode</li>
+</ul>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/MISC/">#MISC</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2024/05/16/49Java_shiro550%E5%88%86%E6%9E%90/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Java_shiro550分析</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2024/05/04/47D3CTF_d3pythonhttp/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">D3CTF_d3pythonhttp</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;Comments
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script  src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script >
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: 'a415960e8a19902e98bf',
+                clientSecret: '97151a67ce9c95ad3c333c402f4cee0f5f05020f',
+                repo: 'gitalk',
+                owner: 'Lejeremiah',
+                admin: 'Lejeremiah',
+                id: __gitalk__pathname,
+                language: 'en'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('false' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zlib-decompress"><span class="nav-text">zlib.decompress()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-by-step"><span class="nav-text">step by step</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Full-source-code"><span class="nav-text">Full source code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#google-ctf-solution-1"><span class="nav-text">google ctf solution 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#google-ctf-solution-2"><span class="nav-text">google ctf solution 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#last"><span class="nav-text">last</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#todo"><span class="nav-text">todo</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">jerem1ah</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
