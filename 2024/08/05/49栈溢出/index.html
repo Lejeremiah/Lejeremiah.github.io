@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="jerem1ah">
+    
+    <title>
+        
+            栈溢出分析 |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","favicon":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","avatar":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":"Lejeremiah","github_admins":null,"repository":"gitalk","client_id":"a415960e8a19902e98bf","client_secret":"97151a67ce9c95ad3c333c402f4cee0f5f05020f"},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">栈溢出分析</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">jerem1ah</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2024-08-05 20:45:18</span>
+        <span class="mobile">2024-08-05 20:45</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-08-05 20:57:21</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/pwn/">pwn</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="栈溢出例子详细分析"><a href="#栈溢出例子详细分析" class="headerlink" title="栈溢出例子详细分析"></a>栈溢出例子详细分析</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">exploit</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    system(<span class="string">&quot;/bin/sh&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">func</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> str[<span class="number">0x20</span>];</span><br><span class="line">    read(<span class="number">0</span>, str, <span class="number">0x50</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    func();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -z execstack -no-pie -z norelro -fno-stack-protector test.c -o test</span><br></pre></td></tr></table></figure>
+
+<p>从main函数断点开始，状态如下：</p>
+<p><img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240726195352026.png" alt="image-20240726195352026"></p>
+<ol>
+<li><p>执行过<code>push rbp</code>之后，rsp先向低地址移动8字节指向了<code>0x7fffffffe010</code>处，然后在该地址处，赋值为rbp寄存器的值，高地址在高位，低地址在低位。</p>
+</li>
+<li><p>执行过<code>mov rbp, rsp</code>之后，此时rbp指向了rsp的位置，rbp为<code>0x7fffffffe010</code></p>
+</li>
+<li><p>执行过<code>mov eax, 0</code>之后，rax的低32位，此时为<code>0</code></p>
+</li>
+<li><p><img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240726200810722.png" alt="image-20240726200810722"></p>
+</li>
+<li><p>执行<code>call func</code>之前，<code>rdi rsi rdx rcx</code>分别为上图所示；执行过该条语句之后，rsp先向低地址移动8字节指向了<code>0x7fffffffe008</code>，然后将该条语句之后的指令地址赋值给此处，即<code>0x4011ae (main+18)</code>表示指令<code>mov eax, 0</code>；此时rip指向了func函数</p>
+</li>
+<li><p><img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240726201633194.png" alt="image-20240726201633194"></p>
+</li>
+<li><p>执行过<code>push rbp</code>之后，rsp向低地址移动8字节，值为<code>0x7fffffffe000</code>，此时在该地址处，赋值为rbp寄存器的值，高地址在高位，低地址在低位，入栈的值为<code>0x7fffffffe010</code>，此时mian函数的栈帧为<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240726202054469.png" alt="image-20240726202054469">也就是栈中存了两样东西，一个是<code>0x4011ae (main+18)</code>为指令地址，另一个是指向栈低rbp的值，为<code>0x7fffffffe010</code></p>
+</li>
+<li><p>接着执行过<code>mov rbp, rsp</code>之后，正式标志着离开了main函数的栈帧，来到了func函数的栈帧<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240726202757126.png" alt="image-20240726202757126"></p>
+</li>
+<li><p>接着执行<code>sub rsp, 0x20</code>之后，为变量预留了32位字节的空间，rsp为<code>0x7fffffffdfe0</code>；在func的栈帧中出现了一些看不懂的东西，栈帧如下<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240726203311676.png" alt="image-20240726203311676"></p>
+</li>
+<li><p>执行<code>lea rax, [rbp - 0x20]</code>之后，rax的值变为了此时rsp指向的值，即为<code>0x7ffff7fb62e8 (__exit_funcs_lock)</code><img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240726204915284.png" alt="image-20240726204915284"></p>
+</li>
+<li><p>执行<code>mov edx, 0x50</code>之后，就如下<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240726205146374.png" alt="image-20240726205146374"></p>
+</li>
+<li><p>执行<code>mov rsi, rax</code>之后，此时就是在为read函数调用做准备，</p>
+</li>
+<li><blockquote>
+<h4 id="read-函数调用"><a href="#read-函数调用" class="headerlink" title="read 函数调用"></a><code>read</code> 函数调用</h4><p>让我们把相关的寄存器和参数对照起来看一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssize_t read(int fd, void *buf, size_t count);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>int fd</code>：文件描述符，由 <code>edi</code> 寄存器传递。</li>
+<li><code>void *buf</code>：缓冲区地址，由 <code>rsi</code> 寄存器传递。</li>
+<li><code>size_t count</code>：读取字节数，由 <code>edx</code> 寄存器传递。</li>
+</ul>
+</blockquote>
+</li>
+<li><p><img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240726210014141.png" alt="image-20240726210014141"></p>
+</li>
+<li><p>n指令，单步补过，输入字符，此时状态如下：<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240726210352306.png" alt="image-20240726210352306"></p>
+</li>
+<li><p><code>nop</code>是一个占位符，</p>
+</li>
+<li><p><code>leave</code>指令，清理栈帧，相当于<code>mov rsp rbp</code> 和 <code>pop rbp</code></p>
+</li>
+<li><p><code>ret</code>指令，从当前函数返回到调用该函数的位置，作用是从栈中弹出返回地址，加载到指令指针rip中，跳转到rip指向的地址，继续执行调用函数后面的代码，相当于<code>pop rip</code></p>
+</li>
+<li><p>这是<code>leave</code>之前的栈帧，<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240728213121338.png" alt="image-20240728213121338"></p>
+</li>
+<li><p>这是<code>leave</code>之后的栈帧，寄存器改变<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240728213228502.png" alt="image-20240728213228502"></p>
+</li>
+<li><p>此时为了发送payload进行调试，我们用pwntools运行程序，gdb调试这个进程</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.terminal = [<span class="string">&#x27;bash&#x27;</span>, <span class="string">&#x27;-e&#x27;</span>, <span class="string">&#x27;sh&#x27;</span>, <span class="string">&#x27;-c&#x27;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = gdb.debug(<span class="string">&quot;/home/pwn/02eeepwn/test&quot;</span>,<span class="string">&quot;break main&quot;</span>)</span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&quot;a:&quot;</span>)</span><br><span class="line"><span class="comment"># p = process(11370)</span></span><br><span class="line">offset = <span class="number">0x20</span></span><br><span class="line">offset2 = <span class="number">0x8</span></span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span> * offset + <span class="string">b&#x27;b&#x27;</span>* offset2 + p64(<span class="number">0x401171</span>)+p64(<span class="number">0x401156</span>)</span><br><span class="line"><span class="comment"># payload = b&#x27;a&#x27; * offset +p64(0x401156)</span></span><br><span class="line"><span class="built_in">print</span>(payload)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"><span class="comment"># p.interactive()</span></span><br><span class="line">b = <span class="built_in">input</span>(<span class="string">&quot;b:&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb -q /home/pwn/02eeepwn/test -x /tmp/pwn62tcsx33.gdb</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240729094444990.png" alt="image-20240729094444990"></p>
+</li>
+<li><p>可以看到此时的栈已经插入我们的恶意指令<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240729094620982.png" alt="image-20240729094620982"></p>
+</li>
+<li><p>这是执行过<code>leave</code>指令之后的<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240729094909361.png" alt="image-20240729094909361"></p>
+</li>
+<li><p>这里其实就有疑问了，为啥payload还要多加一个<code>ret</code>指令呢，直接就加一个恶意函数地址不就好了，两次<code>ret</code>有什么意义</p>
+</li>
+<li><p>那就先把<code>ret</code>地址去掉，再重新调试</p>
+<p><img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240729095544892.png" alt="image-20240729095544892"></p>
+</li>
+<li><p><code>ret</code>地址去掉就不行了，加上之后才可以getshell，如图是成功的两张图<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240729101719907.png" alt="image-20240729101719907"></p>
+</li>
+<li><p><img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/image-20240729101804140.png" alt="image-20240729101804140"></p>
+</li>
+</ol>
+<p>疑问：为什么要加上<code>ret</code>的地址呢？</p>
+<ol start="28">
+<li>悟了，有些系统中需要栈对齐，也就是被执行的函数的地址，最后一位得是0，【在 x86-64 的调用约定中，栈指针（RSP）需要在函数调用之前对齐到 16 字节边界。这意味着调用函数之前的栈指针值应该是 16 的倍数。】<img src="/../images/49%E6%A0%88%E6%BA%A2%E5%87%BA/836460910bb9ac276cb4fd389b7172b.png" alt="836460910bb9ac276cb4fd389b7172b"></li>
+</ol>
+<p>疑问：恶意函数地址，为什么不能是除去前三行的指令呢。这个好像就是ret2text了</p>
+<p>疑问：不填ret而填nop应该也可以吧</p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/pwn/">#pwn</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2024/08/05/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Canary保护机制及绕过</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2024/05/14/48%E8%A7%A3%E7%A0%81%E5%99%A8zip/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">手搓zip解码器</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;Comments
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script  src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script >
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: 'a415960e8a19902e98bf',
+                clientSecret: '97151a67ce9c95ad3c333c402f4cee0f5f05020f',
+                repo: 'gitalk',
+                owner: 'Lejeremiah',
+                admin: 'Lejeremiah',
+                id: __gitalk__pathname,
+                language: 'en'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('false' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E6%BA%A2%E5%87%BA%E4%BE%8B%E5%AD%90%E8%AF%A6%E7%BB%86%E5%88%86%E6%9E%90"><span class="nav-text">栈溢出例子详细分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#read-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="nav-text">read 函数调用</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">jerem1ah</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
