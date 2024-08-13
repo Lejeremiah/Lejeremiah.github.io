@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="jerem1ah">
+    
+    <title>
+        
+            Confluence CVE-2022-26134 |
+        
+        Jerem1ah&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+    
+<link rel="stylesheet" href="/fontawesome/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","favicon":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","avatar":"/images/imgs/50ac4ec68298791a5339fb793e82115.jpg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"placeholder":null},"gitalk":{"github_id":"Lejeremiah","github_admins":null,"repository":"gitalk","client_id":"a415960e8a19902e98bf","client_secret":"97151a67ce9c95ad3c333c402f4cee0f5f05020f"},"twikoo":{"env_id":null,"region":null,"version":"1.6.7"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.5.2"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Jerem1ah&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Confluence CVE-2022-26134</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/imgs/50ac4ec68298791a5339fb793e82115.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">jerem1ah</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2024-08-13 10:02:09</span>
+        <span class="mobile">2024-08-13 10:02</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-08-13 10:08:13</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/java/">java</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                <h1 id="Confluence-CVE-2022-26134-漏洞分析【远程调试学习】"><a href="#Confluence-CVE-2022-26134-漏洞分析【远程调试学习】" class="headerlink" title="Confluence CVE-2022-26134 漏洞分析【远程调试学习】"></a>Confluence CVE-2022-26134 漏洞分析【远程调试学习】</h1><p><a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/tianxiadamutou/zcfd4v/gil3uc" >https://www.yuque.com/tianxiadamutou/zcfd4v/gil3uc<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/confluence/CVE-2022-26134" >https://github.com/vulhub/vulhub/tree/master/confluence/CVE-2022-26134<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="调试环境配置"><a href="#调试环境配置" class="headerlink" title="调试环境配置"></a>调试环境配置</h3><p>vulhub的环境&#x2F;vulhub&#x2F;confluence&#x2F;CVE-2022-26134</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/confluence/CVE-2022-26134" >https://github.com/vulhub/vulhub/tree/master/confluence/CVE-2022-26134<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/vulhub/vulhub/archive/master.zip -O vulhub-master.zip</span><br><span class="line">unzip vulhub-master.zip</span><br><span class="line">cd vulhub-master</span><br></pre></td></tr></table></figure>
+
+<p>修改一下docker-compose.yml，增加调试端口，这里添加28136端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">version: &#x27;2&#x27;</span><br><span class="line">services:</span><br><span class="line">  web:</span><br><span class="line">    image: vulhub/confluence:7.13.6</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;8090:8090&quot;</span><br><span class="line">      - &quot;28136:28136&quot;</span><br><span class="line">    depends_on:</span><br><span class="line">      - db</span><br><span class="line">  db:</span><br><span class="line">    image: postgres:12.8-alpine</span><br><span class="line">    environment: </span><br><span class="line">    - POSTGRES_PASSWORD=postgres</span><br><span class="line">    - POSTGRES_DB=confluence</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/39vulhub/vulhub-master/confluence/CVE-2022-26134</span><br><span class="line">docker-compose up -d</span><br><span class="line">docker ps -a</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">cve-2022-26134-web-1  | INFO:root:Generating /opt/atlassian/confluence/conf/server.xml from template server.xml.j2</span><br><span class="line">cve-2022-26134-web-1  | INFO:root:Generating /opt/atlassian/confluence/confluence/WEB-INF/classes/seraph-config.xml from template seraph-config.xml.j2</span><br><span class="line">cve-2022-26134-web-1  | INFO:root:Generating /opt/atlassian/confluence/confluence/WEB-INF/classes/confluence-init.properties from template confluence-init.properties.j2</span><br><span class="line">cve-2022-26134-web-1  | INFO:root:Generating /var/atlassian/application-data/confluence/confluence.cfg.xml from template confluence.cfg.xml.j2</span><br><span class="line">cve-2022-26134-web-1  | INFO:root:User is currently root. Will downgrade run user to confluence</span><br><span class="line">cve-2022-26134-web-1  | INFO:root:Running Confluence with command &#x27;/opt/atlassian/confluence/bin/start-confluence.sh&#x27;, arguments [&#x27;/opt/atlassian/confluence/bin/start-confluence.sh&#x27;, &#x27;-fg&#x27;]</span><br><span class="line">cve-2022-26134-web-1  | executing as current user</span><br><span class="line">cve-2022-26134-web-1  | If you encounter issues starting up Confluence, please see the Installation guide at http://confluence.atlassian.com/display/DOC/Confluence+Installation+Guide</span><br><span class="line">cve-2022-26134-web-1  | </span><br><span class="line">cve-2022-26134-web-1  | Server startup logs are located in /opt/atlassian/confluence/logs/catalina.out</span><br><span class="line">cve-2022-26134-web-1  | ---------------------------------------------------------------------------</span><br><span class="line">cve-2022-26134-web-1  | Using Java: /opt/java/openjdk/bin/java</span><br><span class="line">cve-2022-26134-web-1  | 2024-04-25 08:01:37,871 INFO [main] [atlassian.confluence.bootstrap.SynchronyProxyWatchdog] A Context element for $&#123;confluence.context.path&#125;/synchrony-proxy is found in /opt/atlassian/confluence/conf/server.xml. No further action is required</span><br><span class="line">cve-2022-26134-web-1  | ---------------------------------------------------------------------------</span><br><span class="line">cve-2022-26134-web-1  | NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED</span><br><span class="line">cve-2022-26134-web-1  | [0.001s][warning][gc] -Xloggc is deprecated. Will use -Xlog:gc:/opt/atlassian/confluence/logs/gc-2024-04-25_08-01-37.log instead.</span><br><span class="line">cve-2022-26134-web-1  | OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x00000000c0000000, 1073741824, 0) failed; error=&#x27;Not enough space&#x27; (errno=12)</span><br><span class="line">cve-2022-26134-web-1  | #</span><br><span class="line">cve-2022-26134-web-1  | # There is insufficient memory for the Java Runtime Environment to continue.</span><br><span class="line">cve-2022-26134-web-1  | # Native memory allocation (mmap) failed to map 1073741824 bytes for committing reserved memory.</span><br><span class="line">cve-2022-26134-web-1  | # An error report file with more information is saved as:</span><br><span class="line">cve-2022-26134-web-1  | # /var/atlassian/application-data/confluence/hs_err_pid7.log</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>启动失败，看日志，应该是内存不足，关了clash和portainer这俩容器，以及mysqld服务，再次启动成功。</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240425161254231.png" alt="image-20240425161254231"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br><span class="line">docker exec -it 467ec0421445 /bin/sh</span><br><span class="line">ps aux</span><br><span class="line">ps -le</span><br></pre></td></tr></table></figure>
+
+<p>通过ps aux和ps -le确定源码位置和父进程<img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240425161551958.png" alt="image-20240425161551958"></p>
+<p>源码位置：&#x2F;opt&#x2F;atlassian&#x2F;confluence&#x2F;</p>
+<p>父进程：&#x2F;usr&#x2F;bin&#x2F;tini – &#x2F;entrypoint.py</p>
+<p>docker cp将源码复制出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp 467ec0421445:/opt/atlassian/confluence/ /home/39vulhub/</span><br></pre></td></tr></table></figure>
+
+
+
+<p>查看entrypoint.py文件，发现是通过start-confluence.sh启动的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /entrypoint.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240425202759989.png" alt="image-20240425202759989"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /opt/atlassian/confluence/bin/start-confluence.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240425203145540.png" alt="image-20240425203145540"></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /opt/atlassian/confluence/bin/start-confluence.sh</span></span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># resolve links - $0 may be a softlink - stolen from catalina.sh</span></span><br><span class="line">PRG=<span class="string">&quot;<span class="variable">$0</span>&quot;</span></span><br><span class="line"><span class="keyword">while</span> [ -h <span class="string">&quot;<span class="variable">$PRG</span>&quot;</span> ]; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">ls</span>=`<span class="built_in">ls</span> -ld <span class="string">&quot;<span class="variable">$PRG</span>&quot;</span>`</span><br><span class="line">  <span class="built_in">link</span>=`<span class="built_in">expr</span> <span class="string">&quot;<span class="variable">$ls</span>&quot;</span> : <span class="string">&#x27;.*-&gt; \(.*\)$&#x27;</span>`</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">expr</span> <span class="string">&quot;<span class="variable">$link</span>&quot;</span> : <span class="string">&#x27;/.*&#x27;</span> &gt; /dev/null; <span class="keyword">then</span></span><br><span class="line">    PRG=<span class="string">&quot;<span class="variable">$link</span>&quot;</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    PRG=`<span class="built_in">dirname</span> <span class="string">&quot;<span class="variable">$PRG</span>&quot;</span>`/<span class="string">&quot;<span class="variable">$link</span>&quot;</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line">PRGDIR=`<span class="built_in">dirname</span> <span class="string">&quot;<span class="variable">$PRG</span>&quot;</span>`</span><br><span class="line"><span class="built_in">export</span> START_CONFLUENCE_JAVA_OPTS=<span class="string">&quot;-Datlassian.plugins.startup.options=&#x27;<span class="variable">$&#123;@&#125;</span>&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> = <span class="string">&quot;--help&quot;</span> ] || [ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> = <span class="string">&quot;-h&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">exec</span> <span class="variable">$PRGDIR</span>/display-help.sh</span><br><span class="line">    <span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$&#123;@&#125;</span> == *<span class="string">&quot;disable-all-addons&quot;</span>* ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Disabling all user installed addons&quot;</span>;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$&#123;@&#125;</span> == *<span class="string">&quot;disable-addons&quot;</span>* ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Disabling specified plugins&quot;</span>;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">PRGRUNMODE=<span class="literal">false</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$&#123;@&#125;</span> == *<span class="string">&quot;-fg&quot;</span>* ]] || [[ <span class="variable">$&#123;@&#125;</span> == *<span class="string">&quot;run&quot;</span>* ]]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">shift</span></span><br><span class="line">        PRGRUNMODE=<span class="literal">true</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;To run Confluence in the foreground, start the server with start-confluence.sh -fg&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">. `<span class="built_in">dirname</span> <span class="variable">$0</span>`/user.sh <span class="comment">#readin the username</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">&quot;<span class="variable">$CONF_USER</span>&quot;</span> ] || [ $(<span class="built_in">id</span> -un) == <span class="string">&quot;<span class="variable">$CONF_USER</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> executing as current user</span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$PRGRUNMODE</span>&quot;</span> == <span class="string">&quot;true&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">exec</span> <span class="variable">$PRGDIR</span>/catalina.sh run <span class="variable">$@</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">exec</span> <span class="variable">$PRGDIR</span>/startup.sh <span class="variable">$@</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">elif</span> [ <span class="variable">$UID</span> -ne 0 ]; <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> Confluence has been installed to run as <span class="variable">$CONF_USER</span> so please sudo run this to <span class="built_in">enable</span> switching to that user</span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> executing using dedicated user: <span class="variable">$CONF_USER</span></span><br><span class="line">    <span class="keyword">if</span> [ -x <span class="string">&quot;/sbin/runuser&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">        sucmd=<span class="string">&quot;/sbin/runuser&quot;</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        sucmd=<span class="string">&quot;su&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$PRGRUNMODE</span>&quot;</span> == <span class="string">&quot;true&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">        <span class="variable">$sucmd</span> -m <span class="variable">$CONF_USER</span> -c <span class="string">&quot;<span class="variable">$PRGDIR</span>/catalina.sh run <span class="variable">$@</span>&quot;</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="variable">$sucmd</span> -m <span class="variable">$CONF_USER</span> -c <span class="string">&quot;<span class="variable">$PRGDIR</span>/startup.sh <span class="variable">$@</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>会调用catalina.sh，即启动tomcat，而tomcat会通过setenv.sh来管理环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /opt/atlassian/confluence/bin/catalina.sh</span><br><span class="line">cat /opt/atlassian/confluence/bin/setenv.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /opt/atlassian/confluence/bin/setenv.sh</span></span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># See the CATALINA_OPTS below for tuning the JVM arguments used to start Confluence</span></span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;If you encounter issues starting up Confluence, please see the Installation guide at http://confluence.atlassian.com/display/DOC/Confluence+Installation+Guide&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># set the location of the pid file</span></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">&quot;<span class="variable">$CATALINA_PID</span>&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">if</span> [ -n <span class="string">&quot;<span class="variable">$CATALINA_BASE</span>&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">        CATALINA_PID=<span class="string">&quot;<span class="variable">$CATALINA_BASE</span>&quot;</span>/work/catalina.pid</span><br><span class="line">    <span class="keyword">elif</span> [ -n <span class="string">&quot;<span class="variable">$CATALINA_HOME</span>&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">        CATALINA_PID=<span class="string">&quot;<span class="variable">$CATALINA_HOME</span>&quot;</span>/work/catalina.pid</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">export</span> CATALINA_PID</span><br><span class="line"></span><br><span class="line">PRGDIR=`<span class="built_in">dirname</span> <span class="string">&quot;<span class="variable">$0</span>&quot;</span>`</span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">&quot;<span class="variable">$CATALINA_BASE</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="keyword">if</span> [ -z <span class="string">&quot;<span class="variable">$CATALINA_HOME</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    LOGBASE=<span class="variable">$PRGDIR</span></span><br><span class="line">    LOGTAIL=..</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    LOGBASE=<span class="variable">$CATALINA_HOME</span></span><br><span class="line">    LOGTAIL=.</span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  LOGBASE=<span class="variable">$CATALINA_BASE</span></span><br><span class="line">  LOGTAIL=.</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">PUSHED_DIR=`<span class="built_in">pwd</span>`</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$LOGBASE</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$LOGTAIL</span></span><br><span class="line">LOGBASEABS=`<span class="built_in">pwd</span>`</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$PUSHED_DIR</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Server startup logs are located in <span class="variable">$LOGBASEABS</span>/logs/catalina.out&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># IMPORTANT <span class="doctag">NOTE:</span> Only set JAVA_HOME or JRE_HOME above this line</span></span><br><span class="line"><span class="comment"># Get standard Java environment variables</span></span><br><span class="line"><span class="keyword">if</span> <span class="variable">$os400</span>; <span class="keyword">then</span></span><br><span class="line">  <span class="comment"># -r will Only work on the os400 if the files are:</span></span><br><span class="line">  <span class="comment"># 1. owned by the user</span></span><br><span class="line">  <span class="comment"># 2. owned by the PRIMARY group of the user</span></span><br><span class="line">  <span class="comment"># this will not work if the user belongs in secondary groups</span></span><br><span class="line">  . <span class="string">&quot;<span class="variable">$CATALINA_HOME</span>&quot;</span>/bin/setjre.sh</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="keyword">if</span> [ -r <span class="string">&quot;<span class="variable">$CATALINA_HOME</span>&quot;</span>/bin/setjre.sh ]; <span class="keyword">then</span></span><br><span class="line">    . <span class="string">&quot;<span class="variable">$CATALINA_HOME</span>&quot;</span>/bin/setjre.sh</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Cannot find <span class="variable">$CATALINA_HOME</span>/bin/setjre.sh&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;This file is needed to run this program&quot;</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;---------------------------------------------------------------------------&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Using Java: <span class="variable">$JRE_HOME</span>/bin/java&quot;</span></span><br><span class="line">CONFLUENCE_CONTEXT_PATH=`<span class="variable">$JRE_HOME</span>/bin/java -jar <span class="variable">$CATALINA_HOME</span>/bin/confluence-context-path-extractor.jar <span class="variable">$CATALINA_HOME</span>`</span><br><span class="line"><span class="built_in">export</span> CONFLUENCE_CONTEXT_PATH</span><br><span class="line"><span class="variable">$JRE_HOME</span>/bin/java -jar <span class="variable">$CATALINA_HOME</span>/bin/synchrony-proxy-watchdog.jar <span class="variable">$CATALINA_HOME</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;---------------------------------------------------------------------------&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#----------------------------------------------------------------------------------- </span></span><br><span class="line"><span class="comment"># This section contains commonly modified Java options and system properties</span></span><br><span class="line"><span class="comment"># When upgrading Confluence, copy this section to reapply your customizations</span></span><br><span class="line"><span class="comment"># Always the review the new file for any changes to the default values</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># To learn more about Java 8 options see: </span></span><br><span class="line"><span class="comment"># https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html</span></span><br><span class="line"><span class="comment"># To learn more about Java 11 options see: </span></span><br><span class="line"><span class="comment"># https://docs.oracle.com/en/java/javase/11/tools/java.html</span></span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the Java heap size</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-Xms<span class="variable">$&#123;JVM_MINIMUM_MEMORY:=1024m&#125;</span> -Xmx<span class="variable">$&#123;JVM_MAXIMUM_MEMORY:=1024m&#125;</span> -Dconfluence.home=<span class="variable">$&#123;CONFLUENCE_HOME&#125;</span> <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Default values for small to medium size instances</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-XX:ReservedCodeCacheSize=<span class="variable">$&#123;JVM_RESERVED_CODE_CACHE_SIZE:=256m&#125;</span> <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Recommended values for medium to large, and enterprise size instances</span></span><br><span class="line"><span class="comment"># Comment out the default values in the block above, then uncomment the values below</span></span><br><span class="line"><span class="comment"># To learn more about the impact of disabling the upgrade recovery file see:</span></span><br><span class="line"><span class="comment"># https://confluence.atlassian.com/x/ShtwPg</span></span><br><span class="line"><span class="comment">#CATALINA_OPTS=&quot;-XX:ReservedCodeCacheSize=$&#123;JVM_RESERVED_CODE_CACHE_SIZE:=384m&#125; $&#123;CATALINA_OPTS&#125;&quot;</span></span><br><span class="line"><span class="comment">#CATALINA_OPTS=&quot;-XX:+PrintTenuringDistribution $&#123;CATALINA_OPTS&#125;&quot;</span></span><br><span class="line"><span class="comment">#CATALINA_OPTS=&quot;-XX:+PrintGCDetails -XX:+PrintGCTimeStamps $&#123;CATALINA_OPTS&#125;&quot;</span></span><br><span class="line"><span class="comment">#CATALINA_OPTS=&quot;-Dconfluence.upgrade.recovery.file.enabled=false $&#123;CATALINA_OPTS&#125;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Additional Confluence system properties</span></span><br><span class="line"><span class="comment"># For a list of properties recognized by Confluence see:</span></span><br><span class="line"><span class="comment"># https://confluence.atlassian.com/display/DOC/Recognized+System+Properties</span></span><br><span class="line"><span class="comment"># We recommend you include a support ticket ID and/or note to help track the reason for change</span></span><br><span class="line"><span class="comment"># For example:</span></span><br><span class="line"><span class="comment"># CSP-123456 - Added example JVM option to help explain this section</span></span><br><span class="line"><span class="comment">#CATALINA_OPTS=&quot;-Dexample.property=true $&#123;CATALINA_OPTS&#125;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment this line to disable email notifications</span></span><br><span class="line"><span class="comment">#CATALINA_OPTS=&quot;-Datlassian.mail.senddisabled=true -Datlassian.mail.fetchdisabled=true $&#123;CATALINA_OPTS&#125;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># End of commonly modified Java options. You should not need to change the options </span></span><br><span class="line"><span class="comment"># below unless recommended by Atlassian Support</span></span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-XX:+IgnoreUnrecognizedVMOptions <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-XX:G1ReservePercent=20 -XX:+UseG1GC -XX:+ExplicitGCInvokesConcurrent -XX:+PrintGCDateStamps <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-Xlog:gc+age=debug:file=<span class="variable">$LOGBASEABS</span>/logs/gc-`date +%F_%H-%M-%S`.log::filecount=5,filesize=2M <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-Xloggc:<span class="variable">$LOGBASEABS</span>/logs/gc-`date +%F_%H-%M-%S`.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=2M <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-Djava.awt.headless=true <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-Datlassian.plugins.enable.wait=300 <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-Dsynchrony.enable.xhr.fallback=true <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-Djava.locale.providers=JRE,SPI,CLDR <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-Dconfluence.context.path=<span class="variable">$&#123;CONFLUENCE_CONTEXT_PATH&#125;</span> <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;-Dorg.apache.tomcat.websocket.DEFAULT_BUFFER_SIZE=32768 <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;<span class="variable">$&#123;START_CONFLUENCE_JAVA_OPTS&#125;</span> <span class="variable">$&#123;CATALINA_OPTS&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">CATALINA_OPTS=<span class="string">&quot;<span class="variable">$&#123;CATALINA_OPTS&#125;</span> <span class="variable">$&#123;JVM_SUPPORT_RECOMMENDED_ARGS&#125;</span> -DConfluenceHomeLogAppender.disabled=<span class="variable">$&#123;CONFLUENCE_LOG_STDOUT&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> CATALINA_OPTS</span><br><span class="line"></span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># End configuration options</span></span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------------------</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240425205747417.png" alt="image-20240425205747417"></p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240425205759757.png" alt="image-20240425205759757"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CATALINA_OPTS=&quot;-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:28136 $&#123;CATALINA_OPTS&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>vscode连接服务器，直接把cpu和内存搞满了，直接崩溃，拿本地机器搞吧还是。上kali</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/kali/vulhub/confluence/CVE-2022-26134</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h5 id="远程调试配置"><a href="#远程调试配置" class="headerlink" title="远程调试配置"></a>远程调试配置</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OpenJDK 64-Bit Server VM Temurin-11.0.15+10 (build 11.0.15+10, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240425164453899.png" alt="image-20240425164453899"></p>
+<h3 id="暂时失败原因"><a href="#暂时失败原因" class="headerlink" title="暂时失败原因"></a>暂时失败原因</h3><p>centos服务器的内存有限；</p>
+<p>kali的docker下载速度太慢；</p>
+<p>动态调试环境搭建博客讲的不清晰；</p>
+<h3 id="新的博客教程"><a href="#新的博客教程" class="headerlink" title="新的博客教程"></a>新的博客教程</h3><p><a class="link"   target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11436?time__1311=mqmx0DB7eWqND/QiiQGkAD8AGO78j5x&amp;alichlgref=https://www.google.com/" >https://xz.aliyun.com/t/11436?time__1311=mqmx0DB7eWqND%2FQiiQGkAD8AGO78j5x&amp;alichlgref=https%3A%2F%2Fwww.google.com%2F<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="0709再来远程调试（远程调试成功）"><a href="#0709再来远程调试（远程调试成功）" class="headerlink" title="0709再来远程调试（远程调试成功）"></a>0709再来远程调试（远程调试成功）</h3><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub/tree/master/confluence/CVE-2022-26134" >https://github.com/vulhub/vulhub/tree/master/confluence/CVE-2022-26134<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.yuque.com/tianxiadamutou/zcfd4v/gil3uc" >https://www.yuque.com/tianxiadamutou/zcfd4v/gil3uc<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11436?time__1311=mqmx0DB7eWqND/QiiQGkAD8AGO78j5x&amp;alichlgref=https://www.google.com/" >https://xz.aliyun.com/t/11436?time__1311=mqmx0DB7eWqND%2FQiiQGkAD8AGO78j5x&amp;alichlgref=https%3A%2F%2Fwww.google.com%2F<i class="fas fa-external-link-alt"></i></a></p>
+<h5 id="我的环境"><a href="#我的环境" class="headerlink" title="我的环境"></a>我的环境</h5><p>本地虚拟机kali，以防服务器内存不够卡死</p>
+<p>finalshell连接root kali操作，方便文件管理</p>
+<p>vscode远程ssh连接root kali操作，方便docker文件管理和文件修改以及命令执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/kali/vulhub/confluence/CVE-2022-26134</span><br><span class="line">docker-compose up -d</span><br><span class="line">docker-compose down</span><br></pre></td></tr></table></figure>
+
+<p><a class="link"   target="_blank" rel="noopener" href="http://192.168.19.148:8090/setup/setuplicense.action" >http://192.168.19.148:8090/setup/setuplicense.action<i class="fas fa-external-link-alt"></i></a></p>
+<h5 id="定位源代码"><a href="#定位源代码" class="headerlink" title="定位源代码"></a>定位源代码</h5><p>通过 ps aux 和 ps -le 可以确定源码位置和父进程</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709121210277.png" alt="image-20240709121210277"></p>
+<p>源码位置为：&#x2F;opt&#x2F;atlassian&#x2F;confluence</p>
+<p>父进程为： &#x2F;usr&#x2F;bin&#x2F;tini – &#x2F;entrypoint.py</p>
+<p>docker cp将源码复制出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp 3b6dd13a22ec:/opt/atlassian/confluence/confluence /home/jerem1ah/confluence</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709140250356.png" alt="image-20240709140250356"></p>
+<h5 id="配置IDEA"><a href="#配置IDEA" class="headerlink" title="配置IDEA"></a>配置IDEA</h5><p>配置项目结构</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709140451719.png" alt="image-20240709140451719"></p>
+<p>配置远程调试</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709140646762.png" alt="image-20240709140646762"></p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709140546676.png" alt="image-20240709140546676"></p>
+<h5 id="远程调式配置"><a href="#远程调式配置" class="headerlink" title="远程调式配置"></a>远程调式配置</h5><p>父进程涉及entrypoint.py文件，发现启动是通过start-confluence.sh文件</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709140938218.png" alt="image-20240709140938218"></p>
+<p>查看start-confluence.sh文件发现会调用catalina.sh文件，其实就是启动tomcat</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709141359318.png" alt="image-20240709141359318"></p>
+<p>在tomcat中会通过setenv.sh来统一管理环境变量，修改setenv.sh来开启远程调试</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709141536811.png" alt="image-20240709141536811"></p>
+<p>然后运行根目录下的 shutdown-wait.sh 文件将 confluence 关掉，然后重启一下即可</p>
+<h3 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h3><p>将源码载入IDEA之后，首先查看web.xml中找到ConfluenceServletDispatcher</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709202612480.png" alt="image-20240709202612480"></p>
+<p>跟进ConfluenceServletDispatcher类，发现类中并没有service方法，所以查看父类，发现service存在父类中，</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709202957505.png" alt="image-20240709202957505"></p>
+<p>测试一下发现断点确实可以正常打到</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709203132087.png" alt="image-20240709203132087"></p>
+<p>接下来正式开始漏洞调试，首先观察 vulhub 中的 payload ，可以看到 payload 是以 get 的形式发送的，所以就从 ConfluenceServletDispatcher#service 这里往下看</p>
+<p>在 this.serviceAction 中通过 this.getNameSpace 和 this.getActionName 来处理请求中的路由和端点</p>
+<p>this.getNameSpace 会将 servletPath 获取从0到最后一个 &#x2F; 的路径</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709204017011.png" alt="image-20240709204017011"></p>
+<p>也就是获取我们 payload 的部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;(#a=@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(&quot;id&quot;).getInputStream(),&quot;utf-8&quot;)).(@com.opensymphony.webwork.ServletActionContext@getResponse().setHeader(&quot;X-Cmd-Response&quot;,#a))&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709204236125.png" alt="image-20240709204236125"></p>
+<p>this.getActionName 会获取我们的端点部分，从 &#x2F; 开始到最后一个 . 之间的值，也就是获取到 index</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709204616482.png" alt="image-20240709204616482"></p>
+<p>这里我们输入的是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/$&#123;(#a=@org.apache.commons.io.IOUtils@toString(@java.lang.Runtime@getRuntime().exec(&quot;id&quot;).getInputStream(),&quot;utf-8&quot;)).(@com.opensymphony.webwork.ServletActionContext@getResponse().setHeader(&quot;X-Cmd-Response&quot;,#a))&#125;/index.action</span><br></pre></td></tr></table></figure>
+
+<p>最终获取到的 action 也就是 index</p>
+<p>然后在 serviceAction 中首先会根据传入的 namespace 、action 、requestMap 等参数创建一个代理对象</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240709211054895.png" alt="image-20240709211054895"></p>
+<p>可以看到在创建代理对象的过程中我们的payaload存放于 namespace 变量</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710131644037.png" alt="image-20240710131644037"></p>
+<p>然后调用代理对象的 execute 函数，在 execute 函数中主要是调用了 this.invocation.invoke(); 也就是拦截器的 invoke 方法，并返回一个 code</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710132355330.png" alt="image-20240710132355330"></p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710132413458.png" alt="image-20240710132413458"></p>
+<p>跟进查看 invoke 方法，发现在 invoke 方法中会迭代 interceptors</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710132543115.png" alt="image-20240710132543115"></p>
+<p>this.interceptors 是一个存放拦截器的列表，然后通过遍历 this.interceptors 来调用拦截器中的 intercept 方法</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710132829311.png" alt="image-20240710132829311"></p>
+<p>然后如果 this.proxy.getExecuteResult() &#x3D;&#x3D; true 就会执行 this.executeResult()</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710132912693.png" alt="image-20240710132912693"></p>
+<p>首先需要知道 this.proxy.getExecuteResult() 是从哪设置的，查看堆栈可以发现在最开始创建代理对象的时候默认设置的为 true</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710133310713.png" alt="image-20240710133310713"></p>
+<p>在 executeResult 里面可以看到首先通过调用 this.createResult() 获取了 result</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710133441229.png" alt="image-20240710133441229"></p>
+<p>跟进 this.createResult 函数，在函数中根据之前的 resultCode 从表中获取对应的结果</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710133741758.png" alt="image-20240710133741758"></p>
+<p>接着就会将 自身 作为参数传入到 execute 函数</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710133859208.png" alt="image-20240710133859208"></p>
+<p>在 execute 中会通过 TextParseUtil.translateVariables 函数来将 namespace 进行变量转化。</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710135242487.png" alt="image-20240710135242487"></p>
+<p>不知道为什么我的代码不经过这里，而是经过另一个execute函数，暂且先不提，跟着上面的走</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710135344245.png" alt="image-20240710135344245"></p>
+<p>在该函数中，造成了 OGNL 表达式的触发，并且传入的 namespace 可控 造成 RCE</p>
+<p><img src="/../images/55%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/image-20240710135530774.png" alt="image-20240710135530774"></p>
+<p>所以实际在看源码的时候主要是 OGNL 表达式相关的解析库，并且其中的参数可控那么就可以合理怀疑这里存在 OGNL 表达式注入</p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/java/">#java</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2024/08/13/54%E6%A0%88%E6%BA%A2%E5%87%BAret2libc/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">CISCN 2019东北-PWN2</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                <div class="comment-container">
+                    
+<div class="comments-container">
+    <div id="comments-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments"></i>&nbsp;Comments
+    </div>
+    
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script  src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+        <script >
+          function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+              Gitalk && new Gitalk({
+                clientID: 'a415960e8a19902e98bf',
+                clientSecret: '97151a67ce9c95ad3c333c402f4cee0f5f05020f',
+                repo: 'gitalk',
+                owner: 'Lejeremiah',
+                admin: 'Lejeremiah',
+                id: __gitalk__pathname,
+                language: 'en'
+              }).render('gitalk-container');
+            } catch (e) {
+              window.Gitalk = null;
+            }
+          }
+
+          if ('false' === 'true') {
+            const loadGitalkTimeout = setTimeout(() => {
+              loadGitalk();
+              clearTimeout(loadGitalkTimeout);
+            }, 1000);
+          } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+          }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Confluence-CVE-2022-26134-%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E3%80%90%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%E5%AD%A6%E4%B9%A0%E3%80%91"><span class="nav-text">Confluence CVE-2022-26134 漏洞分析【远程调试学习】</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">调试环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%E9%85%8D%E7%BD%AE"><span class="nav-text">远程调试配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%82%E6%97%B6%E5%A4%B1%E8%B4%A5%E5%8E%9F%E5%9B%A0"><span class="nav-text">暂时失败原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B"><span class="nav-text">新的博客教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0709%E5%86%8D%E6%9D%A5%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%EF%BC%88%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95%E6%88%90%E5%8A%9F%EF%BC%89"><span class="nav-text">0709再来远程调试（远程调试成功）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%88%91%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="nav-text">我的环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-text">定位源代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEIDEA"><span class="nav-text">配置IDEA</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%B0%83%E5%BC%8F%E9%85%8D%E7%BD%AE"><span class="nav-text">远程调式配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="nav-text">漏洞分析</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">jerem1ah</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.5.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
